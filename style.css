@@ -1,0 +1,279 @@
+#header_panel {
+	clear: both;
+	width:100%;
+	margin: 0 auto;
+	background: #000000 url(images/1.jpg); 
+}
+
+#header_panel #header_section{
+	clear: both;
+	width: 100%;
+	height: 200px;
+	margin: 0 auto;
+
+}
+
+#header_section #title_section{
+	font-size: 55px;
+	padding: 80px 0 0 0;
+	color: #f5ea01;
+}
+
+#header_section #tagline {
+	padding: 0 0 0 150px;
+	font-size: 20px;
+	color: #6b5927;
+}
+
+#menu_panel{
+	clear: both;	
+	width:100%;
+	height: 47px;	
+	margin: 0 auto; 
+	margin-bottom: 10px;
+	color: #ffffff;
+	background: #000000 url(images/1.jpg);
+}
+
+#menu_panel #menu_section{
+	width: 100%;
+	height: 47px;	
+	margin:0 auto;
+	padding: 0 0 0 30px;
+	color: #03a0a6;
+	background:  url(images/1.jpg) ;	
+}
+
+#menu_section ul {
+	float: left;
+	width: 100%;
+	margin: 0;
+	padding: 15px 0 0 0;
+	list-style: none;
+}
+
+
+
+#menu_section ul li a{
+	float: left;
+	width: 110px;
+	padding: 2px 0;
+	margin-right: 5px;
+	font-size: 12px;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	color: #99930d;
+	border-right: 1px solid #333;	
+}
+
+#menu_section li a:hover, #menu_section li .current{
+	color: #f5ea01;
+}
+
+/* content */
+
+#content {
+	clear: both;
+	width: 100%;
+	margin: 0 auto;
+}
+
+#content_column_one{
+	float: left;
+	width: 20%
+	border: 1px solid #846f34;
+	padding: 10px 0 10px 0;
+	background: #6b5927 url(images/1.jpg) ;
+}
+
+#content_column_two {
+	float: left;
+	width: 50%;
+	height: 710px;
+	margin: 0 5px 0 5px;
+	padding: 0 0 0 0;	
+	overflow: scroll;
+}
+
+#content_column_three {
+	float: left;
+	width: 30%;
+	height: 700px;
+	padding: 5px 110px 5px 0;	
+	margin: 0 0 0 0;	
+	border: 1px solid #312f2b;
+	background: #181714;
+	overflow: scroll;
+}
+
+/* column one */
+
+#content_column_one .column_one_section {
+	clear: both;
+	margin: 0px 10px;
+}
+
+#content_column_one h1 {
+	margin: 0 0 10px 0;
+	padding: 0 0 5px 0;
+	font-size: 14px;
+	color: #000;
+	border-bottom: 1px dotted #000;
+}
+
+#content_column_one .cleaner_with_divider {
+	margin: 0 0 20px 0;	
+}
+
+#content_column_one ul {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+#content_column_one li {
+	margin: 0px;
+	padding: 0 0 5px 0;	
+}
+#content_column_one a{
+	color: white;
+}
+
+/* end of column one */
+/* column two */
+
+#content_column_two .column_two_section {
+	clear: both;
+	width: 50%;
+	padding:0 5px 0 5px;	
+	margin-bottom: 5px;
+	border: 1px solid #312f2b;
+	background: #181714 url(images/1.jpg) ;	
+}
+
+#content_column_two h1 {
+	margin: 0 0 10px 0;
+	padding: 0 0 10px 5px;
+	font-size: 16px;
+	color: #f5ea01;
+	border-bottom: 1px dotted #f5ea01;
+}
+
+
+
+#content_column_two img {
+	border: 5px solid #2e2d29;
+	margin-bottom: 15px;
+}
+
+#content_column_two .post_info {
+	margin: 0 0 20px 0;
+	color: #fff;
+}
+
+#content_column_two .post_info a{
+	color: #f5ea01;
+	font-weight: normal;
+}
+
+#content_column_two .post_comment {
+	border-top: 1px solid #000;
+	margin-top: 10px;
+	padding: 10px 0 0 0;
+}
+/* end of column one */
+
+/* column one */
+#content_column_three .column_three_section {
+	clear: both;
+	width: 30%;
+	padding: 10px 100px 0 0;
+}
+
+#content_column_three .cleaner_with_divider {
+	padding: 0px;
+	margin: 0px;	
+}
+.cleaner {
+	clear: both;
+	width: 100%;
+	height: 1px;
+	font-size: 1px;	
+}
+
+#content_column_three h1 {
+	margin: 10px 0 10px 0;
+	padding: 0 0 10px 5px;
+	font-size: 14px;
+	color: #fff;
+	border-bottom: 1px dotted #FFF;
+}
+
+#content_column_three a{
+	font-weight: normal;
+}
+
+#content_column_three ul {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+
+#content_column_three li {
+	margin: 0 0 8px 0;
+	padding: 0 0 8px 0;	
+}
+
+#content_column_three #ad_section {
+	clear: both;
+	border-bottom: 1px solid #312f2b;
+}
+
+
+
+.column_three_section .popular_post {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.column_three_section .popular_post li{
+	margin: 0 0 5px 0;
+	padding: 0 0 5px 0;
+	border-bottom: 1px solid #22250e;
+}
+
+p {
+	margin: 0px;
+	padding: 0 0 0 5px;
+	color: white;
+}
+/* end of column one */
+/* for bottom palen */
+#bottom_panel{
+	
+    width:100%;
+	margin: 10px auto 0 auto;
+	padding: 10px 0;
+	background: url(images/1.jpg) ;	
+}
+
+#bottom_panel .bottom_panel_section {
+
+	width: 550px;
+	margin-bottom: 20px;
+	
+}
+
+.bottom_panel_section h1 {
+	color: #f2e304;
+	font-size: 14px;
+	margin: 0 0 5px 0;
+	padding: 0 0 5px 0;
+}
+
+.bottom_panel_section a{
+	margin-bottom: 5px;
+	padding-bottom: 5px;
+	
+}
+/* end of bottom */
