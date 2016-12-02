@@ -1,0 +1,50 @@
+CREATE TABLE userinfo
+(
+user_id int not null,
+role
+full_name varchar2 (20) not null,
+user_name varchar2 (20) not null,
+email varchar2 (20) not null,
+mobile VARCHAR2(20) not null,
+dob date not null ,
+gender varchar2 (10) not null,
+address varchar2(50) not null,
+country varchar2 (30) not null ,
+city varchar2(20),
+pass varchar2(20) not null,
+pro_pic VARCHAR2(500),
+CONSTRAINT userinfo_pk primary key(user_id)
+)
+
+create SEQUENCE user_id
+MINVALUE 1
+START WITH 1
+INCREMENT BY 1 
+CACHE 10 ;
+
+CREATE TABLE data_tab
+(
+q_o_id int not null,
+topics varchar2 (20) not null,
+post varchar2 (2000 CHAR) ,
+question varchar2 (2000 CHAR) ,
+opinion varchar2 (2000 CHAR) ,
+comments_post varchar2 (2000 CHAR) ,
+comments_qo varchar2 (2000 CHAR) ,
+user_id int,
+CONSTRAINT data_tab_pk primary key (q_o_id),
+CONSTRAINT fk_user_id foreign key (user_id)
+references userinfo(user_id)
+)
+
+CREATE TABLE feedback 
+(
+feedback_id int not null,
+agree varchar2 (10),
+followers varchar2 (10),
+followings varchar2 (10),
+q_o_id int,
+CONSTRAINT pk_feedback primary key (feedback_id),
+CONSTRAINT fk_q_o_id foreign key (q_o_id)
+references data_tab(q_o_id)
+)

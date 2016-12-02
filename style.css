@@ -7,7 +7,7 @@
 
 #header_panel #header_section{
 	clear: both;
-	width: 100%;
+	width: 1150px;
 	height: 200px;
 	margin: 0 auto;
 
@@ -36,7 +36,7 @@
 }
 
 #menu_panel #menu_section{
-	width: 100%;
+	width: 1140px;
 	height: 47px;	
 	margin:0 auto;
 	padding: 0 0 0 30px;
@@ -46,7 +46,7 @@
 
 #menu_section ul {
 	float: left;
-	width: 100%;
+	width: 930px;
 	margin: 0;
 	padding: 15px 0 0 0;
 	list-style: none;
@@ -75,13 +75,13 @@
 
 #content {
 	clear: both;
-	width: 100%;
+	width: 1400px;
 	margin: 0 auto;
 }
 
 #content_column_one{
 	float: left;
-	width: 20%
+	width: 180px;
 	border: 1px solid #846f34;
 	padding: 10px 0 10px 0;
 	background: #6b5927 url(images/1.jpg) ;
@@ -89,7 +89,7 @@
 
 #content_column_two {
 	float: left;
-	width: 50%;
+	width: 660px;
 	height: 710px;
 	margin: 0 5px 0 5px;
 	padding: 0 0 0 0;	
@@ -98,7 +98,7 @@
 
 #content_column_three {
 	float: left;
-	width: 30%;
+	width: 365px;
 	height: 700px;
 	padding: 5px 110px 5px 0;	
 	margin: 0 0 0 0;	
@@ -144,7 +144,7 @@
 
 #content_column_two .column_two_section {
 	clear: both;
-	width: 50%;
+	width: 635px;
 	padding:0 5px 0 5px;	
 	margin-bottom: 5px;
 	border: 1px solid #312f2b;
@@ -186,7 +186,7 @@
 /* column one */
 #content_column_three .column_three_section {
 	clear: both;
-	width: 30%;
+	width: 450px;
 	padding: 10px 100px 0 0;
 }
 

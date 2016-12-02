@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC>
-<html xmlns="">
+
+
 <head>
 <meta/>
 <title>Learn with online society</title>
@@ -48,25 +48,35 @@
      
     </div>
 
-    <!-- end of column one -->
+    <!-- end of column one
+
+javascript code start
+     -->
+
+
+ 
+
     
 <div id="content_column_two">
     
     	<div class="column_two_section">
 			<center>
-        
-                      <form action="check.php" method="post">
-                      <br>
-                    <h1>Your Info To Submit</h1><br/><br/>
+                <script type="text/javascript" src="javascript.js"></script>
+
+                
+
+                      <form name="myForm" action="#" onsubmit="return validateForm()" method="post">
+                      
+                    <h1>Your Info To Submit</h1>
                     <table>
                     <tr>
                     <td><p>Name :</p></td>
-                    <td><input type="text" name="name" value =""/>
+                    <td><input  type="text"  name="name"  value =""/>
                     </td>
                     </tr>
                     <tr>
                     <td><p>User Name  :</p></td>
-                    <td><input type="text" name="uname" value =""/>
+                    <td><input type="text" name="uname" value =""/>beng 
 
                     </td>
                     </tr>
@@ -127,13 +137,10 @@
                         
                     <tr>
                     <td><p>Gender:</p></td>
-                    <td><input type="radio" name="gender" value="male" />Male
-                    <input type="radio" name="gender" value="female"/>Female
-
-                    ?>
+                    <td><input type="radio" name="gender" value="male" /> <p>Male</p>
+                    <input type="radio" name="gender" value="female"/><p>Female</p>
                     </td>
                     </tr>
-
                     <tr>
                     <td><p>Phone :</p></td>
                     <td>
@@ -146,6 +153,7 @@
                     <td><p>Email ID :</p></td>
                     <td>
                     <input type="email" name="email" value =""/>
+
 
                     </td>
                     </tr>
@@ -160,14 +168,14 @@
                      <tr>
                     <td><p>Country :</p></td>
                     <td>
-                    <select name= country>
-                        <option value=''>Bangladesh</option>
-                        <option value=''>India</option>
-                        <option value=''>Japan</option>
-                        <option value=''>Saudi Arabia</option>
-                        <option value=''>USA</option>
-                        <option value=''>UK</option>
-                        <option value=''>Italy</option>
+                    <select type="text" value="">
+                        <option value='' >Bangladesh</option>
+                        <option value='' >India</option>
+                        <option value='' >Japan</option>
+                        <option value='' >Saudi Arabia</option>
+                        <option value='' >USA</option>
+                        <option value='' >UK</option>
+                        <option value='' >Italy</option>
                         <option value=''>Australia</option>
                         <option value=''>Other</option>
                     </select>
@@ -214,7 +222,7 @@
                     </tr>
                     </table>
 
-                    <br/><br/>
+                    
                     <input type="submit" value="Submit"/>
                     </form>
                     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
@@ -264,13 +272,8 @@
 
 <!-- Java script-->
 
-<script type="text/javascript">
-	function login()
-	{
-		document.getElementById("posts").innerHTML=
-	}
-</script>
+
 
 
 </body>
-</html>
+

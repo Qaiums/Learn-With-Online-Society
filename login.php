@@ -54,7 +54,9 @@
     
     	<div class="column_two_section">
 			<center>
-  <form action="check.php" method="post">
+            <script type="text/javascript" src="javascript.js"></script>
+
+  <form  name="myForm1" action="#" onsubmit="return validateLoinForm()" method="post">
   <br>
 <br>
 <pre>
@@ -129,12 +131,7 @@ Password  : <input type="password" name="pass" /></p>
 
 <!-- Java script-->
 
-<script type="text/javascript">
-	function login()
-	{
-		document.getElementById("posts").innerHTML=
-	}
-</script>
+
 
 
 </body>
