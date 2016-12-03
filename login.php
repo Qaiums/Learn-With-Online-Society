@@ -31,15 +31,15 @@
 
 	<div id="content_column_one">
     	<div class="column_one_section">
-        	<h1>Categories</h1>
-            <ul>
-                <li><a href="#">Oracle </a></li>
-                <li><a href="#">PHP</a></li>
-                <li><a href="#">Java</a></li>
-                <li><a href="#">C#</a></li>
-                <li><a href="#">C++</a></li>
+            <p>Categories<br><br><br>
+            <input type="radio" name="oracle" value=" "> Oracle <br><br>
+            <input type="radio" name="php" value=" "> PHP <br><br>
+            <input type="radio" name="java" value=" "> Java <br><br>
+            <input type="radio" name="c#" value=" "> C# <br><br>
+            <input type="radio" name="Cplus" value=" "> C++<br><br>
+            <input type="radio" name="other" value=" "> Other </p> 
                 
-            </ul>                  
+             
         </div>
         
         <div class="cleaner_with_divider">&nbsp;</div>
@@ -61,7 +61,7 @@
 <br>
 <pre>
     <h1>Login</h1>
-  <p>    Email : <input value="" type="email" name="email" /><br>
+  <p>Email : <input value="" type="email" name="email" /><br>
 Password  : <input type="password" name="pass" /></p> 
       </pre><input type="submit" value="Login" /><br><br>
 <br>

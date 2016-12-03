@@ -31,15 +31,15 @@
 
 	<div id="content_column_one">
     	<div class="column_one_section">
-        	<h1>Categories</h1>
-            <ul>
-                <li><a href="#">Oracle </a></li>
-                <li><a href="#">PHP</a></li>
-                <li><a href="#">Java</a></li>
-                <li><a href="#">C#</a></li>
-                <li><a href="#">C++</a></li>
+            <p>Categories<br><br><br>
+            <input type="radio" name="oracle" value=" "> Oracle <br><br>
+            <input type="radio" name="php" value=" "> PHP <br><br>
+            <input type="radio" name="java" value=" "> Java <br><br>
+            <input type="radio" name="c#" value=" "> C# <br><br>
+            <input type="radio" name="Cplus" value=" "> C++<br><br>
+            <input type="radio" name="other" value=" "> Other </p> 
                 
-            </ul>                  
+             
         </div>
         
         <div class="cleaner_with_divider">&nbsp;</div>
@@ -71,12 +71,12 @@ javascript code start
                     <table>
                     <tr>
                     <td><p>Name :</p></td>
-                    <td><input  type="text"  name="name"  value =""/>
+                    <td><input  type="text"  name="name" placeholder="Name"  value =""/>
                     </td>
                     </tr>
                     <tr>
                     <td><p>User Name  :</p></td>
-                    <td><input type="text" name="uname" value =""/>beng 
+                    <td><input type="text" name="uname" placeholder="UserName" value =""/>beng 
 
                     </td>
                     </tr>
@@ -85,7 +85,7 @@ javascript code start
                     <td><p>DOB :</p></td>
                     <td>
                    
-                    <input type="date" name="dob" value=''>
+                    <input type="date" name="dob" placeholder="Date of Birth" value=''>
                     
                         </td>
                         </tr>
@@ -99,7 +99,7 @@ javascript code start
                     <tr>
                     <td><p>Phone :</p></td>
                     <td>
-                    <input type="text" name="phone" value =""/>
+                    <input type="text" name="phone" placeholder="Phone Number" value =""/>
 
                     </td>
                     </tr>
@@ -107,7 +107,7 @@ javascript code start
                     <tr>
                     <td><p>Email ID :</p></td>
                     <td>
-                    <input type="email" name="email" value ="" onkeyup="checkmail(this.value)"/> <div id="txtHint"></div>
+                    <input type="email" name="email" value ="" placeholder="Email" onkeyup="checkmail(this.value)"/> <div id="txtHint"></div>
                     </td>
                     </tr>
 
@@ -140,7 +140,7 @@ javascript code start
                     <tr>
                     <td><p>Address :</p></td>
                     <td>
-                    <input type="text" name="address" value =""/>
+                    <input type="text" name="address" placeholder="Address" value =""/>
 
                     </td>
                     </tr>
@@ -182,12 +182,12 @@ javascript code start
 
                     <tr>
                     <td><p>Password :</p></td>
-                    <td><input type="password" name="pass"/></td>
+                    <td><input type="password" placeholder="Password" name="pass"/></td>
                     </tr>
 
                     <tr>
                     <td><p>Confirm Password :</p></td>
-                    <td><input type="password" name="confirmPass"/>
+                    <td><input type="password" placeholder="Confirm Password" name="confirmPass"/>
 
                     </td>
                     </tr>

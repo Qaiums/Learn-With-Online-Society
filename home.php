@@ -42,7 +42,7 @@
     <div id="menu_section">
         <ul>
             <li><a href="home.php">Home</a></li>
-            <li><a href="" >Profile</a></li>
+            <li><a href="profile.php" >Profile</a></li>
             <li><a href="" >Follower</a></li>            
             <li><a href="" >Following</a></li>  
             <li><a href="" >About Us</a></li> 

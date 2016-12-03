@@ -23,5 +23,6 @@ $conn= odbc_connect('lwosdb','lwos','qaium29');
 	}
 
 	else echo "<p>Nothing</p>";
+	  odbc_close($conn);
 
 ?>
