@@ -15,7 +15,7 @@
 <div id="menu_panel">
     <div id="menu_section">
         <ul>
-            <li><a href="index.php"  class="current">Home</a></li>
+            <li><a href="home.php" >Home</a></li>
             <li><a href="" >Profile</a></li>
             <li><a href="" >Follower</a></li>            
             <li><a href="" >Following</a></li>  
@@ -65,7 +65,7 @@ javascript code start
 
                 
 
-                      <form name="myForm" action="#" onsubmit="return validateForm()" method="post">
+                      <form name="myForm" action="regintodatabase.php" onsubmit="return validateForm()" method="post">
                       
                     <h1>Your Info To Submit</h1>
                     <table>
@@ -83,55 +83,10 @@ javascript code start
 
                     <tr>
                     <td><p>DOB :</p></td>
-                    <td><select  name="day">
-                        <?php
-                        if ($day == "")
-                        {
-                            echo "<option value=''>Select Day</option>";
-                            for ($i = 1; $i<=31; $i++)
-                            {
-                                echo "<option value='".$i."'>".$i."</option>";
-                            }
-                        }
-                        else
-                        {
-                            echo "<option value='".$day."'>".$day."</option>";
-                        }
-                        ?>
-                        </select>
-                        <select name="month">
-                        <?php
-                        if ($month == "")
-                        {
-                            echo "<option value=''>Select Month</option>";
-                            for ($i = 1; $i<=12; $i++)
-                            {
-                                echo "<option value='".$i."'>".$i."</option>";
-                            }
-                        }
-                        else
-                        {
-                            echo "<option value='".$month."'>".$month."</option>";
-                        }
-                        ?>
-                        </select>
-                        <select  name="year">
-                        <?php
-                        if ($year == "")
-                        {
-                            echo "<option value=''>Select Year</option>";
-                            for ($i = 1900; $i<=2016; $i++)
-                            {
-                                echo "<option value='".$i."'>".$i."</option>";
-                            }
-                        }
-                        else
-                        {
-                            echo "<option value='".$year."'>".$year."</option>";
-                        }
-                        ?>
-                        </select>
-                        
+                    <td>
+                   
+                    <input type="date" name="dob" value=''>
+                    
                         </td>
                         </tr>
                         
@@ -152,12 +107,36 @@ javascript code start
                     <tr>
                     <td><p>Email ID :</p></td>
                     <td>
-                    <input type="email" name="email" value =""/>
-
-
+                    <input type="email" name="email" value ="" onkeyup="checkmail(this.value)"/> <div id="txtHint"></div>
                     </td>
                     </tr>
 
+
+                              <script type="text/javascript">
+                                function checkmail(str)
+                                {
+                                    //alert("test");
+                                    var xhttp;
+                                    if(str.length==0)
+                                    {
+                                        document.getElementById('txtHint').innerHTML=" ";
+                                        return ;
+                                    }
+                                    xhttp= new XMLHttpRequest();
+                                    xhttp.onreadystatechange=function()
+                                    {   
+                                        if (xhttp.readyState== 4 && xhttp.status==200)
+                                        {
+                                            document.getElementById("txtHint").innerHTML=this.responseText;
+                                        }
+                                    };
+                                    xhttp.open("GET","emailcheck.php?email="+str,true);
+                                    xhttp.send();
+                                    
+                                }
+
+
+                              </script>
                     <tr>
                     <td><p>Address :</p></td>
                     <td>
@@ -168,16 +147,16 @@ javascript code start
                      <tr>
                     <td><p>Country :</p></td>
                     <td>
-                    <select type="text" value="">
-                        <option value='' >Bangladesh</option>
-                        <option value='' >India</option>
-                        <option value='' >Japan</option>
-                        <option value='' >Saudi Arabia</option>
-                        <option value='' >USA</option>
-                        <option value='' >UK</option>
-                        <option value='' >Italy</option>
-                        <option value=''>Australia</option>
-                        <option value=''>Other</option>
+                    <select name="country" >
+                        <option value='' >Select Country</option>
+                        <option value='Bangladesh' >Bangladesh</option>
+                        <option value='Japan' >Japan</option>
+                        <option value='Saudi Arabia' >Saudi Arabia</option>
+                        <option value='USA' >USA</option>
+                        <option value='UK' >UK</option>
+                        <option value='Italy' >Italy</option>
+                        <option value='Australia'>Australia</option>
+                        <option value='Other'>Other</option>
                     </select>
 
                     </td>
@@ -186,16 +165,16 @@ javascript code start
                     <tr>
                     <td><p>State :</p></td>
                     <td>
-                    <select name= state>
+                    <select name= "state">
                         <option value=''>Select State</option>
-                        <option value=''>Dhaka</option>
-                        <option value=''>Chitagong</option>
-                        <option value=''>Sylhet</option>
-                        <option value=''>Rajshahi</option>
-                        <option value=''>Khulna</option>
-                        <option value=''>Borishal</option>
-                        <option value=''>Rongpur</option>
-                        <option value=''>Other</option>
+                        <option value='Dhaka'>Dhaka</option>
+                        <option value='Chitagong'>Chitagong</option>
+                        <option value='Sylhet'>Sylhet</option>
+                        <option value='Rajshahi'>Rajshahi</option>
+                        <option value='Khulna'>Khulna</option>
+                        <option value='Borishal'>Borishal</option>
+                        <option value='Rongpur'>Rongpur</option>
+                        <option value='Other'>Other</option>
                     </select>
 
                     </td>
@@ -215,6 +194,7 @@ javascript code start
 
                     <tr>
                     <td><p>Profile Picture :</p>
+                    <td> <input type="file" name="propic" id="fileToUpload"></td>
                     </td>
                     <td>
 

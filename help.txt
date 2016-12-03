@@ -1,7 +1,12 @@
+database : lwos
+database connection name : lwosdb
+password : qaium29
+
+
 CREATE TABLE userinfo
 (
 user_id int not null,
-role
+user_role varchar2 (20),
 full_name varchar2 (20) not null,
 user_name varchar2 (20) not null,
 email varchar2 (20) not null,
@@ -48,3 +53,71 @@ CONSTRAINT pk_feedback primary key (feedback_id),
 CONSTRAINT fk_q_o_id foreign key (q_o_id)
 references data_tab(q_o_id)
 )
+
+
+Combo Date
+=====================
+
+  <!--
+    <select  name="day">
+                        <?php
+                        if ($day == "")
+                        {
+                            echo "<option value=''>Select Day</option>";
+                            for ($i = 1; $i<=31; $i++)
+                            {
+                                echo "<option value='".$i."'>".$i."</option>";
+                                
+                            }
+                        }
+                        else
+                        {
+                            echo "<option value='".$day."'>".$day."</option>";
+                        }
+                        ?>
+                        </select>
+                        <select name="month">
+                        <?php
+                        if ($month == "")
+                        {
+                            echo "<option value=''>Select Month</option>";
+                            
+                                echo "<option value=''>Jan</option>";
+                                 echo "<option value=''>Feb</option>";
+                                  echo "<option value=''>Mar</option>";
+                                   echo "<option value=''>Apr</option>";
+                                    echo "<option value=''>May</option>";
+                                     echo "<option value=''>Jun</option>";
+                                      echo "<option value=''>July</option>";
+                                       echo "<option value=''>Agu</option>";
+                                        echo "<option value=''>Sep</option>";
+                                         echo "<option value=''>Oct</option>";
+                                          echo "<option value=''>Nov</option>";
+                                           echo "<option value=''>Dec</option>";
+                            
+                        }
+                        else
+                        {
+                            echo "<option value='".$month."'>".$month."</option>";
+                        }
+                        ?>
+                        </select>
+                        <select  name="year">
+                        <?php
+                        if ($year == "")
+                        {
+                            echo "<option value=''>Select Year</option>";
+                            for ($i = 1900; $i<=2016; $i++)
+                            {
+                                echo "<option value='".$i."'>".$i."</option>";
+                            }
+                        }
+                        else
+                        {
+                            echo "<option value='".$year."'>".$year."</option>";
+                        }
+                        ?>
+                        </select>
+
+                        -->
+=====================================

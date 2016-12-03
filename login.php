@@ -56,7 +56,7 @@
 			<center>
             <script type="text/javascript" src="javascript.js"></script>
 
-  <form  name="myForm1" action="#" onsubmit="return validateLoinForm()" method="post">
+  <form  name="myForm1" action="logincheck.php" onsubmit="return validateLoinForm()" method="post">
   <br>
 <br>
 <pre>

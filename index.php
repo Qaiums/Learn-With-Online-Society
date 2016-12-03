@@ -15,7 +15,7 @@
 <div id="menu_panel">
     <div id="menu_section">
         <ul>
-            <li><a href="index.php"  class="current">Home</a></li>
+            <li><a href="home.php">Home</a></li>
             <li><a href="" >Profile</a></li>
             <li><a href="" >Follower</a></li>            
             <li><a href="" >Following</a></li>  
