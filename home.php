@@ -79,8 +79,11 @@
 					<div id="content_column_two">
 						    
 						    <div class="column_two_section">
-									<h1>Pin Post</h1>
-									<p>amar name qaium. ami ai website ta develope korar try korci. In sha allah very soon I will complete it.</p>
+							<h1>Post:</h1>
+										<form >
+									  <textarea>Some text...</textarea> <pre>                                                                       <input class="button" type="submit" value="Post"></pre>		
+									</form>
+
 						               
 						    </div>
 						    <div class="column_two_section">

@@ -27,32 +27,74 @@ START WITH 1
 INCREMENT BY 1 
 CACHE 10 ;
 
-CREATE TABLE data_tab
+
+CREATE TABLE post_tab
 (
-q_o_id int not null,
-topics varchar2 (20) not null,
-post varchar2 (2000 CHAR) ,
-question varchar2 (2000 CHAR) ,
-opinion varchar2 (2000 CHAR) ,
-comments_post varchar2 (2000 CHAR) ,
-comments_qo varchar2 (2000 CHAR) ,
+post_id int not null,
+post varchar2 (500),
+post_type varchar2 (20),
+topics varchar2 (20),
 user_id int,
-CONSTRAINT data_tab_pk primary key (q_o_id),
+CONSTRAINT data_tab_pk primary key (post_id),
 CONSTRAINT fk_user_id foreign key (user_id)
 references userinfo(user_id)
 )
 
-CREATE TABLE feedback 
+
+
+CREATE TABLE comment_tab
 (
-feedback_id int not null,
-agree varchar2 (10),
-followers varchar2 (10),
-followings varchar2 (10),
-q_o_id int,
-CONSTRAINT pk_feedback primary key (feedback_id),
-CONSTRAINT fk_q_o_id foreign key (q_o_id)
-references data_tab(q_o_id)
+comment_id int not null,
+commentto varchar2 (500),
+comment_type varchar2 (20),
+topics varchar2 (20),
+user_id int,
+post_id int,
+CONSTRAINT comment_tab_pk primary key (comment_id)
 )
+
+ALTER TABLE comment_tab
+ADD CONSTRAINT post_tab
+foreign key (post_id)
+references userinfo(post_id)
+
+ALTER TABLE comment_tab
+ADD CONSTRAINT userinfo
+foreign key (user_id)
+references userinfo(user_id)
+
+
+create SEQUENCE post_id
+MINVALUE 1
+START WITH 1
+INCREMENT BY 1 
+CACHE 10 ;
+
+create table feedback
+(
+serial_no int not null,
+agree_notagree varchar2 (20),
+post_id int,
+user_id int ,
+CONSTRAINT feedback_pk primary key (serial_no),
+CONSTRAINT fk_post_tab foreign key (post_id)
+references post_tab (post_id)
+)
+
+
+create SEQUENCE serial_no
+MINVALUE 1
+START WITH 1
+INCREMENT BY 1 
+CACHE 10 ;
+
+
+ALTER TABLE feedback
+ADD CONSTRAINT fk_userinfo
+foreign key (user_id)
+references userinfo(user_id)
+
+
 
 
 Combo Date
