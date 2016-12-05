@@ -1,4 +1,21 @@
 <?php
+/*
+
+//session_start();
+require("oracle_to_json.php");
+//$v=$_SESSION['email'];
+//$v1=$_SESSION['pass'];
+
+
+$jsonData= getJSONFromDB();
+$jsn=json_decode($jsonData,true);
+
+echo $jsn;
+
+for($i=0;$i<sizeof($jsn);$i++)
+		echo $jsn[$i]['name']."<br>";
+*/
+
 session_start();
 require("oracle_to_json.php");
 $v=$_SESSION['email'];
@@ -6,10 +23,25 @@ $v1=$_SESSION['pass'];
 
 
 $jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE EMAIL = '".$v."' AND PASS = '".$v1."'");
+//$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE EMAIL = 'qaium69@yahoo.com' AND PASS = '123'");
 $jsn=json_decode($jsonData,true);
 
 for($i=0;$i<sizeof($jsn);$i++)
 		echo $jsn[$i]['name']."<br>";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	 /* 
 

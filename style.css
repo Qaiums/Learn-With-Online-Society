@@ -286,16 +286,31 @@ textarea {
 }
 .button {
     background-color: #4CAF50;
+    margin: 2px 0 2px 0;
     border: none;
     color: white;
     padding: 6px 25px 6px 25px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 12px;
     margin: 4px 2px;
     cursor: pointer;
 }
+.fileupload {
+    background-color: #4CAF50;
+    margin: 2px 0 2px 0;
+    border: none;
+    color: white;
+    padding: 6px 25px 6px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
 
 
 

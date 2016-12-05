@@ -81,7 +81,11 @@
 						    <div class="column_two_section">
 							<h1>Post:</h1>
 										<form >
-									  <textarea>Some text...</textarea> <pre>                                                                       <input class="button" type="submit" value="Post"></pre>		
+									  <textarea>write your post...</textarea> 
+
+									  
+
+									  <pre><input class="fileupload" type="file" value="photo"> <input class="button" type="submit" value="Post"></pre>		
 									</form>
 
 						               

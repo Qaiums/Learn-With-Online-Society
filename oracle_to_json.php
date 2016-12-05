@@ -14,6 +14,26 @@ function getJSONFromDB($sql){
 ?>
 
 <?php
+
+/*
+function getJSONFromDB()
+{
+$conn= odbc_connect('lwosdb','lwos','qaium29');
+
+ $result  = "SELECT * FROM userinfo WHERE EMAIL = 'qaium69@yahoo.com' AND PASS = '123'";
+echo $result;
+//$loginresult=odbc_exec($conn, $loginsql);
+$ex =odbc_exec($conn,$result);
+
+$rows = array();
+while($r = odbc_fetch_array($ex)) {
+$rows[] = $r;
+ }
+return json_encode($rows);	
+}
+*/
+
+
 function getJSONFromDB($sql)
 {
 $conn= odbc_connect('lwosdb','lwos','qaium29');
