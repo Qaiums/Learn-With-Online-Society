@@ -153,7 +153,7 @@
 
 #content_column_two h1 {
 	margin: 0 0 10px 0;
-	padding: 0 0 10px 5px;
+	padding: 7px 0 10px 5px;
 	font-size: 16px;
 	color: #f5ea01;
 	border-bottom: 1px dotted #f5ea01;
@@ -202,7 +202,7 @@
 }
 
 #content_column_three h1 {
-	margin: 10px 0 10px 0;
+	margin: 0 0 10px 0;
 	padding: 0 0 10px 5px;
 	font-size: 14px;
 	color: #fff;
@@ -229,23 +229,10 @@
 	border-bottom: 1px solid #312f2b;
 }
 
-
-
-.column_three_section .popular_post {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
-.column_three_section .popular_post li{
-	margin: 0 0 5px 0;
-	padding: 0 0 5px 0;
-	border-bottom: 1px solid #22250e;
-}
-
 p {
 	display: inline;
 	margin: 0px;
-	padding: 0 0 0 5px;
+	padding: 0 0 5px 0;
 	color: white;
 }
 /* end of column one */
@@ -279,35 +266,41 @@ p {
 }
 textarea {
     width: 99.5%;
-    height: 60px;
-    padding: 12px 12px 0 12px;
+    height: 70px;
+    padding: 8px 8px 8px 8px;
     background-color: #f8f8f8;
-    font-size: 16px;  
+    font-size: 14px;  
+}
+.post_headline
+{
+	width: 631px;
+	font-size: 16px;
+	font-weight: bold;
+	margin: 7px 0 7px 0;
+	padding: 3px 3px 3px 3px; 
+
+
 }
 .button {
     background-color: #4CAF50;
-    margin: 2px 0 2px 0;
+    padding: 3px 11px 4px 11px ;
     border: none;
     color: white;
-    padding: 6px 25px 6px 25px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 12px;
-    margin: 4px 2px;
+    font-size: 16px;
     cursor: pointer;
 }
 .fileupload {
     background-color: #4CAF50;
-    margin: 2px 0 2px 0;
+    padding: 1px 0 1px 5px ;
     border: none;
     color: white;
-    padding: 6px 25px 6px 25px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 12px;
-    margin: 4px 2px;
+    font-size: 16px;
     cursor: pointer;
 }
 

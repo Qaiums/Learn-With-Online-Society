@@ -1,4 +1,5 @@
 		<?php 
+		/*
 		session_start();
 
 		$conn= odbc_connect('lwosdb','lwos','qaium29');
@@ -21,6 +22,7 @@
 		if($row = odbc_fetch_array($loginresult))($name = $row['EMAIL']);
 		if($name != "")
 		{
+			*/
 		?>
    <!--if login success then it will show the page -->
 
@@ -57,13 +59,13 @@
 
 	<div id="content_column_one">
     	<div class="column_one_section">
-        	<p>Categories<br><br><br>
-        	<input type="radio" name="oracle" value=" "> Oracle <br><br>
-        	<input type="radio" name="php" value=" "> PHP <br><br>
-        	<input type="radio" name="java" value=" "> Java <br><br>
-        	<input type="radio" name="c#" value=" "> C# <br><br>
-        	<input type="radio" name="Cplus" value=" "> C++<br><br>
-        	<input type="radio" name="other" value=" "> Other </p> 
+        	<div style="font-size:20px;font-weight: bold;color:white;">Categories</div><br><br>
+         <p><input type="radio" name="category" value=" "> Oracle <br><br>
+        	<input type="radio" name="category" value=" "> PHP <br><br>
+        	<input type="radio" name="category" value=" "> Java <br><br>
+        	<input type="radio" name="category" value=" "> C# <br><br>
+        	<input type="radio" name="category" value=" "> C++<br><br>
+        	<input type="radio" name="category" value=" "> Other </p> 
                 
              
         </div>
@@ -79,20 +81,22 @@
 					<div id="content_column_two">
 						    
 						    <div class="column_two_section">
-							<h1>Post:</h1>
-										<form >
+						    <form >
+							<input class="post_headline" type="text" value="headline..." name="headline">
+										
 									  <textarea>write your post...</textarea> 
 
 									  
 
-									  <pre><input class="fileupload" type="file" value="photo"> <input class="button" type="submit" value="Post"></pre>		
+									  <pre><input class="fileupload" type="file" value="photo"> <select class="button" name="categories" >
+                        <option value='' >Select category</option><option value='' >Oracle</option><option value='' >PHP</option><option value='' >Java</option><option value='' >C#</option><option value='' >C++</option><option value='' >Other</option></select> <input class="button" type="submit" value="Post"></pre>		
 									</form>
 
 						               
 						    </div>
 						    <div class="column_two_section">
 									<h1>Pin Post</h1>
-									<p>amar name qaium. ami ai website ta develope korar try korci. In sha allah very soon I will complete it.</p>
+									<p>amar name qaium. ami ai website ta develope korar try korci. In sha allah very soon I will jlhj kjk complete it.</p>
 						               
 						    </div>
 						    <div class="column_two_section">
@@ -182,12 +186,13 @@
 
 
 		<?php
-		}
+		/*}
 		else
 		{
 			
 			header('location:login.php');
 		}
 		odbc_close($conn);
+		*/
 		?>
 
