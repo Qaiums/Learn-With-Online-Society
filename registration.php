@@ -1,5 +1,3 @@
-
-
 <head>
 <meta/>
 <title>Learn with online society</title>
@@ -107,12 +105,14 @@ javascript code start
                     <tr>
                     <td><p>Email ID :</p></td>
                     <td>
-                    <input type="email" name="email" value ="" placeholder="Email" onkeyup="checkmail(this.value)"/> <div id="txtHint"></div>
+                    <input type="email" name="email" value ="" placeholder="Email" onfocusout="checkmail(this.value)"/> <div id="txtHint"></div>
                     </td>
                     </tr>
 
 
                               <script type="text/javascript">
+                              
+                                }
                                 function checkmail(str)
                                 {
                                     //alert("test");

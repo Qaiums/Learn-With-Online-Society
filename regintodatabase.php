@@ -16,13 +16,9 @@
 	$state=$_POST['state'];
 	$pass=$_POST['pass'];
 	$pp=$_POST['propic'];
-
 	
-    $delivDate = date('d-M-Y', strtotime($_POST['dob']));
+	$delivDate = date('d-M-Y', strtotime($_POST['dob']));
 
-
-    
-                     
 
 	$conn= odbc_connect('lwosdb','lwos','qaium29');
 
@@ -32,23 +28,14 @@
 	}
 
 
-	$plsql= "insert into userinfo (user_id,user_role,full_name,user_name,dob,gender,mobile,email,address,country,city,pass,pro_pic)
-             values(user_id.nextval,'user','".$_POST['name']."','".$_POST['uname']."','".$delivDate."','".$_POST['gender']."','".$_POST['phone']."','".$_POST['email']."','".$_POST['address']."','".$_POST['country']."','".$_POST['state']."','".$_POST['pass']."','".$_POST['propic']."') ";
+			$plsql= "insert into userinfo (user_id,user_role,full_name,user_name,dob,gender,mobile,email,address,country,city,pass,pro_pic)
+		             values(user_id.nextval,'user','".$_POST['name']."','".$_POST['uname']."','".$delivDate."','".$_POST['gender']."','".$_POST['phone']."','".$_POST['email']."','".$_POST['address']."','".$_POST['country']."','".$_POST['state']."','".$_POST['pass']."','".$_POST['propic']."') ";
 
-    //echo $plsql;
+  
     $regresult=odbc_exec($conn, $plsql);
-
-
-    //echo $result;
-
-    //login from database
-
-    
-
-
-
 
 
 	odbc_close($conn);
 
 ?>
+

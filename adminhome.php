@@ -14,6 +14,8 @@
 
 
 
+
+			//$count= "SELECT COUNT(*) FROM POST_TAB"
 		$loginsql = "SELECT * FROM userinfo WHERE EMAIL = '".$v."' AND PASS = '".$v1."'";
 		 $loginresult=odbc_exec($conn, $loginsql);
 		 $check = "";
@@ -52,6 +54,7 @@
             <li><a href="" >About Us</a></li> 
             <li><a href="" >Contact Us</a></li>
             <li><a href="logout.php" >Logout</a></li>  
+            <li><a href="#" >Creat Modarator</a></li>  
                                 
         </ul> 
     </div>
@@ -83,7 +86,7 @@
     
 					<div id="content_column_two">
 						    
-				<!--		    <div class="column_two_section">
+						    <div class="column_two_section">
 						    <form action="post.php" method="post" name="postform">
 									<input class="post_headline" type="text" value="headline..." name="headline">
 										
@@ -103,15 +106,17 @@
 
 
 						               
-						    </div> -->
+						    </div>
 
 						    <?php 
 
 						    				require("oracle_to_json.php");
-						    				$jsonData= getJSONFromDB("SELECT post_headline,post FROM post_tab");
+						    				$jsonData= getJSONFromDB("SELECT post_headline,post,DATE_TIME FROM post_tab");
 											//$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE EMAIL = 'qaium69@yahoo.com' AND PASS = '123'");
 											//echo $jsonData;
 											$jsn=json_decode($jsonData,true);
+
+											echo sizeof($jsn);
 
 											for($i=sizeof($jsn)-1;$i>0;$i--) {
 
@@ -119,23 +124,34 @@
 												 <div class="column_two_section">
 												 <?php
 
-												echo "<p> {$jsn[$i]['POST_HEADLINE']} </p>"; 
+												echo "<p> {$jsn[$i]['POST_HEADLINE']}  </p>"; 
 												echo"<br>";
-												echo"<p>=================================================</p>";
+												echo "<p>Posted at: &nbsp</P>";
+												echo "<p> {$jsn[$i]['DATE_TIME']} </p>"; 
+												echo"<br>";
+												//echo"<p>=================================================</p>";
 												echo "<p> {$jsn[$i]['POST']}</p>";
 												 ?>
+											<!--	 <form name="commentform" action="post.php"  method="post" >
+												 	<input type="text" name="comment" value="Comment">
+												 	 <input id="date" name="comdate">
+												 	<input type="submit" name="submit_comment" value="post">
 
+															<script type="text/javascript">
+															  document.getElementById('date').value = Date();
+															</script>
+				                       
+												 </form>  -->
+												 <?php
+
+//  commment , commentor, comment date database theek fech kore ante hobe. ebong dkehatee hobe . 
+												 ?>
 
 											
 								
 												</div>
 						   
 						    
-						    <div class="column_two_section">
-								
-								
-						               
-						    </div>
 
 						    <?php
 						      }

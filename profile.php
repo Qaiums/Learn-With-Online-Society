@@ -16,34 +16,12 @@ for($i=0;$i<sizeof($jsn);$i++)
 		echo $jsn[$i]['name']."<br>";
 */
 
-session_start();
-require("oracle_to_json.php");
-$v=$_SESSION['email'];
-$v1=$_SESSION['pass'];
+			
 
+				//echo $jsn[$i]['FULL_NAME'];
 
-$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE EMAIL = '".$v."' AND PASS = '".$v1."'");
-//$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE EMAIL = 'qaium69@yahoo.com' AND PASS = '123'");
-$jsn=json_decode($jsonData,true);
-
-for($i=0;$i<sizeof($jsn);$i++)
-		echo $jsn[$i]['name']."<br>";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	 /* 
+				 /* 
+}
 
 $conn= odbc_connect('lwosdb','lwos','qaium29');
 
@@ -60,8 +38,24 @@ $conn= odbc_connect('lwosdb','lwos','qaium29');
 		//$username="";
 		if($row = odbc_fetch_array($loginresult))
 		 {
-       
-			?>	
+        */
+			?>
+
+
+		<?php
+				session_start();
+			require("oracle_to_json.php");
+			$v=$_SESSION['email'];
+			$v1=$_SESSION['pass'];
+
+
+			$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE EMAIL = '".$v."' AND PASS = '".$v1."'");
+			//$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE EMAIL = 'qaium69@yahoo.com' AND PASS = '123'");
+			//echo $jsonData;
+			$jsn=json_decode($jsonData,true);
+
+			for($i=0;$i<sizeof($jsn);$i++) {
+		?>	
 
 <!DOCTYPE html PUBLIC>
 <html xmlns="">
@@ -115,71 +109,73 @@ $conn= odbc_connect('lwosdb','lwos','qaium29');
     
   		 <div class="column_two_section">
   		    <br>
-			<h1><center><?php echo $row['USER_NAME'];?>'s Profile</center></h1>
+
+
+			<h1><center><?php echo $jsn[$i]['USER_NAME'];?>'s Profile</center></h1>
 			<p>
 				<tr>
 	                    <td><p> Profile Picture : &nbsp &nbsp
-	                    <?php echo $row['PRO_PIC'];  ?>
+	                    <?php echo $jsn[$i]['PRO_PIC'];  ?>
 	                     </p> </td>
 	           </tr>
 	           <br>
 				<tr>
 	                    <td><p>  Name :  &nbsp &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp
-	                    <?php echo $row['FULL_NAME'];  ?>
+	                    <?php echo $jsn[$i]['FULL_NAME'];  ?>
 	                     </p> </td>
 	           </tr>
 	           <br>
 	           <tr>
 	                    <td><p>  User Name : &nbsp  &nbsp&nbsp &nbsp
-	                    <?php echo $row['USER_NAME'];  ?>
+	                    <?php echo $jsn[$i]['USER_NAME'];  ?>
 	                     </p> </td>
 	           </tr>
 	           <br>
 	            <tr>
 	                    <td><p>  Email Address :&nbsp &nbsp
-	                    <?php echo $row['EMAIL'];  ?>
+	                    <?php echo $jsn[$i]['EMAIL'];  ?>
 	                     </p> </td>
 	           </tr>
 	           <br>
 	           <tr>
 	                    <td><p>  Mobile Number :&nbsp 
-	                    <?php echo $row['MOBILE'];  ?>
+	                    <?php echo $jsn[$i]['MOBILE'];  ?>
 	                     </p> </td>
 	           </tr>
 	           <br>
 	           <tr>
 	                    <td><p>  Date of Birth : &nbsp &nbsp
-	                    <?php echo $row['DOB'];  ?>
+	                    <?php echo $jsn[$i]['DOB'];  ?>
 	                     </p> </td>
 	           </tr>
 	           <br>
 	           <tr>
 	                    <td><p>Gender : &nbsp &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp 
-	                    <?php echo $row['GENDER'];  ?>
+	                    <?php echo $jsn[$i]['GENDER'];  ?>
 	                     </p> </td>
 	           </tr>
 	           <br>
 	           <tr>
 	                    <td><p>Address : &nbsp &nbsp&nbsp &nbsp&nbsp &nbsp
-	                    <?php echo $row['ADDRESS'];  ?>
+	                    <?php echo $jsn[$i]['ADDRESS'];  ?>
 	                     </p> </td>
 	           </tr>
 	           <br>
 	           <tr>
 	                    <td><p>Country : &nbsp &nbsp&nbsp &nbsp&nbsp &nbsp
-	                    <?php echo $row['COUNTRY'];  ?>
+	                    <?php echo $jsn[$i]['COUNTRY'];  ?>
 	                     </p> </td>
 	           </tr>
 	           <br>
 	           <tr>
 	                    <td><p>State : &nbsp &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp
-	                    <?php echo $row['CITY'];  ?>
+	                    <?php echo $jsn[$i]['CITY'];  ?>
 	                     </p> </td>
 	           </tr>
 	           <br>
 	           <tr>
 	                    <td><p>User Number : &nbsp 
-	                    <?php echo $row['USER_ID'];  ?>
+	                    <?php echo $jsn[$i]['USER_ID'];  ?>
 	                     </p> </td>
 	           </tr>
 	           <br>
@@ -233,4 +229,4 @@ $conn= odbc_connect('lwosdb','lwos','qaium29');
            <?php
        }
       
-          */ ?>
+           ?>

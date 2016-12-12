@@ -14,10 +14,11 @@ if (isset ($_SESSION['pass']))
 	{
     echo "You are out of session.";
 	}	
-
+header('location:login.php');
 ?>
 <br/>
 <br/>
-<input type="button" onclick="location.href='login.php'"; name="" value=GotoLogin />
+
+
 
 </center>

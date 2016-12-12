@@ -15,14 +15,16 @@ $conn= odbc_connect('lwosdb','lwos','qaium29');
 	if ($row['C'] > 0)
 		
 	{
-		
+		echo "<p>".$row['C']."</p>";
 		echo "<p>email address is available. please use another email.<p>";
-
-        
 
 	}
 
-	else echo "<p>Nothing</p>";
+	else 
+		{
+			echo "<p>Nothing</p>";
+		}
+		
 	  odbc_close($conn);
 
 ?>

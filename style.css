@@ -235,6 +235,17 @@ p {
 	padding: 0 0 5px 0;
 	color: white;
 }
+h4 {
+	display: inline;
+	font-weight: bold;
+	font-size: 14px;
+	color: white;
+}
+.p{
+	color:blue;
+
+  }
+
 /* end of column one */
 /* for bottom palen */
 #bottom_panel{
@@ -304,7 +315,12 @@ textarea {
     cursor: pointer;
 }
 
-
+input[type=text] {
+    width: 400px;
+    box-sizing: border-box;
+    border: 2px solid blue;
+    border-radius: 4px;
+}
 
 
 /* end of bottom */

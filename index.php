@@ -57,47 +57,51 @@
 			<p>amar name qaium. ami ai website ta develope korar try korci. In sha allah very soon I will complete it.</p>
                
         </div>
-        <div class="column_two_section">
-			<h1>Pin Post</h1>
-			<p>amar name qaium. ami ai website ta develope korar try korci. In sha allah very soon I will complete it.</p>
-               
-        </div>
-        <div class="column_two_section">
-			<h1>Pin Post</h1>
-			<p>amar name qaium. ami ai website ta develope korar try korci. In sha allah very soon I will complete it.</p>
-               
-        </div>
-        <div class="column_two_section">
-			<h1>Pin Post</h1>
-			<p>amar name qaium. ami ai website ta develope korar try korci. In sha allah very soon I will complete it.</p>
-               
-        </div>
-        <div class="column_two_section">
-			<h1>Pin Post</h1>
-			<p>amar name qaium. ami ai website ta develope korar try korci. In sha allah very soon I will complete it.</p>
-               
-        </div>
-        <div class="column_two_section">
-			<h1>Pin Post</h1>
-			<p>amar name qaium. ami ai website ta develope korar try korci. In sha allah very soon I will complete it.</p>
-               
-        </div>
-        <div class="column_two_section">
-			<h1>Pin Post</h1>
-			<p>amar name qaium. ami ai website ta develope korar try korci. In sha allah very soon I will complete it.</p>
-               
-        </div>
-        <div class="column_two_section">
-			<h1>Pin Post</h1>
-			<p>amar name qaium. ami ai website ta develope korar try korci. In sha allah very soon I will complete it.</p>
-               
-        </div>
-        
-        <div class="column_two_section">
-			<h1>Pin Post</h1>
-			<p>amar name qaium. ami ai website ta develope korar try korci. In sha allah very soon I will complete it.</p>
-                      
-        </div>
+    
+
+
+ <?php 
+
+                                            require("oracle_to_json.php");
+                                            $jsonData= getJSONFromDB("SELECT post_headline,post FROM post_tab");
+                                            //$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE EMAIL = 'qaium69@yahoo.com' AND PASS = '123'");
+                                            //echo $jsonData;
+                                            $jsn=json_decode($jsonData,true);
+
+                                            for($i=sizeof($jsn)-1;$i>0;$i--) {
+
+                                                ?>
+                                                 <div class="column_two_section">
+                                                 <?php
+
+                                                echo "<p> {$jsn[$i]['POST_HEADLINE']} </p>";  
+                                              //  echo"<br>";
+                                               echo"<p>...................................................................................................................</p>";
+                                                echo "<p> {$jsn[$i]['POST']}</p>";
+                                                 ?>
+
+
+                                            
+                                
+                                                </div>
+                           
+                            
+                            <div class="column_two_section">
+                                
+                                
+                                       
+                            </div>
+
+                            <?php
+                              }
+
+                              
+                            ?>
+
+
+
+
+
         
     </div> <!-- end of column two -->
 

@@ -1,4 +1,24 @@
 
+<?php
+
+
+
+		function getJSONFromDB($sql)
+		{
+		$conn= odbc_connect('lwosdb','lwos','qaium29');
+
+		$loginresult=odbc_exec($conn, $sql);
+
+
+		$rows = array();
+		while($r = odbc_fetch_array($loginresult)) {
+		$rows[] = $r;
+		 }
+		return json_encode($rows);	
+       }
+
+?>	
+
 <?php /*
 function getJSONFromDB($sql){
 	$conn = mysqli_connect("localhost", "root", "","record");
@@ -10,10 +30,8 @@ function getJSONFromDB($sql){
 		$arr[]=$row;
 	}
 	return json_encode($arr);
-} */
-?>
+}
 
-<?php
 
 /*
 function getJSONFromDB()
@@ -30,23 +48,10 @@ while($r = odbc_fetch_array($ex)) {
 $rows[] = $r;
  }
 return json_encode($rows);	
-}
-*/
+}*/
 
 
-function getJSONFromDB($sql)
-{
-$conn= odbc_connect('lwosdb','lwos','qaium29');
 
- $result  = oci_parse($conn,$sql) or die ('Error connection!!!');
-echo $result;
-oci_execute($result);
 
-$rows = array();
-while($r = oci_fetch_assoc($result)) {
-$rows[] = $r;
- }
-return json_encode($rows);	
-}
 
-?>	
+?>

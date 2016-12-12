@@ -57,12 +57,11 @@
             <script type="text/javascript" src="javascript.js"></script>
 
   <form  name="myForm1" action="logincheck.php" onsubmit="return validateLoinForm()" method="post">
-  <br>
-<br>
+ 
 <pre>
     <h1>Login</h1>
   <p>Email : <input value="" type="email" name="email" /><br>
-Password  : <input type="password" name="pass" /></p> 
+Password : <input type="password" name="pass" /></p> 
       </pre><input type="submit" value="Login" /><br><br>
 <br>
 <br>
