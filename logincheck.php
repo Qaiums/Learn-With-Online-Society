@@ -24,8 +24,13 @@
 			$jsn=json_decode($jsonData,true);
 
 			for($i=0;$i<sizeof($jsn);$i++) {
+
+				$_SESSION['user_id']= $jsn[$i]['USER_ID'];
+
 				if($jsn[$i]['EMAIL']==$v)
 				{
+					
+
 					if($jsn[$i]['EMAIL']==$_SESSION['adminEmail'])
 					{
 						header("location:adminhome.php");

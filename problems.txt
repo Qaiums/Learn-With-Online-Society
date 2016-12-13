@@ -1,0 +1,4 @@
+1. post can not get sequensially .( trigger)
+2.how to get post_id in comment_tab
+2. make a trigger to insurt every comments time. 
+3.SET TIME_DATE IN COMMENT_TAB BY TRIGGER

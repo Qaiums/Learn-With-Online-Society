@@ -47,7 +47,7 @@
 <div id="menu_panel">
     <div id="menu_section">
         <ul>
-            <li><a href="home.php">Home</a></li>
+            <li><a href="adminhome.php">Home</a></li>
             <li><a href="profile.php" >Profile</a></li>
             <li><a href="" >Follower</a></li>            
             <li><a href="" >Following</a></li>  
@@ -86,19 +86,20 @@
     
 					<div id="content_column_two">
 						    
-						    <div class="column_two_section">
+						 <div class="column_two_section">
 						    <form action="post.php" method="post" name="postform">
+
 									<input class="post_headline" type="text" value="headline..." name="headline">
 										
 									  <textarea name="ppost">write your post...</textarea> 
 
 										<pre><input name="photoup" class="fileupload" type="file" value="photo"> <select class="button" name="categories" >
-				                        <option value='' >Select category</option><option value='' >Oracle</option><option value='' >PHP</option><option value='' >Java</option><option value='' >C#</option><option value='' >C++</option><option value='' >Other</option></select> <input class="button" type="submit" value="Post"></pre>	
+				                        <option value='' >Select category</option><option value='Oracle' >Oracle</option><option value='PHP' >PHP</option><option value='Java' >Java</option><option value='C#' >C#</option><option value='C++' >C++</option><option value='Other' >Other</option></select> <input class="button" type="submit" value="Post"></pre>	
 				                        <input id="date" name="date" >
 
-<script type="text/javascript">
-  document.getElementById('date').value = Date();
-</script>
+										<script type="text/javascript">
+										  document.getElementById('date').value = Date();
+										</script>
 				                       
 							</form>
 
@@ -111,19 +112,24 @@
 						    <?php 
 
 						    				require("oracle_to_json.php");
-						    				$jsonData= getJSONFromDB("SELECT post_headline,post,DATE_TIME FROM post_tab");
+						    				$jsonData= getJSONFromDB("SELECT * FROM post_tab");
 											//$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE EMAIL = 'qaium69@yahoo.com' AND PASS = '123'");
 											//echo $jsonData;
 											$jsn=json_decode($jsonData,true);
 
-											echo sizeof($jsn);
+											//echo sizeof($jsn);
 
-											for($i=sizeof($jsn)-1;$i>0;$i--) {
+	for($i=sizeof($jsn)-1;$i>0;$i--) {
+
+											    $pid=$jsn[$i]['POST_ID'];
+
+											    echo $pid ;
 
 												?>
 												 <div class="column_two_section">
 												 <?php
-
+												
+												
 												echo "<p> {$jsn[$i]['POST_HEADLINE']}  </p>"; 
 												echo"<br>";
 												echo "<p>Posted at: &nbsp</P>";
@@ -131,33 +137,46 @@
 												echo"<br>";
 												//echo"<p>=================================================</p>";
 												echo "<p> {$jsn[$i]['POST']}</p>";
-												 ?>
-											<!--	 <form name="commentform" action="post.php"  method="post" >
+												 ?> 
+												 <form name="commentform" action="comment.php"  method="post" >
 												 	<input type="text" name="comment" value="Comment">
-												 	 <input id="date" name="comdate">
-												 	<input type="submit" name="submit_comment" value="post">
+												 	<input type="hidden" name="postid" value="<?php echo $pid ?> ">
+												 	
+												 	<input type="submit" name="submit_comment" value="post_">
+				                                 <!-- TIME DATE TAKE BY TRIGGER FROM SYSDATE-->
+												 </form>
 
-															<script type="text/javascript">
-															  document.getElementById('date').value = Date();
-															</script>
-				                       
-												 </form>  -->
 												 <?php
 
 //  commment , commentor, comment date database theek fech kore ante hobe. ebong dkehatee hobe . 
+
+	$JsonCommData= getJSONFromDB("SELECT * FROM COMMENT_TAB COM INNER JOIN POST_TAB I ON COM.POST_ID=I.POST_ID WHERE I.POST_ID = ".$pid);
+											//$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE EMAIL = 'qaium69@yahoo.com' AND PASS = '123'");
+											//echo $jsonData;
+			//echo $JsonCommData;
+											$JsnCom=json_decode($JsonCommData,true);
+
+										//echo $JsnCom ;
+
+											for($j =sizeof($JsnCom)-1;$j>=0;$j--) {
+
+												echo"<p>------------------</p>";
+												echo "<p> {$JsnCom[$j]['COMMENT_CONTENT']}</p>";
+												echo"<br>";
+												echo "<p> {$JsnCom[$j]['TIME_DATE']}</p>";
+											} 
+											$JsonCommData = null;
+											$JsnCom = null;
+
 												 ?>
 
-											
-								
 												</div>
-						   
-						    
+		
 
-						    <?php
-						      }
-
-						      
-						    ?>
+							     <?php
+									 }
+			      
+								 ?>
 						        
 					</div> <!-- end of column two -->
 
