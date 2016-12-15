@@ -35,6 +35,7 @@ session_start();
 
 // DATABAS CLOSE AND  BACK TO PAGE LOCATION
 	odbc_close($conn);
+	
   
 	if($_SESSION['adminEmail'])
 	{

@@ -1,6 +1,7 @@
 		<?php 
 		
 		session_start();
+		require("oracle_to_json.php");
 		 $v=$_SESSION['email'];
 		 $v1=$_SESSION['pass'];
 
@@ -66,15 +67,37 @@
     	<div class="column_one_section">
         	<div style="font-size:20px;font-weight: bold;color:white;">Categories</div><br><br>
          <p>
-         	<input type="radio" name="category" value=" "> Oracle <br><br>
-        	<input type="radio" name="category" value=" "> PHP <br><br>
-        	<input type="radio" name="category" value=" "> Java <br><br>
-        	<input type="radio" name="category" value=" "> C# <br><br>
-        	<input type="radio" name="category" value=" "> C++<br><br>
-        	<input type="radio" name="category" value=" "> Other </p> 
-                
+         	<input id="oracle" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "Oracle" ?>"> Oracle <br><br>
+        	<input id="php" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "PHP" ?> "> PHP <br><br>
+        	<input id="java" type="radio" onchange="loadDoc(this.value)" name="category" value=" <?php echo "Java" ?> "> Java <br><br>
+        	<input id="c#" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "C#" ?> "> C# <br><br>
+        	<input id="c++" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "c++" ?> "> C++<br><br>
+        	<input id="other" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "other" ?> "> Other </p> 
+           
              
         </div>
+
+      
+					        <script>
+					function loadDoc(category) {
+						
+					  var xhttp = new XMLHttpRequest();
+					  xhttp.onreadystatechange = function() {
+					    if (this.readyState == 4 && this.status == 200) {
+					      document.getElementById("content_column_two").innerHTML = this.responseText;
+					    }
+					  };
+					  xhttp.open("GET", "categori_ajax.php?category="+category, true);
+					  xhttp.send();
+					}
+							</script>
+
+							
+        
+
+
+
+
         
         <div class="cleaner_with_divider">&nbsp;</div>
         
@@ -111,7 +134,7 @@
 
 						    <?php 
 
-						    				require("oracle_to_json.php");
+						    				//require("oracle_to_json.php");
 						    				$jsonData= getJSONFromDB("SELECT * FROM post_tab");
 											//$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE EMAIL = 'qaium69@yahoo.com' AND PASS = '123'");
 											//echo $jsonData;
@@ -142,7 +165,7 @@
 												 	<input type="text" name="comment" value="Comment">
 												 	<input type="hidden" name="postid" value="<?php echo $pid ?> ">
 												 	
-												 	<input type="submit" name="submit_comment" value="post_">
+												 	<input type="submit" name="submit_comment" value="post">
 				                                 <!-- TIME DATE TAKE BY TRIGGER FROM SYSDATE-->
 												 </form>
 
@@ -162,11 +185,12 @@
 
 												echo"<p>------------------</p>";
 												echo "<p> {$JsnCom[$j]['COMMENT_CONTENT']}</p>";
-												echo"<br>";
+												
 												echo "<p> {$JsnCom[$j]['TIME_DATE']}</p>";
+												echo"<br>";
 											} 
-											$JsonCommData = null;
-											$JsnCom = null;
+										//	$JsonCommData = null;
+									//		$JsnCom = null;
 
 												 ?>
 

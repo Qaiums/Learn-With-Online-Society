@@ -115,6 +115,19 @@ UPDATE COMMENT_TAB SET TIME_DATE= VA ;
 END;
 
 
+create or replace TRIGGER timeupdate AFTER  INSERT ON COMMENT_TAB 
+FOR EACH ROW
+DECLARE
+VA VARCHAR2 (60);
+BEGIN
+VA:=TO_CHAR(SYSDATE,'yy-mm-dd:hh:mm');
+UPDATE COMMENT_TAB SET TIME_DATE= VA ;
+END;
+
+
+
+
+
 
 Combo Date
 =====================
