@@ -8,8 +8,6 @@
 		$conn= odbc_connect('lwosdb','lwos','qaium29');
 
 		$loginresult=odbc_exec($conn, $sql);
-
-
 		$rows = array();
 		while($r = odbc_fetch_array($loginresult)) {
 		$rows[] = $r;

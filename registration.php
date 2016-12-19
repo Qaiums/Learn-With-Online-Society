@@ -63,7 +63,7 @@ javascript code start
 
                 
 
-                      <form name="myForm" action="regintodatabase.php" onsubmit="return validateForm()" method="post">
+            <form name="myForm" action="regintodatabase.php" onsubmit="return validateForm()" enctype="multipart/form-data" method="post">
                       
                     <h1>Your Info To Submit</h1>
                     <table>
@@ -194,15 +194,22 @@ javascript code start
 
                     <tr>
                     <td><p>Profile Picture :</p>
-                    <td> <input type="file" name="propic" id="fileToUpload"></td>
+                    <td>          
+                    <input type="file" name="fileToUpload" id="fileToUpload">
+                           
                     </td>
+             
+                    </td>
+
                     <td>
 
                     </td>
                     </tr>
                     </table>
 
-                    
+        
+
+
                     <input type="submit" value="Submit"/>
                     </form>
                     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
@@ -215,24 +222,24 @@ javascript code start
                
         </div>
         
-    </div> <!-- end of column two -->
+</div> <!-- end of column two -->
 
-    <div id="content_column_three">
-    	
-        
-    	<div class="column_three_section">
-            <h1>Popular Posts</h1>
-            
-        </div>
-               
-        <div class="cleaner_with_divider">&nbsp;</div>
-        
-        <div class="column_three_section">
-            <h1>About This Blog</h1>
-            <p>Hallo all <a href="#">read more</a></p>
-      </div>  
-          
-    </div> <!-- end of column three -->   
+            <div id="content_column_three">
+            	
+                
+            	<div class="column_three_section">
+                    <h1>Popular Posts</h1>
+                    
+                </div>
+                       
+                <div class="cleaner_with_divider">&nbsp;</div>
+                
+                <div class="column_three_section">
+                    <h1>About This Blog</h1>
+                    <p>Hallo all <a href="#">read more</a></p>
+              </div>  
+                  
+            </div> <!-- end of column three -->   
     
     <div class="cleaner">&nbsp;</div>
 </div> <!-- end of content -->

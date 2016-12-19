@@ -13,6 +13,7 @@ session_start();
 	//$comdate = $_POST['comdate'];
 	$user_id=$_SESSION['user_id'];
 	$post_id=$_POST['postid'];
+	$user_name_com=$_POST['user_name_post'];
 
 	//echo $post_id ;
 
@@ -23,8 +24,8 @@ session_start();
 	// ok acca ja ekta sigaret kheyee ay.amio kheye asi. :P :P
 
 
-	$comquery="insert into COMMENT_TAB (COMMENT_ID,COMMENT_CONTENT,COMMENT_POST_TYPE,USER_ID,POST_ID)
-	values (comment_id.nextval,'".$comment."','public','".$user_id."','".$post_id."')";
+	$comquery="insert into COMMENT_TAB (COMMENT_ID,COMMENT_CONTENT,COMMENT_POST_TYPE,USER_ID,POST_ID,USER_NAME_COM)
+	values (comment_id.nextval,'".$comment."','public','".$user_id."','".$post_id."','".$user_name_com."')";
 
 	echo $comquery ;
 

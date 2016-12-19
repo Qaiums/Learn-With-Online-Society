@@ -60,7 +60,10 @@
         </ul> 
     </div>
 </div>
+
+
 <!-- colum 1-->
+
 <div id="content">
 
 	<div id="content_column_one">
@@ -72,7 +75,7 @@
         	<input id="java" type="radio" onchange="loadDoc(this.value)" name="category" value=" <?php echo "Java" ?> "> Java <br><br>
         	<input id="c#" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "C#" ?> "> C# <br><br>
         	<input id="c++" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "c++" ?> "> C++<br><br>
-        	<input id="other" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "other" ?> "> Other </p> 
+        	<input id="other" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "Other" ?> "> Other </p> 
            
              
         </div>
@@ -91,25 +94,15 @@
 					  xhttp.send();
 					}
 							</script>
-
-							
-        
-
-
-
-
-        
         <div class="cleaner_with_divider">&nbsp;</div>
-        
-        
-     
+ 
     </div>
 
     <!-- end of column one -->
     
 					<div id="content_column_two">
 						    
-						 <div class="column_two_section">
+						 <div class="post_writing">
 						    <form action="post.php" method="post" name="postform">
 
 									<input class="post_headline" type="text" value="headline..." name="headline">
@@ -117,46 +110,56 @@
 									  <textarea name="ppost">write your post...</textarea> 
 
 										<pre><input name="photoup" class="fileupload" type="file" value="photo"> <select class="button" name="categories" >
-				                        <option value='' >Select category</option><option value='Oracle' >Oracle</option><option value='PHP' >PHP</option><option value='Java' >Java</option><option value='C#' >C#</option><option value='C++' >C++</option><option value='Other' >Other</option></select> <input class="button" type="submit" value="Post"></pre>	
-				                        <input id="date" name="date" >
-
-										<script type="text/javascript">
-										  document.getElementById('date').value = Date();
-										</script>
+				                        <option value='' >Category</option><option value='Oracle' >Oracle</option><option value='PHP' >PHP</option><option value='Java' >Java</option><option value='C#' >C#</option><option value='C++' >C++</option><option value='Other' >Other</option></select> <input class="button" type="submit" value="Post"></pre>	
+				                        
 				                       
 							</form>
-
-
-
-
-						               
+               
 						    </div>
 
 						    <?php 
 
 						    				//require("oracle_to_json.php");
-						    				$jsonData= getJSONFromDB("SELECT * FROM post_tab");
+						    				$jsonData= getJSONFromDB("SELECT * FROM post_tab WHERE POST_TYPE='public'");
 											//$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE EMAIL = 'qaium69@yahoo.com' AND PASS = '123'");
 											//echo $jsonData;
 											$jsn=json_decode($jsonData,true);
 
 											//echo sizeof($jsn);
 
-	for($i=sizeof($jsn)-1;$i>0;$i--) {
+													for($i=sizeof($jsn)-1;$i>0;$i--) {
 
 											    $pid=$jsn[$i]['POST_ID'];
 
-											    echo $pid ;
+											   // echo $pid ;
 
 												?>
 												 <div class="column_two_section">
+
+												 
+												 <p class="p"> <?php echo $jsn[$i]['POST_HEADLINE']; ?>  </p>
 												 <?php
 												
 												
-												echo "<p> {$jsn[$i]['POST_HEADLINE']}  </p>"; 
+												//echo "<p> {$jsn[$i]['POST_HEADLINE']}  </p>"; 
 												echo"<br>";
 												echo "<p>Posted at: &nbsp</P>";
-												echo "<p> {$jsn[$i]['DATE_TIME']} </p>"; 
+												echo "<p> {$jsn[$i]['DATE_TIME']} </p>"; ?>  <button type="button" class="button" onclick="edit()" >Edit</button> 
+												<script type="text/javascript">
+																    	function edit() {
+																	  var xhttp = new XMLHttpRequest();
+																	  xhttp.onreadystatechange = function() {
+					 												   if (this.readyState == 4 && this.status == 200) {
+					  												    document.getElementById("content_column_two").innerHTML = this.responseText;
+					  												  }
+					 												 };
+																	  xhttp.open("GET", "categori_ajax.php?category="+category, true);
+																	  xhttp.send();
+																	}
+
+												</script>
+
+												<button class="button">Delete</button> <?php 
 												echo"<br>";
 												//echo"<p>=================================================</p>";
 												echo "<p> {$jsn[$i]['POST']}</p>";
@@ -164,7 +167,8 @@
 												 <form name="commentform" action="comment.php"  method="post" >
 												 	<input type="text" name="comment" value="Comment">
 												 	<input type="hidden" name="postid" value="<?php echo $pid ?> ">
-												 	
+
+												 	<input type="hidden" name="user_name_post" value="<?php echo $row['USER_NAME'];?>">
 												 	<input type="submit" name="submit_comment" value="post">
 				                                 <!-- TIME DATE TAKE BY TRIGGER FROM SYSDATE-->
 												 </form>
@@ -183,7 +187,11 @@
 
 											for($j =sizeof($JsnCom)-1;$j>=0;$j--) {
 
-												echo"<p>------------------</p>";
+												?>
+												<a href="profile.php" style="color:blue;"> <?php echo $JsnCom[$j]['USER_NAME_COM'] ;?> </a>
+												<?php 
+
+												//echo "<p> {$JsnCom[$j]['USER_NAME_COM']}</p>"; 
 												echo "<p> {$JsnCom[$j]['COMMENT_CONTENT']}</p>";
 												
 												echo "<p> {$JsnCom[$j]['TIME_DATE']}</p>";
@@ -207,10 +215,93 @@
 						   <div id="content_column_three">
 						    	
 						        
-						    	 <div class="column_three_section">
-						            <h1>Popular Posts</h1>
+						    <div class="post_writing">
+						    	 
+						                <form action="userpost.php" method="post" name="postform">
+											<input class="post_headline" type="text" value="headline..." name="headline">										
+										 	 <textarea name="ppost">write your post...</textarea> 
+										 	  <input type="hidden" name="user_name_post" value="<?php echo $row['USER_NAME'];?>">
+
+							<pre><input name="photoup" class="fileupload" type="file" value="photo"> <select class="button" name="categories" >
+					        <option value='' >Category</option><option value='Oracle' >Oracle</option><option value='PHP' >PHP</option><option value='Java' >Java</option><option value='C#' >C#</option><option value='C++' >C++</option><option value='Other' >Other</option></select> <input class="button" type="submit" value="Post"></pre>	
+					                       
+					                        									
+					                        
+
+										</form>
 						            
-						         </div>
+						    </div>
+
+						    <?php 
+
+						    				//require("oracle_to_json.php");
+						    				$jsonData= getJSONFromDB("SELECT * FROM post_tab WHERE POST_TYPE='userpost'");
+											//$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE EMAIL = 'qaium69@yahoo.com' AND PASS = '123'");
+											//echo $jsonData;
+											$jsn=json_decode($jsonData,true);
+
+											//echo sizeof($jsn);
+
+													for($i=sizeof($jsn)-1;$i>0;$i--) {
+
+											    $pid=$jsn[$i]['POST_ID'];
+
+											   // echo $pid ;
+
+												?>
+												 <div class="column_three_section">
+												 <a href="profile.php" style="color: #f5ea01;"><?php echo $jsn[$i]['USER_NAME_POST'] ;?> </a>
+												 <p class="p"><?php echo $jsn[$i]['POST_HEADLINE'] ;?> </p>
+												 <?php
+												
+												//echo "<p> {$jsn[$i]['POST_HEADLINE']}  </p>"; 
+												echo"<br>";
+												echo "<p>Posted at: &nbsp</P>";
+												echo "<p> {$jsn[$i]['DATE_TIME']} </p>"; 
+												echo"<br>";
+												//echo"<p>=================================================</p>";
+												echo "<p> {$jsn[$i]['POST']}</p>";
+												?>
+													 <form name="commentform" action="comment.php"  method="post" >
+												 	<input type="text" name="comment" value="Comment">
+												 	<input type="hidden" name="postid" value="<?php echo $pid ?> ">
+												 	<input type="hidden" name="user_name_post" value="<?php echo $row['USER_NAME'];?> ">
+												 	<input type="submit" name="submit_comment" value="post">
+				                                 <!-- TIME DATE TAKE BY TRIGGER FROM SYSDATE-->
+												 </form>
+												 <?php
+
+
+									$JsonCommData= getJSONFromDB("SELECT * FROM COMMENT_TAB COM INNER JOIN POST_TAB I ON COM.POST_ID=I.POST_ID WHERE I.POST_ID = ".$pid);
+											//$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE EMAIL = 'qaium69@yahoo.com' AND PASS = '123'");
+											//echo $jsonData;
+			//echo $JsonCommData;
+											$JsnCom=json_decode($JsonCommData,true);
+
+										//echo $JsnCom ;
+
+											for($j =sizeof($JsnCom)-1;$j>=0;$j--) {
+
+												?>
+												<p style="color:blue;"> <?php echo $JsnCom[$j]['USER_NAME_COM'] ;?> </p>
+												<?php
+												echo "<p> {$JsnCom[$j]['COMMENT_CONTENT']}</p>";
+												
+												echo "<p> {$JsnCom[$j]['TIME_DATE']}</p>";
+												echo"<br>";
+											} 
+														?>
+
+														 </div>
+														 <?php
+											}
+												 ?> 
+
+						    
+						    <div class="column_three_section">
+						  
+
+						    </div>
 						               
 						         <div class="cleaner_with_divider">&nbsp;</div>
 						        

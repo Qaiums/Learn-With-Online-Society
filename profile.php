@@ -115,7 +115,8 @@ $conn= odbc_connect('lwosdb','lwos','qaium29');
 			<p>
 				<tr>
 	                    <td><p> Profile Picture : &nbsp &nbsp
-	                    <?php echo $jsn[$i]['PRO_PIC'];  ?>
+	                    <?php //echo $jsn[$i]['PRO_PIC'];  ?>
+	                    <img width="100px" height="100px" src="<?php echo $jsn[$i]['PRO_PIC'];  ?>">
 	                     </p> </td>
 	           </tr>
 	           <br>
@@ -127,6 +128,7 @@ $conn= odbc_connect('lwosdb','lwos','qaium29');
 	           <br>
 	           <tr>
 	                    <td><p>  User Name : &nbsp  &nbsp&nbsp &nbsp
+
 	                    <?php echo $jsn[$i]['USER_NAME'];  ?>
 	                     </p> </td>
 	           </tr>

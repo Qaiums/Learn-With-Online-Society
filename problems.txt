@@ -1,4 +1,7 @@
 1. post can not get sequensially .( trigger)
-2.how to get post_id in comment_tab
-2. make a trigger to insurt every comments time. 
-3.SET TIME_DATE IN COMMENT_TAB BY TRIGGER
+2. 
+3. why my sequence not wroking parfectly ? 
+4.edit/delete
+5.press on the name and go to his profile
+6.how to store maximu size text in orale 
+7.follow each other

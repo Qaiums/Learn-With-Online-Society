@@ -126,7 +126,11 @@ END;
 
 
 
-
+UPDATE post_tab
+SET post = NULL;
+tar por
+ALTER TABLE post_tab
+  MODIFY post LONG;
 
 
 Combo Date
