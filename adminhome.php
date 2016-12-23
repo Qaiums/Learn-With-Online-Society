@@ -144,22 +144,48 @@
 												//echo "<p> {$jsn[$i]['POST_HEADLINE']}  </p>"; 
 												echo"<br>";
 												echo "<p>Posted at: &nbsp</P>";
-												echo "<p> {$jsn[$i]['DATE_TIME']} </p>"; ?>  <button type="button" class="button" onclick="edit()" >Edit</button> 
+												echo "<p> {$jsn[$i]['DATE_TIME']} 
+												</p>"; ?>
+
+<!--Edit button -->
+
+												<button type="button" name="edit" class="button" onclick="edit(this.value)" value="<?php echo $pid ?>" >Edit</button> 
 												<script type="text/javascript">
-																    	function edit() {
+																    	function edit(edit) {
 																	  var xhttp = new XMLHttpRequest();
 																	  xhttp.onreadystatechange = function() {
 					 												   if (this.readyState == 4 && this.status == 200) {
 					  												    document.getElementById("content_column_two").innerHTML = this.responseText;
 					  												  }
 					 												 };
-																	  xhttp.open("GET", "categori_ajax.php?category="+category, true);
+																	  xhttp.open("GET", "post_edit_ajax.php?edit="+edit, true);
 																	  xhttp.send();
 																	}
 
 												</script>
 
-												<button class="button">Delete</button> <?php 
+<!--Delete button -->												
+
+												
+												<button type="button" name="deleteP" class="button" onclick="delete_post(this.value)" value="<?php echo $pid ?>" >Delete</button>
+												<script type="text/javascript">
+																    	function delete_post(deleteP) {
+																	  var xhttp = new XMLHttpRequest();
+																	  xhttp.onreadystatechange = function() {
+					 												   if (this.readyState == 4 && this.status == 200) {
+					  												    document.getElementById("content_column_two").innerHTML = this.responseText;
+					  												  }
+					 												 };
+																	  xhttp.open("GET", "delete_post.php?deleteP="+deleteP, true);
+																	  xhttp.send();
+																	}
+
+												</script>
+
+
+
+
+												<?php 
 												echo"<br>";
 												//echo"<p>=================================================</p>";
 												echo "<p> {$jsn[$i]['POST']}</p>";
