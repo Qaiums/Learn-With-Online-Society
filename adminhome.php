@@ -214,13 +214,28 @@
 											for($j =sizeof($JsnCom)-1;$j>=0;$j--) {
 
 												?>
-												<a href="profile.php" style="color:blue;"> <?php echo $JsnCom[$j]['USER_NAME_COM'] ;?> </a>
-												<?php 
+										 
+										 <form action="public_profile.php" method="post" >
 
-												//echo "<p> {$JsnCom[$j]['USER_NAME_COM']}</p>"; 
+										 <input hidden="user_id" name="users_id" value="<?php echo $JsnCom[$j]['USER_ID'] ;?>">
+
+										 <input type="submit"  name="" value="<?php echo $JsnCom[$j]['USER_NAME_COM'] ;?>">
+
+
+										 <?php 
+										
+// What is the problem I can't understand. I should see it later ..............
+
+
+										 ?>
+										 
+										 </form>
+												<?php 
 												echo "<p> {$JsnCom[$j]['COMMENT_CONTENT']}</p>";
-												
 												echo "<p> {$JsnCom[$j]['TIME_DATE']}</p>";
+												echo "<p> {$JsnCom[$j]['USER_NAME_COM'] }</p>";
+												echo "<p> {$JsnCom[$j]['USER_ID'] }</p>";
+												
 												echo"<br>";
 											} 
 										//	$JsonCommData = null;
@@ -236,7 +251,13 @@
 			      
 								 ?>
 						        
-					</div> <!-- end of column two -->
+					</div>
+
+
+					 <!-- end of column two -->
+
+
+
 
 						   <div id="content_column_three">
 						    	

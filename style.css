@@ -145,8 +145,8 @@
 #content_column_two .column_two_section {
 	clear: both;
 	width: 635px;
-	padding:0 5px 0 5px;	
-	
+	padding:0 5px 0 5px;
+	margin: 0 0 5px 0 ;	
 	border: 1px solid #312f2b;
 	background: #181714 url(images/1.jpg) ;	
 }
@@ -344,7 +344,15 @@ input[type=text] {
     border-radius: 4px;
 }
 
-.
+.profileButton
+{
+	background-color: transparent;
+	background-repeat: no-repeat;
+	border: none;
+	cursor: pointer;
+	overflow: hidden;
+	text-decoration: none;
+}
 
 
 /* end of bottom */

@@ -5,3 +5,9 @@
 5.press on the name and go to his profile
 6.how to store maximu size text in orale 
 7.follow each other
+8.clear variable after every thing 
+9. when i see profile then my browser loading and get
+lots of error.
+10.how to make defalt value of a combo box
+11.comment delete and edit
+12.show profile form commentor

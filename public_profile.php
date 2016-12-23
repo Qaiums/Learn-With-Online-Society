@@ -1,46 +1,3 @@
-<?php
-/*
-
-//session_start();
-require("oracle_to_json.php");
-//$v=$_SESSION['email'];
-//$v1=$_SESSION['pass'];
-
-
-$jsonData= getJSONFromDB();
-$jsn=json_decode($jsonData,true);
-
-echo $jsn;
-
-for($i=0;$i<sizeof($jsn);$i++)
-		echo $jsn[$i]['name']."<br>";
-*/
-
-			
-
-				//echo $jsn[$i]['FULL_NAME'];
-
-				 /* 
-}
-
-$conn= odbc_connect('lwosdb','lwos','qaium29');
-
-			if (!$conn)
-			{
-				die ('Error connection !!!');
-			}
-		 $v=$_SESSION['email'];
-		 $v1=$_SESSION['pass'];
-
-		$loginsql = "SELECT * FROM userinfo WHERE EMAIL = '".$v."' AND PASS = '".$v1."'";
-		$loginresult=odbc_exec($conn, $loginsql);
-		// $name = "";
-		//$username="";
-		if($row = odbc_fetch_array($loginresult))
-		 {
-        */
-			?>
-
 
 		<?php
 				session_start();
@@ -48,8 +5,12 @@ $conn= odbc_connect('lwosdb','lwos','qaium29');
 			$v=$_SESSION['email'];
 			$v1=$_SESSION['pass'];
 
+			
+			$users_id= $_POST['users_id'];
+		
 
-			$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE EMAIL = '".$v."' AND PASS = '".$v1."'");
+
+			$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE USER_ID = '".$users_id."'");
 			//$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE EMAIL = 'qaium69@yahoo.com' AND PASS = '123'");
 			//echo $jsonData;
 			$jsn=json_decode($jsonData,true);
@@ -355,5 +316,5 @@ $conn= odbc_connect('lwosdb','lwos','qaium29');
            
            <?php
        }
-      odbc_close($conn);
+      
            ?>
