@@ -1,6 +1,6 @@
 <?php 
 session_start();
-$post_id=$_GET['deleteP'];
+$post_id=$_GET['deletePost'];
 
 require("oracle_to_json.php");
 
@@ -19,11 +19,11 @@ $conn= odbc_connect('lwosdb','lwos','qaium29');
 
 ?>
 
-
+<?php  ?>
     
 					
 						    
-						 <div class="post_writing">
+						 <div class="post_writing_two">
 						    <form action="post.php" method="post" name="postform">
 
 									<input class="post_headline" type="text" value="headline..." name="headline">
@@ -70,9 +70,9 @@ $conn= odbc_connect('lwosdb','lwos','qaium29');
 
 <!--Edit button -->
 
-												<button type="button" name="edit" class="button" onclick="edit(this.value)" value="<?php echo $pid ?>" >Edit</button> 
+												<button type="button" name="edit" class="button" onclick="post_edit(this.value)" value="<?php echo $pid ?>" >Edit</button> 
 												<script type="text/javascript">
-																    	function edit(edit) {
+																    	function post_edit(edit) {
 																	  var xhttp = new XMLHttpRequest();
 																	  xhttp.onreadystatechange = function() {
 					 												   if (this.readyState == 4 && this.status == 200) {
@@ -88,16 +88,16 @@ $conn= odbc_connect('lwosdb','lwos','qaium29');
 <!--Delete button -->												
 
 												
-												<button type="button" name="deleteP" class="button" onclick="delete_post(this.value)" value="<?php echo $pid ?>" >Delete</button>
+												<button type="button" name="deletePost" class="button" onclick="delete_post(this.value)" value="<?php echo $pid ?>" >Delete</button>
 												<script type="text/javascript">
-																    	function delete_post(deleteP) {
+																    	function delete_post(deletePost) {
 																	  var xhttp = new XMLHttpRequest();
 																	  xhttp.onreadystatechange = function() {
 					 												   if (this.readyState == 4 && this.status == 200) {
 					  												    document.getElementById("content_column_two").innerHTML = this.responseText;
 					  												  }
 					 												 };
-																	  xhttp.open("GET", "delete_post.php?deleteP="+deleteP, true);
+																	  xhttp.open("GET", "delete_post.php?deletePost="+deletePost, true);
 																	  xhttp.send();
 																	}
 

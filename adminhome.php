@@ -149,9 +149,9 @@
 
 <!--Edit button -->
 
-												<button type="button" name="edit" class="button" onclick="edit(this.value)" value="<?php echo $pid ?>" >Edit</button> 
+												<button type="button" name="edit" class="button" onclick="post_edit(this.value)" value="<?php echo $pid ?>" >Edit</button> 
 												<script type="text/javascript">
-																    	function edit(edit) {
+																    	function post_edit(edit) {
 																	  var xhttp = new XMLHttpRequest();
 																	  xhttp.onreadystatechange = function() {
 					 												   if (this.readyState == 4 && this.status == 200) {
@@ -167,16 +167,16 @@
 <!--Delete button -->												
 
 												
-												<button type="button" name="deleteP" class="button" onclick="delete_post(this.value)" value="<?php echo $pid ?>" >Delete</button>
+												<button type="button" name="deletePost" class="button" onclick="delete_post(this.value)" value="<?php echo $pid ?>" >Delete</button>
 												<script type="text/javascript">
-																    	function delete_post(deleteP) {
+																    	function delete_post(deletePost) {
 																	  var xhttp = new XMLHttpRequest();
 																	  xhttp.onreadystatechange = function() {
 					 												   if (this.readyState == 4 && this.status == 200) {
 					  												    document.getElementById("content_column_two").innerHTML = this.responseText;
 					  												  }
 					 												 };
-																	  xhttp.open("GET", "delete_post.php?deleteP="+deleteP, true);
+																	  xhttp.open("GET", "delete_post.php?deletePost="+deletePost, true);
 																	  xhttp.send();
 																	}
 
@@ -219,7 +219,8 @@
 
 										 <input hidden="user_id" name="users_id" value="<?php echo $JsnCom[$j]['USER_ID'] ;?>">
 
-										 <input type="submit"  name="" value="<?php echo $JsnCom[$j]['USER_NAME_COM'] ;?>">
+										 <input type="submit"  name="" value="<?php echo $JsnCom[$j]['USER_NAME_COM'] ;?>"><?php echo "<p> {$JsnCom[$j]['COMMENT_CONTENT']}</p>";
+										     echo "<p> {$JsnCom[$j]['TIME_DATE']}</p>";?>
 
 
 										 <?php 
@@ -231,10 +232,10 @@
 										 
 										 </form>
 												<?php 
-												echo "<p> {$JsnCom[$j]['COMMENT_CONTENT']}</p>";
-												echo "<p> {$JsnCom[$j]['TIME_DATE']}</p>";
-												echo "<p> {$JsnCom[$j]['USER_NAME_COM'] }</p>";
-												echo "<p> {$JsnCom[$j]['USER_ID'] }</p>";
+												
+												
+												//echo "<p> {$JsnCom[$j]['USER_NAME_COM'] }</p>";
+												//echo "<p> {$JsnCom[$j]['USER_ID'] }</p>";
 												
 												echo"<br>";
 											} 
@@ -305,6 +306,40 @@
 												echo"<br>";
 												echo "<p>Posted at: &nbsp</P>";
 												echo "<p> {$jsn[$i]['DATE_TIME']} </p>"; 
+												?>
+
+												<button type="button" name="edit" class="button" onclick="userpost_edit(this.value)" value="<?php echo $pid ?>" >Edit</button> 
+												<script type="text/javascript">
+																    	function userpost_edit(edit) {
+																	  var xhttp = new XMLHttpRequest();
+																	  xhttp.onreadystatechange = function() {
+					 												   if (this.readyState == 4 && this.status == 200) {
+					  												    document.getElementById("content_column_three").innerHTML = this.responseText;
+					  												  }
+					 												 };
+																	  xhttp.open("GET", "userpost_edit.php?edit="+edit, true);
+																	  xhttp.send();
+																	}
+
+												</script>
+<!--Edit Button for colom three -->
+
+												<button type="button" name="deleteUp" class="button" onclick="delete_userpost(this.value)" value="<?php echo $pid ?>" >Delete</button>
+												<script type="text/javascript">
+																    	function delete_userpost(deleteUp) {
+																	  var xhttp = new XMLHttpRequest();
+																	  xhttp.onreadystatechange = function() {
+					 												   if (this.readyState == 4 && this.status == 200) {
+					  												    document.getElementById("content_column_three").innerHTML = this.responseText;
+					  												  }
+					 												 };
+																	  xhttp.open("GET","delete_userpost.php?deleteUp="+deleteUp, true);
+																	  xhttp.send();
+																	}
+
+												</script>
+
+												<?php
 												echo"<br>";
 												//echo"<p>=================================================</p>";
 												echo "<p> {$jsn[$i]['POST']}</p>";

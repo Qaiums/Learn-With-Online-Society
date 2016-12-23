@@ -16,7 +16,7 @@ $post_id=$_GET['edit'];
 
 
 ?>
- 						<div class="post_writing_two">
+ 						<div class="post_writing">
 						    <form action="post_edit_update.php" method="post" name="postform">
 
 
@@ -55,7 +55,7 @@ $post_id=$_GET['edit'];
 											   // echo $pid ;
 
 												?>
-												 <div class="column_two_section">
+												 <div class="column_three_section">
 
 												 
 												 <p class="p"> <?php echo $jsn[$i]['POST_HEADLINE']; ?>  </p>
@@ -70,9 +70,9 @@ $post_id=$_GET['edit'];
 
 
 
-												<button type="button" name="edit" class="button" onclick="post_edit(this.value)" value="<?php echo $pid ?>" >Edit</button> 
+												 <button type="button" name="edit" class="button" onclick="edit(this.value)" value="<?php echo $pid ?>" >Edit</button> 
 												<script type="text/javascript">
-																    	function post_edit(edit) {
+																    	function edit(edit) {
 																	  var xhttp = new XMLHttpRequest();
 																	  xhttp.onreadystatechange = function() {
 					 												   if (this.readyState == 4 && this.status == 200) {
@@ -85,24 +85,7 @@ $post_id=$_GET['edit'];
 
 												</script>
 
-
-
-			<!-- Edit button -->
-
-												<button type="button" name="deletePost" class="button" onclick="delete_post(this.value)" value="<?php echo $pid ?>" >Delete</button>
-												<script type="text/javascript">
-																    	function delete_post(deletePost) {
-																	  var xhttp = new XMLHttpRequest();
-																	  xhttp.onreadystatechange = function() {
-					 												   if (this.readyState == 4 && this.status == 200) {
-					  												    document.getElementById("content_column_two").innerHTML = this.responseText;
-					  												  }
-					 												 };
-																	  xhttp.open("GET", "delete_post.php?deletePost="+deletePost, true);
-																	  xhttp.send();
-																	}
-
-												</script>
+												<button class="button">Delete</button> 
 
 
 

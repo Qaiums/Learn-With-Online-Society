@@ -16,8 +16,8 @@ $post_id=$_GET['edit'];
 
 
 ?>
- 						<div class="post_writing_two">
-						    <form action="post_edit_update.php" method="post" name="postform">
+ 						<div class="post_writing_three">
+						    <form action="userpost_update.php" method="post" name="postform">
 
 
 						    		<input type="hidden"  name="post_id" value="<?php echo $post_id ; ?>" >
@@ -41,7 +41,7 @@ $post_id=$_GET['edit'];
 						 <?php 
 
 						    				//require("oracle_to_json.php");
-						    				$jsonData= getJSONFromDB("SELECT * FROM post_tab WHERE POST_TYPE='public'");
+						    				$jsonData= getJSONFromDB("SELECT * FROM post_tab WHERE POST_TYPE='userpost'");
 											//$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE EMAIL = 'qaium69@yahoo.com' AND PASS = '123'");
 											//echo $jsonData;
 											$jsn=json_decode($jsonData,true);
@@ -55,7 +55,7 @@ $post_id=$_GET['edit'];
 											   // echo $pid ;
 
 												?>
-												 <div class="column_two_section">
+												 <div class="column_three_section">
 
 												 
 												 <p class="p"> <?php echo $jsn[$i]['POST_HEADLINE']; ?>  </p>
@@ -70,35 +70,31 @@ $post_id=$_GET['edit'];
 
 
 
-												<button type="button" name="edit" class="button" onclick="post_edit(this.value)" value="<?php echo $pid ?>" >Edit</button> 
+													<button type="button" name="edit" class="button" onclick="userpost_edit(this.value)" value="<?php echo $pid ?>" >Edit</button> 
 												<script type="text/javascript">
-																    	function post_edit(edit) {
+																    	function userpost_edit(edit) {
 																	  var xhttp = new XMLHttpRequest();
 																	  xhttp.onreadystatechange = function() {
 					 												   if (this.readyState == 4 && this.status == 200) {
-					  												    document.getElementById("content_column_two").innerHTML = this.responseText;
+					  												    document.getElementById("content_column_three").innerHTML = this.responseText;
 					  												  }
 					 												 };
-																	  xhttp.open("GET", "post_edit_ajax.php?edit="+edit, true);
+																	  xhttp.open("GET", "userpost_edit.php?edit="+edit, true);
 																	  xhttp.send();
 																	}
 
 												</script>
 
-
-
-			<!-- Edit button -->
-
-												<button type="button" name="deletePost" class="button" onclick="delete_post(this.value)" value="<?php echo $pid ?>" >Delete</button>
+												<button type="button" name="deleteUp" class="button" onclick="delete_userpost(this.value)" value="<?php echo $pid ?>" >Delete</button>
 												<script type="text/javascript">
-																    	function delete_post(deletePost) {
+																    	function delete_userpost(deleteUp) {
 																	  var xhttp = new XMLHttpRequest();
 																	  xhttp.onreadystatechange = function() {
 					 												   if (this.readyState == 4 && this.status == 200) {
-					  												    document.getElementById("content_column_two").innerHTML = this.responseText;
+					  												    document.getElementById("content_column_three").innerHTML = this.responseText;
 					  												  }
 					 												 };
-																	  xhttp.open("GET", "delete_post.php?deletePost="+deletePost, true);
+																	  xhttp.open("GET","delete_userpost.php?deleteUp="+deleteUp, true);
 																	  xhttp.send();
 																	}
 

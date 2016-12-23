@@ -28,6 +28,8 @@ echo $userid ;
 	values(post_id.nextval,'".$_POST['ppost']."','public','".$_POST['categories']."','".$_POST['headline']."','".$userid."')";
     $result=odbc_exec($conn,$query);
 
+    echo $query;
+
     //echo $query ;
 
 // COMMENT DATABASE WORK....
