@@ -23,6 +23,8 @@ echo $userid ;
 		die ('Error connection !!!');
 	}
 
+	//if ($_POST['categories']=="")
+	//	$_POST['categories']='Other';
 
 	$query= "insert into POST_TAB (post_id,post,post_type,CATEGORIES,post_headline,user_id)
 	values(post_id.nextval,'".$_POST['ppost']."','public','".$_POST['categories']."','".$_POST['headline']."','".$userid."')";

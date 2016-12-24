@@ -144,7 +144,7 @@
 
 #content_column_two .column_two_section {
 	clear: both;
-	width: 635px;
+	width: 570px;
 	padding:0 5px 0 5px;
 	margin: 0 0 5px 0 ;	
 	border: 1px solid #312f2b;
@@ -186,7 +186,7 @@
 /* column one */
 #content_column_three .column_three_section {
 	clear: both;
-	width: 550px;
+	width: 535px;
 	padding: 5px 10px 0 5px ;
 	margin-bottom:5px;
 	background: #181714 url(images/1.jpg) ;	
@@ -313,6 +313,7 @@ textarea {
 
 }
 .button {
+	float: right;
     background-color: #4CAF50;
     padding: 3px 11px 4px 11px ;
     border: none;
@@ -344,7 +345,7 @@ input[type=text] {
     border-radius: 4px;
 }
 
-.profileButton
+.bbprofileButton
 {
 	background-color: transparent;
 	background-repeat: no-repeat;

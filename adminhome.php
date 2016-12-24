@@ -62,7 +62,7 @@
 </div>
 
 
-<!-- colum 1-->
+<!-- *************************colum One start ****************************************-->
 
 <div id="content">
 
@@ -98,7 +98,10 @@
  
     </div>
 
-    <!-- end of column one -->
+    <!--   ********************************** end of column ONE   ***************************************** -->
+
+
+    <!--   ********************************** Start of column TWO   ***************************************** -->
     
 					<div id="content_column_two">
 						    
@@ -109,7 +112,7 @@
 										
 									  <textarea name="ppost">write your post...</textarea> 
 
-										<pre><input name="photoup" class="fileupload" type="file" value="photo"> <select class="button" name="categories" >
+										<pre><input name="photoup" class="fileupload" type="file" value="photo"> <select class="button" name="categories" value="" >
 				                        <option value='' >Category</option><option value='Oracle' >Oracle</option><option value='PHP' >PHP</option><option value='Java' >Java</option><option value='C#' >C#</option><option value='C++' >C++</option><option value='Other' >Other</option></select> <input class="button" type="submit" value="Post"></pre>	
 				                        
 				                       
@@ -119,7 +122,7 @@
 
 						    <?php 
 
-						    				//require("oracle_to_json.php");
+						    				
 						    				$jsonData= getJSONFromDB("SELECT * FROM post_tab WHERE POST_TYPE='public'");
 											//$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE EMAIL = 'qaium69@yahoo.com' AND PASS = '123'");
 											//echo $jsonData;
@@ -129,7 +132,8 @@
 
 													for($i=sizeof($jsn)-1;$i>0;$i--) {
 
-											    $pid=$jsn[$i]['POST_ID'];
+											    $pid=$jsn[$i]['POST_ID'];   // Taking POST_ID on variable $pid 
+
 
 											   // echo $pid ;
 
@@ -187,17 +191,18 @@
 
 												<?php 
 												echo"<br>";
-												//echo"<p>=================================================</p>";
 												echo "<p> {$jsn[$i]['POST']}</p>";
 												 ?> 
-												 <form name="commentform" action="comment.php"  method="post" >
-												 	<input type="text" name="comment" value="Comment">
-												 	<input type="hidden" name="postid" value="<?php echo $pid ?> ">
 
-												 	<input type="hidden" name="user_name_post" value="<?php echo $row['USER_NAME'];?>">
+												 <!-- ******************Comment option******************* -->
+
+											 <form name="commentform" action="comment.php"  method="post" >
+												 <input type="text" name="comment" value="Comment">
+												 <input type="hidden" name="postid" value="<?php echo $pid ?> ">
+												 <input type="hidden" name="user_name_post" value="<?php echo $row['USER_NAME'];?>">
 												 	<input type="submit" name="submit_comment" value="post">
 				                                 <!-- TIME DATE TAKE BY TRIGGER FROM SYSDATE-->
-												 </form>
+											 </form>
 
 												 <?php
 
@@ -217,7 +222,7 @@
 										 
 										 <form action="public_profile.php" method="post" >
 
-										 <input hidden="user_id" name="users_id" value="<?php echo $JsnCom[$j]['USER_ID'] ;?>">
+										 <input hidden="com_user_id" name="com_users_id" value="<?php echo $JsnCom[$j]['COM_USER_ID'] ;?>">
 
 										 <input type="submit"  name="" value="<?php echo $JsnCom[$j]['USER_NAME_COM'] ;?>"><?php echo "<p> {$JsnCom[$j]['COMMENT_CONTENT']}</p>";
 										     echo "<p> {$JsnCom[$j]['TIME_DATE']}</p>";?>
@@ -237,8 +242,10 @@
 												//echo "<p> {$JsnCom[$j]['USER_NAME_COM'] }</p>";
 												//echo "<p> {$JsnCom[$j]['USER_ID'] }</p>";
 												
-												echo"<br>";
+												
+
 											} 
+
 										//	$JsonCommData = null;
 									//		$JsnCom = null;
 
@@ -255,7 +262,10 @@
 					</div>
 
 
-					 <!-- end of column two -->
+					 <!-- ***************************************end of column TWO ************************************ -->
+
+
+					 <!-- ************************************** Start of column Three ************************************ -->
 
 
 
@@ -268,6 +278,8 @@
 						                <form action="userpost.php" method="post" name="postform">
 											<input class="post_headline" type="text" value="headline..." name="headline">										
 										 	 <textarea name="ppost">write your post...</textarea> 
+
+
 										 	  <input type="hidden" name="user_name_post" value="<?php echo $row['USER_NAME'];?>">
 
 							<pre><input name="photoup" class="fileupload" type="file" value="photo"> <select class="button" name="categories" >
@@ -297,17 +309,21 @@
 											   // echo $pid ;
 
 												?>
-												 <div class="column_three_section">
-												 <a href="profile.php" style="color: #f5ea01;"><?php echo $jsn[$i]['USER_NAME_POST'] ;?> </a>
-												 <p class="p"><?php echo $jsn[$i]['POST_HEADLINE'] ;?> </p>
-												 <?php
-												
-												//echo "<p> {$jsn[$i]['POST_HEADLINE']}  </p>"; 
-												echo"<br>";
-												echo "<p>Posted at: &nbsp</P>";
-												echo "<p> {$jsn[$i]['DATE_TIME']} </p>"; 
-												?>
 
+									<!--  showing privius posts   -->		
+									
+
+						<div class="column_three_section">
+
+												 <form action="public_profile.php" method="post" >
+
+												 <input hidden="com_user_id" name="com_users_id" value="<?php echo $jsn[$i]['USER_ID'] ;?>">
+
+												 <input type="submit"  name="" value="<?php echo $jsn[$i]['USER_NAME_POST'] ;?>"> 
+												 <p class="p"><?php echo $jsn[$i]['POST_HEADLINE'] ;?> </p>
+
+												 </form>
+												 
 												<button type="button" name="edit" class="button" onclick="userpost_edit(this.value)" value="<?php echo $pid ?>" >Edit</button> 
 												<script type="text/javascript">
 																    	function userpost_edit(edit) {
@@ -333,17 +349,25 @@
 					  												    document.getElementById("content_column_three").innerHTML = this.responseText;
 					  												  }
 					 												 };
-																	  xhttp.open("GET","delete_userpost.php?deleteUp="+deleteUp, true);
-																	  xhttp.send();
+														        xhttp.open("GET","delete_userpost.php?deleteUp="+deleteUp, true);
+																  xhttp.send();
 																	}
 
 												</script>
+												<?php 
 
-												<?php
-												echo"<br>";
-												//echo"<p>=================================================</p>";
+												echo "<p>Posted at:&nbsp</P>";
+												echo "<p> {$jsn[$i]['DATE_TIME']} </p>"; 
+												echo "<br>";
 												echo "<p> {$jsn[$i]['POST']}</p>";
+												
 												?>
+												 
+
+												 
+	<!--Delete Button for colom three -->											
+
+												
 													 <form name="commentform" action="comment.php"  method="post" >
 												 	<input type="text" name="comment" value="Comment">
 												 	<input type="hidden" name="postid" value="<?php echo $pid ?> ">
@@ -365,16 +389,24 @@
 											for($j =sizeof($JsnCom)-1;$j>=0;$j--) {
 
 												?>
-												<p style="color:blue;"> <?php echo $JsnCom[$j]['USER_NAME_COM'] ;?> </p>
-												<?php
-												echo "<p> {$JsnCom[$j]['COMMENT_CONTENT']}</p>";
+												 <form action="public_profile.php" method="post" >
+
+												 <input hidden="com_user_id" name="com_users_id" value="<?php echo $JsnCom[$j]['COM_USER_ID'] ;?>">
+
+												 <input type="submit"  name="" value="<?php echo $JsnCom[$j]['USER_NAME_COM'] ;?>"> <?php echo "<p> {$JsnCom[$j]['COMMENT_CONTENT']}</p>";
 												
-												echo "<p> {$JsnCom[$j]['TIME_DATE']}</p>";
-												echo"<br>";
+														  echo "<p> {$JsnCom[$j]['TIME_DATE']}</p>";
+														  echo"<br>"; ?>
+
+
+												 </form>
+
+												<?php
+												
 											} 
 														?>
 
-														 </div>
+							</div>
 														 <?php
 											}
 												 ?> 

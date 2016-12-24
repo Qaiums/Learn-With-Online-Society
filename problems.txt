@@ -1,8 +1,5 @@
-1. post can not get sequensially .( trigger)
-2. 
+1. post can not get sequensially .( trigger) 
 3. why my sequence not wroking parfectly ? 
-4.edit/delete
-5.press on the name and go to his profile
 6.how to store maximu size text in orale 
 7.follow each other
 8.clear variable after every thing 
@@ -10,4 +7,5 @@
 lots of error.
 10.how to make defalt value of a combo box
 11.comment delete and edit
-12.show profile form commentor
+12. Comment Edit delete
+

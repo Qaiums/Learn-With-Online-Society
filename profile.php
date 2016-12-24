@@ -53,6 +53,7 @@ $conn= odbc_connect('lwosdb','lwos','qaium29');
 			//$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE EMAIL = 'qaium69@yahoo.com' AND PASS = '123'");
 			//echo $jsonData;
 			$jsn=json_decode($jsonData,true);
+			
 
 			for($i=0;$i<sizeof($jsn);$i++) {
 		?>	
@@ -197,13 +198,13 @@ $conn= odbc_connect('lwosdb','lwos','qaium29');
 						    				$jsonData= getJSONFromDB("SELECT * FROM post_tab WHERE USER_ID='".$user_id."'");
 											//$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE EMAIL = 'qaium69@yahoo.com' AND PASS = '123'");
 											//echo $jsonData;
-											$jsn=json_decode($jsonData,true);
+											$jsn1=json_decode($jsonData,true);
 
 											//echo sizeof($jsn);
 
-													for($i=sizeof($jsn)-1;$i>0;$i--) {
+													for($k=sizeof($jsn1)-1;$k>0;$k--) {
 
-											    $pid=$jsn[$i]['POST_ID'];
+											    $pid=$jsn1[$k]['POST_ID'];
 
 											   // echo $pid ;
 
@@ -211,14 +212,14 @@ $conn= odbc_connect('lwosdb','lwos','qaium29');
 												 <div class="column_two_section">
 
 												 
-												 <p class="p"> <?php echo $jsn[$i]['POST_HEADLINE']; ?>  </p>
+												 <p class="p"> <?php echo $jsn1[$k]['POST_HEADLINE']; ?>  </p>
 												 <?php
 												
 												
 												//echo "<p> {$jsn[$i]['POST_HEADLINE']}  </p>"; 
 												echo"<br>";
 												echo "<p>Posted at: &nbsp</P>";
-												echo "<p> {$jsn[$i]['DATE_TIME']} 
+												echo "<p> {$jsn1[$k]['DATE_TIME']} 
 												</p>"; ?>
 
 <!--Edit button -->
@@ -262,7 +263,7 @@ $conn= odbc_connect('lwosdb','lwos','qaium29');
 												<?php 
 												echo"<br>";
 												//echo"<p>=================================================</p>";
-												echo "<p> {$jsn[$i]['POST']}</p>";
+												echo "<p> {$jsn1[$k]['POST']}</p>";
 												 ?> 
 												 <form name="commentform" action="comment.php"  method="post" >
 												 	<input type="text" name="comment" value="Comment">
@@ -355,5 +356,5 @@ $conn= odbc_connect('lwosdb','lwos','qaium29');
            
            <?php
        }
-      odbc_close($conn);
+     // odbc_close($conn);
            ?>

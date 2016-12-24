@@ -31,7 +31,7 @@ $conn= odbc_connect('lwosdb','lwos','qaium29');
 									  <textarea name="ppost">write your post...</textarea> 
 
 										<pre><input name="photoup" class="fileupload" type="file" value="photo"> <select class="button" name="categories" >
-				                        <option value='' >Category</option><option value='Oracle' >Oracle</option><option value='PHP' >PHP</option><option value='Java' >Java</option><option value='C#' >C#</option><option value='C++' >C++</option><option value='Other' >Other</option></select> <input class="button" type="submit" value="Post"></pre>	
+				                        <option  >Category</option><option value='Oracle' >Oracle</option><option value='PHP' >PHP</option><option value='Java' >Java</option><option value='C#' >C#</option><option value='C++' >C++</option><option value='Other' >Other</option></select> <input class="button" type="submit" value="Post"></pre>	
 				                        
 				                       
 							</form>

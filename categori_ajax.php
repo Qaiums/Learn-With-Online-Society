@@ -21,7 +21,7 @@ session_start();
 									  <textarea name="ppost">write your post...</textarea> 
 
 										<pre><input name="photoup" class="fileupload" type="file" value="photo"> <select class="button" name="categories" >
-				                        <option value='' >Select category</option><option value='Oracle' >Oracle</option><option value='PHP' >PHP</option><option value='Java' >Java</option><option value='C#' >C#</option><option value='C++' >C++</option><option value='Other' >Other</option></select> <input class="button" type="submit" value="Post"></pre>	
+				                        <option value="Other" selected="selected" >Category</option><option value='Oracle' >Oracle</option><option value='PHP' >PHP</option><option value='Java' >Java</option><option value='C#' >C#</option><option value='C++' >C++</option><option value='Other' >Other</option></select> <input class="button" type="submit" value="Post"></pre>	
 				                        
 				                       
 							</form>
@@ -37,13 +37,50 @@ session_start();
 						 	?>
 
 						 		<div class="column_two_section"><p>
-						 	<?php
+						 	
+                 <p class="p"> <?php echo $jsnCata[$i]['POST_HEADLINE']."<br>"; ?>  </p>
+             
+					 
+	<button type="button" name="edit" class="button" onclick="post_edit(this.value)" value="<?php echo $pid ?>" >Edit</button> 
+												<script type="text/javascript">
+																    	function post_edit(edit) {
+																	  var xhttp = new XMLHttpRequest();
+																	  xhttp.onreadystatechange = function() {
+					 												   if (this.readyState == 4 && this.status == 200) {
+					  												    document.getElementById("content_column_two").innerHTML = this.responseText;
+					  												  }
+					 												 };
+																	  xhttp.open("GET", "post_edit_ajax.php?edit="+edit, true);
+																	  xhttp.send();
+																	}
 
-					echo $jsnCata[$i]['POST_HEADLINE']."<br>";
-					echo "DATE :";
-					echo $jsnCata[$i]['DATE_TIME']."<br>"; 
-					echo $jsnCata[$i]['POST']."<br>";
-					 ?> 
+												</script>
+
+<!--Delete button -->												
+
+												
+												<button type="button" name="deletePost" class="button" onclick="delete_post(this.value)" value="<?php echo $pid ?>" >Delete</button>
+												<script type="text/javascript">
+																    	function delete_post(deletePost) {
+																	  var xhttp = new XMLHttpRequest();
+																	  xhttp.onreadystatechange = function() {
+					 												   if (this.readyState == 4 && this.status == 200) {
+					  												    document.getElementById("content_column_two").innerHTML = this.responseText;
+					  												  }
+					 												 };
+																	  xhttp.open("GET", "delete_post.php?deletePost="+deletePost, true);
+																	  xhttp.send();
+																	}
+
+												</script>
+
+											<p>
+										       <?php	
+												echo "Posted at: ";
+												echo $jsnCata[$i]['DATE_TIME']."<br>";
+												echo $jsnCata[$i]['POST']."<br>"; ?> </p>
+
+						
 												 <form name="commentform" action="comment.php"  method="post" >
 												 	<input type="text" name="comment" value="Comment">
 												 	<input type="hidden" name="postid" value="<?php echo $pid ?> ">
@@ -65,11 +102,18 @@ session_start();
 
 											for($j =sizeof($JsnCom)-1;$j>=0;$j--) {
 
-												echo"<p>------------------</p>";
-												echo "<p> {$JsnCom[$j]['COMMENT_CONTENT']}</p>";
-												
+										?> <form action="public_profile.php" method="post" >
+
+										 <input hidden="com_user_id" name="com_users_id" value="<?php echo $JsnCom[$j]['COM_USER_ID'] ;?>">
+
+										 <input type="submit"  name="" value="<?php echo $JsnCom[$j]['USER_NAME_COM'] ;?>">
+										 <?php 	echo "<p> {$JsnCom[$j]['COMMENT_CONTENT']}</p>";	
 												echo "<p> {$JsnCom[$j]['TIME_DATE']}</p>";
-												echo"<br>";
+												echo"<br>";?>
+
+										 </form>
+										 <?php 
+											
 											} 
 
 								?>

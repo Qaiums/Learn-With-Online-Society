@@ -1,16 +1,18 @@
 
 		<?php
-				session_start();
+			session_start();
 			require("oracle_to_json.php");
 			$v=$_SESSION['email'];
 			$v1=$_SESSION['pass'];
-
-			
-			$users_id= $_POST['users_id'];
 		
 
 
-			$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE USER_ID = '".$users_id."'");
+			
+			$com_users_id= $_POST['com_users_id'];
+		
+
+
+			$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE USER_ID = '".$com_users_id."'");
 			//$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE EMAIL = 'qaium69@yahoo.com' AND PASS = '123'");
 			//echo $jsonData;
 			$jsn=json_decode($jsonData,true);
@@ -73,6 +75,11 @@
 
 
 			<h1><center><?php echo $jsn[$i]['USER_NAME'];?>'s Profile</center></h1>
+			<form>
+				<input type="button" name="follow" value="" hidden="follow">
+				<input class="button"  type="submit" value="Follow">
+
+			</form>
 			<p>
 				<tr>
 	                    <td><p> Profile Picture : &nbsp &nbsp
@@ -158,13 +165,13 @@
 						    				$jsonData= getJSONFromDB("SELECT * FROM post_tab WHERE USER_ID='".$user_id."'");
 											//$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE EMAIL = 'qaium69@yahoo.com' AND PASS = '123'");
 											//echo $jsonData;
-											$jsn=json_decode($jsonData,true);
+											$jsn1=json_decode($jsonData,true);
 
 											//echo sizeof($jsn);
 
-													for($i=sizeof($jsn)-1;$i>0;$i--) {
+													for($k=sizeof($jsn1)-1;$k>0;$k--) {
 
-											    $pid=$jsn[$i]['POST_ID'];
+											    $pid=$jsn1[$k]['POST_ID'];
 
 											   // echo $pid ;
 
@@ -172,14 +179,14 @@
 												 <div class="column_two_section">
 
 												 
-												 <p class="p"> <?php echo $jsn[$i]['POST_HEADLINE']; ?>  </p>
+												 <p class="p"> <?php echo $jsn1[$k]['POST_HEADLINE']; ?>  </p>
 												 <?php
 												
 												
 												//echo "<p> {$jsn[$i]['POST_HEADLINE']}  </p>"; 
 												echo"<br>";
 												echo "<p>Posted at: &nbsp</P>";
-												echo "<p> {$jsn[$i]['DATE_TIME']} 
+												echo "<p> {$jsn1[$k]['DATE_TIME']} 
 												</p>"; ?>
 
 <!--Edit button -->
@@ -223,7 +230,7 @@
 												<?php 
 												echo"<br>";
 												//echo"<p>=================================================</p>";
-												echo "<p> {$jsn[$i]['POST']}</p>";
+												echo "<p> {$jsn1[$k]['POST']}</p>";
 												 ?> 
 												 <form name="commentform" action="comment.php"  method="post" >
 												 	<input type="text" name="comment" value="Comment">
