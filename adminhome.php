@@ -13,9 +13,6 @@
 				die ('Error connection !!!');
 			}
 
-
-
-
 			//$count= "SELECT COUNT(*) FROM POST_TAB"
 		$loginsql = "SELECT * FROM userinfo WHERE EMAIL = '".$v."' AND PASS = '".$v1."'";
 		 $loginresult=odbc_exec($conn, $loginsql);
@@ -424,7 +421,10 @@
 						            <p>Hallo All <a href="#">read more</a></p>
 						         </div>  
 						          
-						   </div> <!-- end of column three -->   
+						   </div>
+
+
+						    <!-- end of column three -->   
 						    
 						    	<div class="cleaner">&nbsp;</div>
 	</div> <!-- end of content -->

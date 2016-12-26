@@ -75,11 +75,48 @@
 
 
 			<h1><center><?php echo $jsn[$i]['USER_NAME'];?>'s Profile</center></h1>
-			<form>
-				<input type="button" name="follow" value="" hidden="follow">
-				<input class="button"  type="submit" value="Follow">
 
-			</form>
+			<?php  
+
+
+		$jsonFol= getJSONFromDB("SELECT * FROM FOLLOW where FOLLOWING_USER_ID='".$_SESSION['user_id']."' and FOLLOWER_USER_ID='".$jsn[$i]['USER_ID']."'");
+
+		echo $jsonFol ;
+		
+			$jsnFol=json_decode($jsonFol,true);
+
+			for($f=0;$f<sizeof($jsnFol);$f++) {
+
+					echo $_SESSION['user_id'] ;
+					echo $com_users_id;
+					
+					if ($_SESSION['user_id'] <> $com_users_id )
+						{
+							if($jsnFol[$f]['IS_ACTIVE']=0)
+							{
+						
+						   ?>	<form action="">
+							
+							<input type="button" name="follow" value="" hidden="follow">
+							<input class="button"  type="submit" value="Follow">
+
+								</form>
+							<?php 	
+							}
+							else
+							{
+								 ?> 
+								 <from>
+							<input type="button" name="follow" value="" hidden="follow">
+							<input class="button"  type="submit" value="Unfollow">
+							     </from>
+
+								 <?php
+							}
+
+
+					 } } ?>
+
 			<p>
 				<tr>
 	                    <td><p> Profile Picture : &nbsp &nbsp

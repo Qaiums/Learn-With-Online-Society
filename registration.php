@@ -74,7 +74,7 @@ javascript code start
                     </tr>
                     <tr>
                     <td><p>User Name  :</p></td>
-                    <td><input type="text" name="uname" placeholder="UserName" value =""/>beng 
+                    <td><input type="text" name="uname" placeholder="UserName" value =""/>
 
                     </td>
                     </tr>

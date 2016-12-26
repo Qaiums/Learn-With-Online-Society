@@ -133,6 +133,37 @@ ALTER TABLE post_tab
   MODIFY post LONG;
 
 
+
+
+Trigger for notification
+==============================
+create or replace TRIGGER TRG_send_notification
+  BEFORE INSERT ON POST_TAB
+  FOR EACH ROW
+
+  begin
+  begin
+  insert into notification (NOTIFICATION_ID,FOLLOWER_ID,FOLLOWING_ID,NOTIFICATION_MES,IS_NEW_FLAG,TIME_DATE)
+  select seq_notification.nextval,a.FOLLOWER_USER_ID,a.FOLLOWING_USER_ID, :new.post_headline,1, to_char(sysdate,'dd/mm/yyyy HH:MI:ss')
+  from follow a ,userinfo c
+  where c.user_id=a.following_user_id
+  and a.FOLLOWING_USER_ID = :new.user_id ;
+  exception
+  when others then
+dbms_output.put_line(sqlerrm) ;
+  null ;
+  end ;
+  end ;
+
+
+
+
+
+
+
+
+
+
 Combo Date
 =====================
 
