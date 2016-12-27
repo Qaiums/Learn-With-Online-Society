@@ -1,14 +1,11 @@
-		
-
-
-		<?php 
-		
-		session_start();
+<?php 
+session_start();
 		require("oracle_to_json.php");
 		 $v=$_SESSION['email'];
 		 $v1=$_SESSION['pass'];
+	     $notihed= $_SESSION ['user_id'] ;
 
-	
+
 				 if($_SESSION['adminEmail']==$v)
 			{
 				header("location:adminhome.php");
@@ -23,9 +20,6 @@
 				die ('Error connection !!!');
 			}
 
-
-
-
 			//$count= "SELECT COUNT(*) FROM POST_TAB"
 		$loginsql = "SELECT * FROM userinfo WHERE EMAIL = '".$v."' AND PASS = '".$v1."'";
 		 $loginresult=odbc_exec($conn, $loginsql);
@@ -35,10 +29,18 @@
 		if($check != "")
 		{
 
-			
-
-			
 		?>
+
+  <!--Clearing Notification -->
+
+<?php
+   $update="UPDATE NOTIFICATION SET IS_NEW_FLAG=0 WHERE IS_NEW_FLAG=1";
+
+   odbc_exec($conn, $update);
+
+
+?>
+
    <!--if login success then it will show the page -->
 
 				<!DOCTYPE html PUBLIC>
@@ -56,8 +58,6 @@
 			 $res= odbc_fetch_array($stid);
 
 			 ?>
-
-
 
             <form action="notiHeadlines.php" method="post">
             	<input  name="notification" value="<?php echo $_SESSION ['user_id'] ; ?>" hidden="notification">
@@ -213,17 +213,12 @@
 										 
 										 </form>
 												<?php 
-												
-												
-												//echo "<p> {$JsnCom[$j]['USER_NAME_COM'] }</p>";
-												//echo "<p> {$JsnCom[$j]['USER_ID'] }</p>";
-												
-												
+										
+									
 
 											} 
 
-										//	$JsonCommData = null;
-									//		$JsnCom = null;
+									
 
 												 ?>
 
@@ -235,27 +230,38 @@
 			      
 								 ?>
 						        
-					</div> <!-- end of column two -->
+			</div> <!-- end of column two -->
 
-						   <div id="content_column_three">
+			 <div id="content_column_three">
 						    	
 						        
-						   <div class="post_writing">
+					 <div class="column_three_section">
 						    	 
-						                <form action="userpost.php" method="post" name="postform">
-											<input class="post_headline" type="text" value="headline..." name="headline">										
-										 	 <textarea name="ppost">write your post...</textarea> 
+					 <p class="p"> HEAD LINES OF NEW POST  <br>
 
+					              ------------------------------------------ </p><br>
+						    	 <?php
+						              
+							$jsonNoti= getJSONFromDB("SELECT * FROM NOTIFICATION n INNER JOIN userinfo u ON n.FOLLOWER_ID=u.USER_ID  WHERE FOLLOWER_ID='".$notihed."' and IS_NEW_FLAG = 1");
 
-										 	  <input type="hidden" name="user_name_post" value="<?php echo $row['USER_NAME'];?>">
+						    				
+											
+							$jsnNoti=json_decode($jsonNoti,true);
 
-							<pre><input name="photoup" class="fileupload" type="file" value="photo"> <select class="button" name="categories" >
-					        <option value='' >Category</option><option value='Oracle' >Oracle</option><option value='PHP' >PHP</option><option value='Java' >Java</option><option value='C#' >C#</option><option value='C++' >C++</option><option value='Other' >Other</option></select> <input class="button" type="submit" value="Post"></pre>	
-					                       
-					                        									
-					                        
+											
 
-										</form>
+									for($i=0;$i<sizeof($jsnNoti);$i++) {
+
+											?> <p class="p"> <?php
+											echo  $i+1 ;
+											echo " / " ;
+											echo  $jsnNoti[$i]['NOTIFICATION_MES']; 
+											echo "<br>";
+											?> </p>  <?php
+
+										} 
+
+									?>
 						            
 						    </div>
 
@@ -292,42 +298,7 @@
 												 </form>
 												 
 
-												<!--Edit Button for colom three -->
-
-												<?php /* ?>
-												<button type="button" name="edit" class="button" onclick="userpost_edit(this.value)" value="<?php echo $pid ?>" >Edit</button> 
-												<script type="text/javascript">
-																    	function userpost_edit(edit) {
-																	  var xhttp = new XMLHttpRequest();
-																	  xhttp.onreadystatechange = function() {
-					 												   if (this.readyState == 4 && this.status == 200) {
-					  												    document.getElementById("content_column_three").innerHTML = this.responseText;
-					  												  }
-					 												 };
-																	  xhttp.open("GET", "userpost_edit.php?edit="+edit, true);
-																	  xhttp.send();
-																	}
-
-												</script>
-
-												<!--delete Button for colom three -->
-
-												<button type="button" name="deleteUp" class="button" onclick="delete_userpost(this.value)" value="<?php echo $pid ?>" >Delete</button>
-												<script type="text/javascript">
-																    	function delete_userpost(deleteUp) {
-																	  var xhttp = new XMLHttpRequest();
-																	  xhttp.onreadystatechange = function() {
-					 												   if (this.readyState == 4 && this.status == 200) {
-					  												    document.getElementById("content_column_three").innerHTML = this.responseText;
-					  												  }
-					 												 };
-														        xhttp.open("GET","delete_userpost.php?deleteUp="+deleteUp, true);
-																  xhttp.send();
-																	}
-
-												</script>
-
-												<?php  */ ?>
+												
 												<?php 
 
 												echo "<p>Posted at:&nbsp</P>";
@@ -439,204 +410,4 @@
 		?>
 
 
-		<?php /*
 		
-		session_start();
-		 $v=$_SESSION['email'];
-		 $v1=$_SESSION['pass'];
-
-
-		$conn= odbc_connect('lwosdb','lwos','qaium29');
-
-			if (!$conn)
-			{
-				die ('Error connection !!!');
-			}
-
-
-
-		$loginsql = "SELECT * FROM userinfo WHERE EMAIL = '".$v."' AND PASS = '".$v1."'";
-		 $loginresult=odbc_exec($conn, $loginsql);
-		 $check = "";
-		if($row = odbc_fetch_array($loginresult))
-			($check = $row['EMAIL']);
-		if($check != "")
-		{
-
-			
-
-			
-		?>
-   <!--if login success then it will show the page -->
-
-				<!DOCTYPE html PUBLIC>
-<html xmlns="">
-<head>
-<meta/>
-<title>Learn with online society</title>
- <link href="style.css" rel="stylesheet" type="text/css" />
-</head>
-<body>
-<div id="header_panel">
-	<div id="header_section">
-    	<div id="title_section">Learn With Online Society</div>
-      <div id="tagline">Succesfully Login. Welcome <?php echo $row['USER_NAME']; ?>  </div>
-    </div>
-</div>
-<div id="menu_panel">
-    <div id="menu_section">
-        <ul>
-            <li><a href="home.php">Home</a></li>
-            <li><a href="profile.php" >Profile</a></li>
-            <li><a href="" >Follower</a></li>            
-            <li><a href="" >Following</a></li>  
-            <li><a href="" >About Us</a></li> 
-            <li><a href="" >Contact Us</a></li>
-            <li><a href="logout.php" >Logout</a></li>  
-                                
-        </ul> 
-    </div>
-</div>
-<!-- colum 1-->
-<div id="content">
-
-	<div id="content_column_one">
-    	<div class="column_one_section">
-        	<div style="font-size:20px;font-weight: bold;color:white;">Categories</div><br><br>
-         <p>
-         	<input type="radio" name="category" value=" "> Oracle <br><br>
-        	<input type="radio" name="category" value=" "> PHP <br><br>
-        	<input type="radio" name="category" value=" "> Java <br><br>
-        	<input type="radio" name="category" value=" "> C# <br><br>
-        	<input type="radio" name="category" value=" "> C++<br><br>
-        	<input type="radio" name="category" value=" "> Other </p> 
-                
-             
-        </div>
-        
-        <div class="cleaner_with_divider">&nbsp;</div>
-        
-        
-     
-    </div>
-
-    <!-- end of column one -->
-    
-					<div id="content_column_two">
-						    
-				<!--		    <div class="column_two_section">
-						    <form action="post.php" method="post" name="postform">
-									<input class="post_headline" type="text" value="headline..." name="headline">
-										
-									  <textarea name="ppost">write your post...</textarea> 
-
-										<pre><input name="photoup" class="fileupload" type="file" value="photo"> <select class="button" name="categories" >
-				                        <option value='' >Select category</option><option value='' >Oracle</option><option value='' >PHP</option><option value='' >Java</option><option value='' >C#</option><option value='' >C++</option><option value='' >Other</option></select> <input class="button" type="submit" value="Post"></pre>	
-				                        <input id="date" name="date" >
-
-<script type="text/javascript">
-  document.getElementById('date').value = Date();
-</script>
-				                       
-							</form>
-
-
-
-
-						               
-						    </div> -->
-
-						    <?php 
-
-						    				require("oracle_to_json.php");
-						    				$jsonData= getJSONFromDB("SELECT post_headline,post FROM post_tab");
-											//$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE EMAIL = 'qaium69@yahoo.com' AND PASS = '123'");
-											//echo $jsonData;
-											$jsn=json_decode($jsonData,true);
-
-											for($i=sizeof($jsn)-1;$i>0;$i--) {
-
-												?>
-												 <div class="column_two_section">
-												 <?php
-
-												echo "<p> {$jsn[$i]['POST_HEADLINE']} </p>"; 
-												echo"<br>";
-												echo"<p>=================================================</p>";
-												echo "<p> {$jsn[$i]['POST']}</p>";
-												 ?>
-
-
-											
-								
-												</div>
-						   
-						    
-						    <div class="column_two_section">
-								
-								
-						               
-						    </div>
-
-						    <?php
-						      }
-
-						      
-						    ?>
-						        
-					</div> <!-- end of column two -->
-
-						   <div id="content_column_three">
-						    	
-						        
-						    	 <div class="column_three_section">
-						            <h1>Popular Posts</h1>
-						            
-						         </div>
-						               
-						         <div class="cleaner_with_divider">&nbsp;</div>
-						        
-						         <div class="column_three_section">
-						            <h1>About This Blog</h1>
-						            <p>Hallo All <a href="#">read more</a></p>
-						         </div>  
-						          
-						   </div> <!-- end of column three -->   
-						    
-						    	<div class="cleaner">&nbsp;</div>
-	</div> <!-- end of content -->
-
-						<div id="bottom_panel">
-						 <center>
-							<div class="bottom_panel_section">
-						   	<a href="#">Home</a> | <a href="#">Profile</a> | <a href="#"> Follower</a> | <a href="#">Following </a>| <a href="#">About Us</a> | <a href="#">Contact Us</a><br /><br />
-						  <p> Copyright © 2016 </p> <a href="#"><strong>Muhammad Abdul Qaium</strong></a></div>
-						    </center>
-    
-
-    <div class="cleaner">&nbsp;</div>
-</div> <!-- end of bottom panel -->
-
-
-
-<!-- Java script-->
-
-
-
-
-</body>
-</html>
-
-
-		<?php
-		} 
-		
-		else
-		{
-			
-			header('location:login.php');
-		}
-		odbc_close($conn);
-		
-	*/	?>
-

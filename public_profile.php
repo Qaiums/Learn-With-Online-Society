@@ -82,7 +82,7 @@
 
 		
 
-$jsonFol= getJSONFromDB("SELECT * FROM FOLLOW where FOLLOWING_USER_ID = '".$v2."' AND FOLLOWER_USER_ID = '".$public_user_id."'");
+$jsonFol= getJSONFromDB("SELECT * FROM FOLLOW where FOLLOWING_USER_ID = '".$public_user_id."' AND FOLLOWER_USER_ID = '".$v2."'");
 
 		$jsnFol=json_decode($jsonFol,true);
 
@@ -111,7 +111,7 @@ if ($_SESSION['user_id'] <> $public_user_id) {
                                <div id=follow >
 						  		   <button type="button" id="follow" name="follow" class="button" onclick="followF(this.value)" value="
 
-						  			<?php echo $public_user_id;?>" >followpublic</button> 
+						  			<?php echo $public_user_id;?>" >follow</button> 
 
 												<script type="text/javascript">
 																    	function followF(follow) {
@@ -152,10 +152,10 @@ if ($_SESSION['user_id'] <> $public_user_id) {
 						  			</script>
 
 
-						  		   <div id=unfollow >
+						  		   <div id=follow >
 						  		   <button type="button" id="unfollow" name="unfollow" class="button" onclick="unfollowF(this.value)" value="
 
-						  			<?php echo $public_user_id;?>" >Unfollow from public</button> 
+						  			<?php echo $public_user_id;?>" >unfollow</button> 
 
 												<script type="text/javascript">
 																    	function unfollowF(unfollow) {

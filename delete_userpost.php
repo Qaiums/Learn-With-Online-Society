@@ -4,7 +4,7 @@ $post_id=$_GET['deleteUp'];
 
 require("oracle_to_json.php");
 
-$conn= odbc_connect('lwosdb','lwos','qaium29');
+$conn= odbc_connect('lwosdb','lwos','1234');
 
 			if (!$conn)
 			{

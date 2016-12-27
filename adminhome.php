@@ -6,7 +6,7 @@
 		 $v1=$_SESSION['pass'];
 
 
-		$conn= odbc_connect('lwosdb','lwos','qaium29');
+		$conn= odbc_connect('lwosdb','lwos','1234');
 
 			if (!$conn)
 			{

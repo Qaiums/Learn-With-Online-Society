@@ -10,7 +10,7 @@ session_start();
 
 
 
- $conn= odbc_connect('lwosdb','lwos','qaium29');
+ $conn= odbc_connect('lwosdb','lwos','1234');
 
 	if (!$conn)
 	{
@@ -23,13 +23,12 @@ session_start();
   odbc_exec($conn, $followquery);
 
 odbc_close($conn);
+
+
 ?>
 
-	 <script type="text/javascript">
-						  			document.getElementById("follow").style.visibility="hidden";
-						  			
-		    </script>
- 
+	
+ <!--
 
  							<div id=unfollow >
 						  		   <button type="button" id="unfollow" name="unfollow" class="button" onclick="unfollowF(this.value)" value="
@@ -51,7 +50,7 @@ odbc_close($conn);
 														</script>
 											</div>	
 
-
+-->
 
 
 

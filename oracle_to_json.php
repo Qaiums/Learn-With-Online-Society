@@ -5,7 +5,7 @@
 
 		function getJSONFromDB($sql)
 		{
-		$conn= odbc_connect('lwosdb','lwos','qaium29');
+		$conn= odbc_connect('lwosdb','lwos','1234');
 
 		$loginresult=odbc_exec($conn, $sql);
 		

@@ -11,7 +11,7 @@ session_start();
 
 
 
-		    $conn= odbc_connect('lwosdb','lwos','qaium29');
+		    $conn= odbc_connect('lwosdb','lwos','1234');
 
 	if (!$conn)
 	{
@@ -19,12 +19,18 @@ session_start();
 	}
 
  $unfollowquery="DELETE FROM FOLLOW 
-  WHERE FOLLOWER_USER_ID='".$public_user_id."' and FOLLOWING_USER_ID= '".$user_id."'";
+  WHERE FOLLOWER_USER_ID='".$user_id."' and FOLLOWING_USER_ID= '".$public_user_id."'";
 
   odbc_exec($conn, $unfollowquery);
 
+  header("location:public_profile.php");
+
+  
+
 		    ?>
 
+		   
+<!--
 		    <script type="text/javascript">
 						  			document.getElementById("unfollow").style.visibility="hidden";
 						  			
@@ -49,4 +55,4 @@ session_start();
 
 														</script>
 											</div>
-		 
+		 -->

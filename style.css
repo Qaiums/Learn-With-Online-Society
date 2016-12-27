@@ -27,7 +27,7 @@
 
 #menu_panel{
 	clear: both;	
-	width:100%;
+	width:1000px;
 	height: 47px;	
 	margin: 0 auto; 
 	margin-bottom: 10px;
@@ -46,9 +46,9 @@
 
 #menu_section ul {
 	float: left;
-	width: 930px;
+	width: 1130px;
 	margin: 0;
-	padding: 15px 0 0 0;
+	padding: 10px 0 0 0;
 	list-style: none;
 }
 
