@@ -117,6 +117,8 @@
 
 						    				
 						    				$jsonData= getJSONFromDB("SELECT * FROM post_tab WHERE POST_TYPE='public'");
+
+						    				
 											//$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE EMAIL = 'qaium69@yahoo.com' AND PASS = '123'");
 											//echo $jsonData;
 											$jsn=json_decode($jsonData,true);

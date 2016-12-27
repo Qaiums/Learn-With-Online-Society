@@ -2,22 +2,19 @@
 		<?php
 			session_start();
 			require("oracle_to_json.php");
-			$v=$_SESSION['email'];
+		    $v=$_SESSION['email'];
 			$v1=$_SESSION['pass'];
-		
-
-
-			
+			$v2=$_SESSION['user_id'];
 			$com_users_id= $_POST['com_users_id'];
 		
-
-
 			$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE USER_ID = '".$com_users_id."'");
 			//$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE EMAIL = 'qaium69@yahoo.com' AND PASS = '123'");
 			//echo $jsonData;
 			$jsn=json_decode($jsonData,true);
 
 			for($i=0;$i<sizeof($jsn);$i++) {
+
+		  $public_user_id=$jsn[$i]['USER_ID'] ;
 		?>	
 
 <!DOCTYPE html PUBLIC>
@@ -75,20 +72,65 @@
 
 
 			<h1><center><?php echo $jsn[$i]['USER_NAME'];?>'s Profile</center></h1>
+           
 
-			<?php  
+			<?php 
 
-
-		$jsonFol= getJSONFromDB("SELECT * FROM FOLLOW where FOLLOWING_USER_ID='".$_SESSION['user_id']."' and FOLLOWER_USER_ID='".$jsn[$i]['USER_ID']."'");
-
-		echo $jsonFol ;
 		
-			$jsnFol=json_decode($jsonFol,true);
+
+$jsonFol= getJSONFromDB("SELECT * FROM FOLLOW where FOLLOWING_USER_ID = '".$v2."' AND FOLLOWER_USER_ID = '".$public_user_id."'");
+
+		$jsnFol=json_decode($jsonFol,true);
+
+if ($_SESSION['user_id'] <> $public_user_id) {
+
+	 ?>
+								<div id="submit_follow" >
+
+									 <form action="follow.php" method="post">
+									<input  name="follow" value="<?php echo $public_user_id;?>" hidden="follow">
+									<input class="button"  type="submit" value="Follow">
+							    	 </from>
+
+							   </div>
+	<?php 
+
+		
+					  if ($jsnFol)
+							  
+							  { 
+						  			 ?>
+
+						  			<!-- MAKING HIDE INVISIBLE BY JAVA SCRIPT -->
+
+						  			<script type="text/javascript">
+						  			document.getElementById("submit_follow").style.visibility="hidden";
+						  			</script>
+						  			<br>
+
+									 <form action="unfollow.php" method="post" >
+									<input  name="unfollow" value="<?php echo $public_user_id;?>" hidden="follow">
+									<input class="button"  type="submit" value="Unfollow">
+							    	 </from>
+							    	 
+									<?php 	
+							  }
+							 
+					
+
+			}			
+
+		
+
+	 //$jsonData= getJSONFromDB("SELECT * FROM post_tab WHERE POST_TYPE='public'");
+
+		
+		 /*	$jsnFol=json_decode($jsonFol,true);
 
 			for($f=0;$f<sizeof($jsnFol);$f++) {
 
-					echo $_SESSION['user_id'] ;
-					echo $com_users_id;
+					
+					
 					
 					if ($_SESSION['user_id'] <> $com_users_id )
 						{
@@ -115,7 +157,7 @@
 							}
 
 
-					 } } ?>
+					 } }  */ ?>
 
 			<p>
 				<tr>
