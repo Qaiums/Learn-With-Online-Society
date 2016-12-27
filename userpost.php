@@ -8,10 +8,6 @@ $user_name_post=$_POST['user_name_post'];
 
 //$date_time=$_POST['date'];
 
-
-
-
-
 $userid=$_SESSION['user_id'];
 
 echo $userid ;
@@ -57,11 +53,7 @@ echo $userid ;
     
 	odbc_close($conn);
 
-	if($_SESSION['adminEmail'])
-	{
-		header("location:adminhome.php");
-	}
-	else
+	
 	{
 		header("location:home.php");
 	}

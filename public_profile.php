@@ -74,6 +74,10 @@
 			<h1><center><?php echo $jsn[$i]['USER_NAME'];?>'s Profile</center></h1>
            
 
+
+<!-- Follow  -->
+
+
 			<?php 
 
 		
@@ -85,14 +89,54 @@ $jsonFol= getJSONFromDB("SELECT * FROM FOLLOW where FOLLOWING_USER_ID = '".$v2."
 if ($_SESSION['user_id'] <> $public_user_id) {
 
 	 ?>
-								<div id="submit_follow" >
+
+	
+
+                         <!--
+
+								<div id="follow" >
 
 									 <form action="follow.php" method="post">
 									<input  name="follow" value="<?php echo $public_user_id;?>" hidden="follow">
 									<input class="button"  type="submit" value="Follow">
 							    	 </from>
 
-							   </div>
+							    	 <script type="text/javascript">
+						  			document.getElementById("follow").style.visibility="hidden";
+						  			
+		    </script>
+
+							    </div> -->
+
+                               <div id=follow >
+						  		   <button type="button" id="follow" name="follow" class="button" onclick="followF(this.value)" value="
+
+						  			<?php echo $public_user_id;?>" >followpublic</button> 
+
+												<script type="text/javascript">
+																    	function followF(follow) {
+																	  var xhttp = new XMLHttpRequest();
+																	  xhttp.onreadystatechange = function() {
+					 												   if (this.readyState == 4 && this.status == 200) {
+					  												    document.getElementById("follow").innerHTML = this.responseText;
+					  												  }
+					 												 };
+																	  xhttp.open("GET", "follow.php?follow="+follow, true);
+																	  xhttp.send();
+																	}
+
+														</script>
+											</div>	
+
+
+
+            
+
+
+
+
+
+
 	<?php 
 
 		
@@ -104,21 +148,34 @@ if ($_SESSION['user_id'] <> $public_user_id) {
 						  			<!-- MAKING HIDE INVISIBLE BY JAVA SCRIPT -->
 
 						  			<script type="text/javascript">
-						  			document.getElementById("submit_follow").style.visibility="hidden";
+						  			document.getElementById("follow").style.visibility="hidden";
 						  			</script>
-						  			<br>
 
-									 <form action="unfollow.php" method="post" >
-									<input  name="unfollow" value="<?php echo $public_user_id;?>" hidden="follow">
-									<input class="button"  type="submit" value="Unfollow">
-							    	 </from>
-							    	 
-									<?php 	
-							  }
-							 
-					
 
-			}			
+						  		   <div id=unfollow >
+						  		   <button type="button" id="unfollow" name="unfollow" class="button" onclick="unfollowF(this.value)" value="
+
+						  			<?php echo $public_user_id;?>" >Unfollow from public</button> 
+
+												<script type="text/javascript">
+																    	function unfollowF(unfollow) {
+																	  var xhttp = new XMLHttpRequest();
+																	  xhttp.onreadystatechange = function() {
+					 												   if (this.readyState == 4 && this.status == 200) {
+					  												    document.getElementById("unfollow").innerHTML = this.responseText;
+					  												  }
+					 												 };
+																	  xhttp.open("GET", "unfollow.php?unfollow="+unfollow, true);
+																	  xhttp.send();
+																	}
+
+														</script>
+											</div>			
+
+											<?php 	
+							 		 }
+		   
+						}			
 
 		
 
@@ -276,7 +333,7 @@ if ($_SESSION['user_id'] <> $public_user_id) {
 																	  var xhttp = new XMLHttpRequest();
 																	  xhttp.onreadystatechange = function() {
 					 												   if (this.readyState == 4 && this.status == 200) {
-					  												    document.getElementById("content_column_two").innerHTML = this.responseText;
+					  												    document.getElementById("column_two_section").innerHTML = this.responseText;
 					  												  }
 					 												 };
 																	  xhttp.open("GET", "post_edit_ajax.php?edit="+edit, true);

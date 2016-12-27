@@ -5,7 +5,10 @@ session_start();
 		    $v=$_SESSION['email'];
 			$v1=$_SESSION['pass'];
 			$user_id=$_SESSION['user_id'];
-		    $public_user_id= $_POST['unfollow'];
+		    $public_user_id= $_GET['unfollow'];
+
+
+
 
 
 		    $conn= odbc_connect('lwosdb','lwos','qaium29');
@@ -20,18 +23,30 @@ session_start();
 
   odbc_exec($conn, $unfollowquery);
 
-  echo "deleted";
-
-  /*
-  if($_SESSION['adminEmail'])
-	{
-		header("location:adminhome.php");
-	}
-	else
-	{
-		header("location:home.php");
-	}
-*/
-
-
 		    ?>
+
+		    <script type="text/javascript">
+						  			document.getElementById("unfollow").style.visibility="hidden";
+						  			
+		    </script>
+
+	        	<div id=follow >
+					 <button type="button" id="follow" name="follow" class="button" onclick="followF(this.value)" value="
+
+						  <?php echo $public_user_id;?>" >follow unfollow</button> 
+
+									<script type="text/javascript">
+																    	function followF(follow) {
+																	  var xhttp = new XMLHttpRequest();
+																	  xhttp.onreadystatechange = function() {
+					 												   if (this.readyState == 4 && this.status == 200) {
+					  												    document.getElementById("unfollow").innerHTML = this.responseText;
+					  												  }
+					 												 };
+																	  xhttp.open("GET", "follow.php?follow="+follow, true);
+																	  xhttp.send();
+																	}
+
+														</script>
+											</div>
+		 
