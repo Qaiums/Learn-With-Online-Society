@@ -7,21 +7,17 @@
     $_SESSION['pass']=$_POST['pass'];
     $_SESSION['adminEmail']='qaiumaiub@gmail.com';
 
-    /*
-    if (isset ($_SESSION['pass']))
-	{
-    
 
-    } */
-  
 			require("oracle_to_json.php");
 			$v=$_POST['email'];
    			$v1=$_POST['pass'];
 
 			$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE EMAIL = '".$v."' AND PASS = '".$v1."'");
-			//$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE EMAIL = 'qaium69@yahoo.com' AND PASS = '123'");
-			//echo $jsonData;
+			
 			$jsn=json_decode($jsonData,true);
+
+			if($jsn){
+
 
 			for($i=0;$i<sizeof($jsn);$i++) {
 
@@ -39,12 +35,22 @@
 					{
 						header("location:home.php");
 					}
+
 					
 				}
 
-
-
 			}
+
+		}
+
+		else
+		{ 	
+			header("location:wrongusernamepass.php");
+							
+
+		}
+
+		
 		?>	
 
 

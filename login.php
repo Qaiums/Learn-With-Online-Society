@@ -15,10 +15,7 @@
 <div id="menu_panel">
     <div id="menu_section">
         <ul>
-            <li><a href="index.php"  class="current">Home</a></li>
-            <li><a href="" >Profile</a></li>
-            <li><a href="" >Follower</a></li>            
-            <li><a href="" >Following</a></li>  
+            <li><a href="index.php"  class="current">Home</a></li>  
             <li><a href="" >About Us</a></li> 
             <li><a href="" >Contact Us</a></li>
             <li><a href="login.php" >Login</a></li>  
@@ -30,22 +27,35 @@
 <div id="content">
 
 	<div id="content_column_one">
-    	<div class="column_one_section">
-            <p>Categories<br><br><br>
-            <input type="radio" name="oracle" value=" "> Oracle <br><br>
-            <input type="radio" name="php" value=" "> PHP <br><br>
-            <input type="radio" name="java" value=" "> Java <br><br>
-            <input type="radio" name="c#" value=" "> C# <br><br>
-            <input type="radio" name="Cplus" value=" "> C++<br><br>
-            <input type="radio" name="other" value=" "> Other </p> 
-                
+        <div class="column_one_section">
+            <div style="font-size:20px;font-weight: bold;color:white;">Categories</div><br><br>
+         <p>
+            <input id="oracle" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "Oracle" ?>"> Oracle <br><br>
+            <input id="php" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "PHP" ?> "> PHP <br><br>
+            <input id="java" type="radio" onchange="loadDoc(this.value)" name="category" value=" <?php echo "Java" ?> "> Java <br><br>
+            <input id="c#" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "C#" ?> "> C# <br><br>
+            <input id="c++" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "c++" ?> "> C++<br><br>
+            <input id="other" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "Other" ?> "> Other </p> 
+           
              
         </div>
-        
+
+      
+                            <script>
+                    function loadDoc(category) {
+                        
+                      var xhttp = new XMLHttpRequest();
+                      xhttp.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                          document.getElementById("content_column_two").innerHTML = this.responseText;
+                        }
+                      };
+                      xhttp.open("GET", "categori_ajax_home.php?category="+category, true);
+                      xhttp.send();
+                    }
+                            </script>
         <div class="cleaner_with_divider">&nbsp;</div>
-        
-        
-     
+ 
     </div>
 
     <!-- end of column one -->
@@ -96,24 +106,17 @@ Password : <input type="password" name="pass" /></p>
     </div> <!-- end of column two -->
 
     <div id="content_column_three">
-    	
-        
-    	<div class="column_three_section">
-            <h1>Popular Posts</h1>
-            
-        </div>
-               
-        <div class="cleaner_with_divider">&nbsp;</div>
-        
+
         <div class="column_three_section">
-            <h1>About This Blog</h1>
-            <p>Hallo All <a href="#">read more</a></p>
+            <h2 style="color: #f5ea01;" >About This Blog</h2>
+            <p>Hallo All </p>
       </div>  
           
     </div> <!-- end of column three -->   
     
     <div class="cleaner">&nbsp;</div>
-</div> <!-- end of content -->
+</div> 
+<!-- end of content -->
 
 <div id="bottom_panel">
  <center>

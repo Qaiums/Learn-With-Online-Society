@@ -23,9 +23,9 @@ session_start();
 
   odbc_exec($conn, $unfollowquery);
 
-  header("location:public_profile.php");
+ 
 
-  
+
 
 		    ?>
 

@@ -23,7 +23,17 @@ $post_id=$_POST['post_id'];
    	odbc_close($conn);
 
 	
+
+		if($_SESSION['adminEmail']==$_SESSION['email'])
+	{
 		header("location:adminhome.php");
+	}
+	else
+	{
+		header("location:home.php");
+	}
+	
+	?>
 
 	
 

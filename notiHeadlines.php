@@ -3,7 +3,7 @@ session_start();
 		require("oracle_to_json.php");
 		 $v=$_SESSION['email'];
 		 $v1=$_SESSION['pass'];
-	     $notihed= $_SESSION ['user_id'] ;
+	     $noti_user_id= $_SESSION ['user_id'] ;
 
 
 				 if($_SESSION['adminEmail']==$v)
@@ -31,15 +31,6 @@ session_start();
 
 		?>
 
-  <!--Clearing Notification -->
-
-<?php
-   $update="UPDATE NOTIFICATION SET IS_NEW_FLAG=0 WHERE IS_NEW_FLAG=1";
-
-   odbc_exec($conn, $update);
-
-
-?>
 
    <!--if login success then it will show the page -->
 
@@ -214,17 +205,11 @@ session_start();
 										 </form>
 												<?php 
 										
-									
-
 											} 
 
-									
-
-												 ?>
+											 ?>
 
 												</div>
-		
-
 							     <?php
 									 }
 			      
@@ -242,28 +227,49 @@ session_start();
 					              ------------------------------------------ </p><br>
 						    	 <?php
 						              
-							$jsonNoti= getJSONFromDB("SELECT * FROM NOTIFICATION n INNER JOIN userinfo u ON n.FOLLOWER_ID=u.USER_ID  WHERE FOLLOWER_ID='".$notihed."' and IS_NEW_FLAG = 1");
+	$jsonNoti= getJSONFromDB("SELECT * FROM NOTIFICATION n INNER JOIN userinfo u ON n.FOLLOWING_ID=u.USER_ID  WHERE FOLLOWER_ID='".$noti_user_id."' and IS_NEW_FLAG = 1");
+						//echo $jsonNoti ;
+						//echo $noti_user_id ;
 
 						    				
-											
 							$jsnNoti=json_decode($jsonNoti,true);
 
-											
-
+									
 									for($i=0;$i<sizeof($jsnNoti);$i++) {
 
 											?> <p class="p"> <?php
 											echo  $i+1 ;
 											echo " / " ;
-											echo  $jsnNoti[$i]['NOTIFICATION_MES']; 
+											echo  $jsnNoti[$i]['NOTIFICATION_MES']; ?> </p> <p> <?php
+											echo " by ";
+											echo  $jsnNoti[$i]['USER_NAME']; 											
 											echo "<br>";
-											?> </p>  <?php
+											
 
 										} 
 
 									?>
-						            
+						            </p>
 						    </div>
+
+						      <!--Clearing Notification -->
+
+<?php
+   $update="UPDATE NOTIFICATION SET IS_NEW_FLAG=0 WHERE FOLLOWER_ID='".$_SESSION ['user_id']."' and  IS_NEW_FLAG=1";
+
+   odbc_exec($conn, $update);
+
+
+?>
+
+
+
+
+
+
+
+
+
 
 						    <?php 
 
@@ -303,6 +309,48 @@ session_start();
 
 												echo "<p>Posted at:&nbsp</P>";
 												echo "<p> {$jsn[$i]['DATE_TIME']} </p>"; 
+												
+												if($jsn[$i]['USER_ID']==$noti_user_id)
+												{
+												?>
+
+													<button type="button" name="edit" class="button" onclick="userpost_edit(this.value)" value="<?php echo $pid ?>" >Edit</button> 
+												<script type="text/javascript">
+																    	function userpost_edit(edit) {
+																	  var xhttp = new XMLHttpRequest();
+																	  xhttp.onreadystatechange = function() {
+					 												   if (this.readyState == 4 && this.status == 200) {
+					  												    document.getElementById("content_column_three").innerHTML = this.responseText;
+					  												  }
+					 												 };
+																	  xhttp.open("GET", "userpost_edit.php?edit="+edit, true);
+																	  xhttp.send();
+																	}
+
+												</script>
+
+												<button type="button" name="deleteUp" class="button" onclick="delete_userpost(this.value)" value="<?php echo $pid ?>" >Delete</button>
+												<script type="text/javascript">
+																    	function delete_userpost(deleteUp) {
+																	  var xhttp = new XMLHttpRequest();
+																	  xhttp.onreadystatechange = function() {
+					 												   if (this.readyState == 4 && this.status == 200) {
+					  												    document.getElementById("content_column_three").innerHTML = this.responseText;
+					  												  }
+					 												 };
+																	  xhttp.open("GET","delete_userpost.php?deleteUp="+deleteUp, true);
+																	  xhttp.send();
+																	}
+
+												</script>
+
+
+
+												<?php 
+											     }
+
+
+
 												echo "<br>";
 												echo "<p> {$jsn[$i]['POST']}</p>";
 												

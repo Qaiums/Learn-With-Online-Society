@@ -46,10 +46,8 @@
      
     </div>
 
-    <!-- end of column one
 
-javascript code start
-     -->
+    <!-- end of column one    -->
 
 
  
@@ -59,7 +57,7 @@ javascript code start
     
     	<div class="column_two_section">
 			<center>
-                <script type="text/javascript" src="javascript.js"></script>
+                <script type="text/javascript" src="javascript.js"></script>  <!-- javascript source link   -->
 
                 
 
@@ -72,12 +70,20 @@ javascript code start
                     <td><input  type="text"  name="name" placeholder="Name"  value =""/>
                     </td>
                     </tr>
-                    <tr>
+                   <tr>
                     <td><p>User Name  :</p></td>
                     <td><input type="text" name="uname" placeholder="UserName" value =""/>
 
                     </td>
                     </tr>
+ <!--                    <tr>
+<td>Username</td>
+<td><input id='username1' name='username' onblur="validate('username', this.value)" type='text'></td>
+<td>
+<div id='username'></div>
+</td>
+</tr>-->
+
 
                     <tr>
                     <td><p>DOB :</p></td>
@@ -86,7 +92,7 @@ javascript code start
                     <input type="date" name="dob" placeholder="Date of Birth" value=''>
                     
                         </td>
-                        </tr>
+                        </tr> 
                         
                     <tr>
                     <td><p>Gender:</p></td>
@@ -97,7 +103,9 @@ javascript code start
                     <tr>
                     <td><p>Phone :</p></td>
                     <td>
-                    <input type="text" name="phone" placeholder="Phone Number" value =""/>
+                    <input type="text" name="phone"  placeholder="Phone Number" value =""/>
+
+                   
 
                     </td>
                     </tr>
@@ -105,14 +113,13 @@ javascript code start
                     <tr>
                     <td><p>Email ID :</p></td>
                     <td>
-                    <input type="email" name="email" value ="" placeholder="Email" onfocusout="checkmail(this.value)"/> <div id="txtHint"></div>
+                    <input type="email" name="email" id placeholder="Email" onfocusout="checkmail(this.value)"/> <div id="txtHint"></div>
                     </td>
                     </tr>
 
 
                               <script type="text/javascript">
-                              
-                                }
+                            
                                 function checkmail(str)
                                 {
                                     //alert("test");
@@ -180,7 +187,16 @@ javascript code start
                     </td>
                     </tr>
 
+<!-- 
                     <tr>
+<td>Password</td>
+<td><input id='password1' name='password' onblur="validate('password', this.value)" type='password'></td>
+<td>
+<div id='password'></div>
+</td>
+</tr>-->
+
+                   <tr>
                     <td><p>Password :</p></td>
                     <td><input type="password" placeholder="Password" name="pass"/></td>
                     </tr>
@@ -190,7 +206,7 @@ javascript code start
                     <td><input type="password" placeholder="Confirm Password" name="confirmPass"/>
 
                     </td>
-                    </tr>
+                    </tr> 
 
                     <tr>
                     <td><p>Profile Picture :</p>
@@ -222,42 +238,33 @@ javascript code start
                
         </div>
         
-</div> <!-- end of column two -->
+</div> 
 
-            <div id="content_column_three">
-            	
-                
-            	<div class="column_three_section">
-                    <h1>Popular Posts</h1>
-                    
-                </div>
-                       
-                <div class="cleaner_with_divider">&nbsp;</div>
-                
-                <div class="column_three_section">
-                    <h1>About This Blog</h1>
-                    <p>Hallo all <a href="#">read more</a></p>
-              </div>  
-                  
-            </div> <!-- end of column three -->   
+
+<!-- end of column two -->
+
+        <div id="content_column_three">
+
+             <div class="column_three_section">
+            <h2 style="color: #f5ea01;" >About This Blog</h2>
+            <p>Hallo All </p>
+            </div>  
+          
+         </div> <!-- end of column three -->  
     
-    <div class="cleaner">&nbsp;</div>
+            
 </div> <!-- end of content -->
 
-<div id="bottom_panel">
- <center>
-	<div class="bottom_panel_section">
-   	<a href="#">Home</a> | <a href="#">Profile</a> | <a href="#"> Follower</a> | <a href="#">Following </a>| <a href="#">About Us</a> | <a href="#">Contact Us</a><br /><br />
-  <p> Copyright © 2016 </p> <a href="#"><strong>Muhammad Abdul Qaium</strong></a></div>
-    </center>
+        <div id="bottom_panel">
+         <center>
+        	<div class="bottom_panel_section">
+           	    <a href="#">Home</a> | <a href="#">Profile</a> | <a href="#"> Follower</a> | <a href="#">Following </a>| <a href="#">About Us</a> | <a href="#">Contact Us</a><br /><br />
+                <p> Copyright © 2016 </p> <a href="#"><strong>Muhammad Abdul Qaium</strong></a></div>
+                </center>
     
+        </div>
+         <!-- end of bottom panel -->
 
-    <div class="cleaner">&nbsp;</div>
-</div> <!-- end of bottom panel -->
-
-
-
-<!-- Java script-->
 
 
 

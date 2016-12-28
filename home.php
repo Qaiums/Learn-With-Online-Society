@@ -7,6 +7,7 @@
 		require("oracle_to_json.php");
 		 $v=$_SESSION['email'];
 		 $v1=$_SESSION['pass'];
+		 $PDeluser_id= $_SESSION ['user_id'] ;
 
 	
 				 if($_SESSION['adminEmail']==$v)
@@ -158,14 +159,8 @@
 												echo "<p>Posted at: &nbsp</P>";
 												echo "<p> {$jsn[$i]['DATE_TIME']} 
 												</p>"; ?>
-
-
-											
-
-
-
-
-												<?php 
+												<?php
+		
 												echo"<br>";
 												echo "<p> {$jsn[$i]['POST']}</p>";
 												 ?> 
@@ -196,12 +191,59 @@
 
 												?>
 										 
-										 <form action="public_profile.php" method="post" >
+								<div id="comment">	 <form action="public_profile.php" method="post" >
 
 										 <input hidden="com_user_id" name="com_users_id" value="<?php echo $JsnCom[$j]['COM_USER_ID'] ;?>">
 
 										 <input type="submit"  name="" value="<?php echo $JsnCom[$j]['USER_NAME_COM'] ;?>"><?php echo "<p> {$JsnCom[$j]['COMMENT_CONTENT']}</p>";
-										     echo "<p> {$JsnCom[$j]['TIME_DATE']}</p>";?>
+										     echo "<p> {$JsnCom[$j]['TIME_DATE']}</p>";
+
+									//	     $JsnCom[$j]['COMMENT_ID'] 
+
+										     ?>
+
+
+
+		      <button type="button" name="comdelete" class="button" onclick="comment_delete(this.value)" value="<?php echo $JsnCom[$j]['COMMENT_ID']   ?>" >Delete</button> 
+
+												<script type="text/javascript">
+																    	function comment_delete(comdelete) {
+																	   var xhttp = new XMLHttpRequest();
+																	   xhttp.onreadystatechange = function() {
+					 												   if (this.readyState == 4 && this.status == 200) {
+					  												    document.getElementById("comment").innerHTML = this.responseText;
+					  												   }
+					 												  };
+																	  xhttp.open("GET", "comment_delete_post.php?comdelete="+comdelete, true);
+																	  xhttp.send();
+																	  }
+
+												</script>
+
+
+
+
+
+
+
+			<button type="button" name="comedit" class="button" onclick="comment_edit(this.value)" value="<?php echo $JsnCom[$j]['COMMENT_ID']   ?>" >Edit</button> 
+
+												<script type="text/javascript">
+																    	function comment_edit(comedit) {
+																	   var xhttp = new XMLHttpRequest();
+																	   xhttp.onreadystatechange = function() {
+					 												   if (this.readyState == 4 && this.status == 200) {
+					  												    document.getElementById("comment").innerHTML = this.responseText;
+					  												   }
+					 												  };
+																	  xhttp.open("GET", "comment_edit_post.php?comedit="+comedit, true);
+																	  xhttp.send();
+																	  }
+
+												</script>
+
+
+
 
 
 										 <?php 
@@ -211,7 +253,7 @@
 
 										 ?>
 										 
-										 </form>
+										 </form>  </div>
 												<?php 
 												
 												
@@ -273,7 +315,10 @@
 
 											    $pid=$jsn[$i]['POST_ID'];
 
-											   // echo $pid ;
+											    $post_user_id =$jsn[$i]['USER_ID'];
+
+											   // echo $pid ;	
+
 
 												?>
 
@@ -294,7 +339,11 @@
 
 												<!--Edit Button for colom three -->
 
-												<?php /* ?>
+												<?php 
+
+												if($PDeluser_id==$post_user_id)
+												{
+												?>
 												<button type="button" name="edit" class="button" onclick="userpost_edit(this.value)" value="<?php echo $pid ?>" >Edit</button> 
 												<script type="text/javascript">
 																    	function userpost_edit(edit) {
@@ -327,7 +376,7 @@
 
 												</script>
 
-												<?php  */ ?>
+												<?php   } ?>
 												<?php 
 
 												echo "<p>Posted at:&nbsp</P>";
@@ -363,17 +412,57 @@
 											for($j =sizeof($JsnCom)-1;$j>=0;$j--) {
 
 												?>
-												 <form action="public_profile.php" method="post" >
+							<div id="commentThree" >  <form action="public_profile.php" method="post" >
 
 												 <input hidden="com_user_id" name="com_users_id" value="<?php echo $JsnCom[$j]['COM_USER_ID'] ;?>">
 
 												 <input type="submit"  name="" value="<?php echo $JsnCom[$j]['USER_NAME_COM'] ;?>"> <?php echo "<p> {$JsnCom[$j]['COMMENT_CONTENT']}</p>";
 												
 														  echo "<p> {$JsnCom[$j]['TIME_DATE']}</p>";
-														  echo"<br>"; ?>
+														   ?>
 
 
-												 </form>
+		      <button type="button" name="comdelete" class="button" onclick="comment_delete(this.value)" value="<?php echo $JsnCom[$j]['COMMENT_ID']   ?>" >Delete</button> 
+
+												<script type="text/javascript">
+																    	function comment_delete(comdelete) {
+																	   var xhttp = new XMLHttpRequest();
+																	   xhttp.onreadystatechange = function() {
+					 												   if (this.readyState == 4 && this.status == 200) {
+					  												    document.getElementById("commentThree").innerHTML = this.responseText;
+					  												   }
+					 												  };
+																	  xhttp.open("GET", "comment_delete.php?comdelete="+comdelete, true);
+																	  xhttp.send();
+																	  }
+
+												</script>
+
+
+
+
+
+
+
+			<button type="button" name="comedit" class="button" onclick="comment_edit(this.value)" value="<?php echo $JsnCom[$j]['COMMENT_ID']   ?>" >Edit</button> 
+
+												<script type="text/javascript">
+																    	function comment_edit(comedit) {
+																	   var xhttp = new XMLHttpRequest();
+																	   xhttp.onreadystatechange = function() {
+					 												   if (this.readyState == 4 && this.status == 200) {
+					  												    document.getElementById("commentThree").innerHTML = this.responseText;
+					  												   }
+					 												  };
+																	  xhttp.open("GET", "comment_edit.php?comedit="+comedit, true);
+																	  xhttp.send();
+																	  }
+
+												</script>
+
+
+
+												 </form> </div>
 
 												<?php
 												

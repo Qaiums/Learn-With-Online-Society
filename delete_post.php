@@ -4,7 +4,7 @@ $post_id=$_GET['deletePost'];
 
 require("oracle_to_json.php");
 
-$conn= odbc_connect('lwosdb','lwos','qaium29');
+$conn= odbc_connect('lwosdb','lwos','1234');
 
 			if (!$conn)
 			{
@@ -57,13 +57,18 @@ $conn= odbc_connect('lwosdb','lwos','qaium29');
 												?>
 												 <div class="column_two_section">
 
+												 <form action="public_profile.php" method="post" >
+
+												 <input hidden="com_user_id" name="com_users_id" value="<?php echo $jsn[$i]['USER_ID'] ;?>">
+
+												 <input type="submit"  name="" value="<?php echo $jsn[$i]['USER_NAME_POST'] ;?>"> 
+												 <p class="p"><?php echo $jsn[$i]['POST_HEADLINE'] ;?> </p>
+
+												 </form>
 												 
-												 <p class="p"> <?php echo $jsn[$i]['POST_HEADLINE']; ?>  </p>
+												 
 												 <?php
 												
-												
-												//echo "<p> {$jsn[$i]['POST_HEADLINE']}  </p>"; 
-												echo"<br>";
 												echo "<p>Posted at: &nbsp</P>";
 												echo "<p> {$jsn[$i]['DATE_TIME']} 
 												</p>"; ?>

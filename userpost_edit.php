@@ -3,6 +3,7 @@
 session_start();
 require("oracle_to_json.php");	
 $post_id=$_GET['edit'];
+$PDeluser_id= $_SESSION ['user_id'] ;
 
 
 	$jsonDataEdit= getJSONFromDB("SELECT * FROM POST_TAB WHERE POST_ID='".$post_id."'");
@@ -58,17 +59,28 @@ $post_id=$_GET['edit'];
 												 <div class="column_three_section">
 
 												 
-												 <p class="p"> <?php echo $jsn[$i]['POST_HEADLINE']; ?>  </p>
+												 <form action="public_profile.php" method="post" >
+
+												 <input hidden="com_user_id" name="com_users_id" value="<?php echo $jsn[$i]['USER_ID'] ;?>">
+
+												 <input type="submit"  name="" value="<?php echo $jsn[$i]['USER_NAME_POST'] ;?>"> 
+												 <p class="p"><?php echo $jsn[$i]['POST_HEADLINE'] ;?> </p>
+
+												 </form>
 												 <?php
 												
 												
-												//echo "<p> {$jsn[$i]['POST_HEADLINE']}  </p>"; 
-												echo"<br>";
+											
 												echo "<p>Posted at: &nbsp</P>";
 												echo "<p> {$jsn[$i]['DATE_TIME']} 
 												</p>"; ?>
 
 
+												<?php 
+
+												if($PDeluser_id==$jsn[$i]['POST_ID'])
+												{
+												?>
 
 													<button type="button" name="edit" class="button" onclick="userpost_edit(this.value)" value="<?php echo $pid ?>" >Edit</button> 
 												<script type="text/javascript">
@@ -103,6 +115,8 @@ $post_id=$_GET['edit'];
 
 
 												<?php 
+											     }
+
 												echo"<br>";
 												//echo"<p>=================================================</p>";
 												echo "<p> {$jsn[$i]['POST']}</p>";

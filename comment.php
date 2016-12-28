@@ -1,7 +1,7 @@
    <?php
 session_start();
 
-	$conn= odbc_connect('lwosdb','lwos','qaium29');
+	$conn= odbc_connect('lwosdb','lwos','1234');
 
 	if (!$conn)
 	{
@@ -38,7 +38,7 @@ session_start();
 	odbc_close($conn);
 	
   
-	if($_SESSION['adminEmail'])
+	if($_SESSION['adminEmail']==$_SESSION['email'])
 	{
 		header("location:adminhome.php");
 	}

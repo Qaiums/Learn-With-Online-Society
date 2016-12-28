@@ -1,7 +1,7 @@
 
 
 <?php
-$conn= odbc_connect('lwosdb','lwos','qaium29');
+$conn= odbc_connect('lwosdb','lwos','1234');
 
 	if (!$conn)
 	{
@@ -17,6 +17,7 @@ $conn= odbc_connect('lwosdb','lwos','qaium29');
 	{
 		echo "<p>".$row['C']."</p>";
 		echo "<p>email address is available. please use another email.<p>";
+		return false; 
 
 	}
 

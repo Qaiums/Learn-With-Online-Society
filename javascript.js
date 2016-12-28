@@ -22,7 +22,7 @@
         return false;
     }
    
-     if (uname == "") {
+     if (uname == "" && uname.length < 4) {
         alert("user name must be filled out");
         return false;
     }
@@ -82,6 +82,8 @@ var pass=document.forms["myForm1"]["pass"].value;
         alert("pass must be filled out");
         return false;
     }
+
+
 }
 	
 
