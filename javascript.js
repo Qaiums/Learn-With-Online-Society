@@ -1,4 +1,11 @@
 
+    function username()
+    {  
+       if (uname == "" && uname.length < 4) {
+        alert("user name must be filled out");
+        return false;
+    } 
+    }
 
 	
 	function validateForm() {
@@ -15,6 +22,7 @@
      var confirmPass=document.forms["myForm"]["confirmPass"].value;
 
 
+    
 
 
     if (name == "") {
@@ -63,9 +71,43 @@
     }
     if (pass!=confirmPass){
     	alert("password is not match ");
+        return false;
+    }
+    if(checkmail(email)){
+        alert("Change Your Email.");
+        return true ;
     }
 
 }
+
+
+function checkmail(str)
+{
+    //alert("test");
+    var xhttp;
+    if(str.length==0)
+    {
+        document.getElementById('txtHint').innerHTML=" ";
+        return true ;
+    }
+    xhttp= new XMLHttpRequest();
+    xhttp.onreadystatechange=function()
+    {   
+        if (xhttp.readyState== 4 && xhttp.status==200)
+        {
+            document.getElementById("txtHint").innerHTML=this.responseText;
+            if(this.responseText != "<p>Valid</p>"){
+                return true;
+            }
+            else return false;
+        }
+    };
+    xhttp.open("GET","emailcheck.php?email="+str,true);
+    xhttp.send();
+    
+}
+
+
 
 
 function validateLoinForm()
@@ -82,8 +124,8 @@ var pass=document.forms["myForm1"]["pass"].value;
         alert("pass must be filled out");
         return false;
     }
-
-
 }
+
+
 	
 

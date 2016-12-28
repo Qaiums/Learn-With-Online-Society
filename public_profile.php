@@ -1,6 +1,6 @@
-
-		<?php
+<?php
 			session_start();
+
 			require("oracle_to_json.php");
 		    $v=$_SESSION['email'];
 			$v1=$_SESSION['pass'];
@@ -36,10 +36,10 @@
         <ul>
             <li><a href="home.php">Home</a></li>
             <li><a href="profile.php" >Profile</a></li>
-            <li><a href="" >Follower</a></li>            
-            <li><a href="" >Following</a></li>  
-            <li><a href="" >About Us</a></li> 
-            <li><a href="" >Contact Us</a></li>
+            <li><a href="follower.php" >Follower</a></li>            
+            <li><a href="following.php" >Following</a></li>  
+            <li><a href="aboutus.php" >About Us</a></li> 
+
             <li><a href="logout.php" >Logout</a></li>  
    <!--<li><a href="registration.php" >Register</a></li> -->                     
         </ul> 
@@ -187,6 +187,13 @@ if ($_SESSION['user_id'] <> $public_user_id) {
 			for($f=0;$f<sizeof($jsnFol);$f++) {
 
 					
+
+
+
+
+
+
+
 					
 					
 					if ($_SESSION['user_id'] <> $com_users_id )
@@ -214,7 +221,7 @@ if ($_SESSION['user_id'] <> $public_user_id) {
 							}
 
 
-					 } }  */ ?>
+					 } }  
 
 			<p>
 				<tr>
@@ -289,7 +296,84 @@ if ($_SESSION['user_id'] <> $public_user_id) {
 	           <br>
            </p>
 
-           <br><br>               
+           <br><br>  */ ?>
+
+
+<table border="1" width = "87%" style="color: white;">
+      <tr>
+        <td height="50" colspan = "2" align="center">
+          <b>PERSON PROFILE</b>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Photo</td>
+        <td>
+          <img width="100px" height="100px" src="<?php echo $jsn[$i]['PRO_PIC'];  ?>">
+        </td>
+      </tr>
+      <tr>
+        <td>Name</td>
+        <td>
+           <?php echo $jsn[$i]['FULL_NAME'];  ?>
+        </td>
+      </tr>
+      <tr>
+        <td>UserName</td>
+        <td>
+           <?php echo $jsn[$i]['USER_NAME'];  ?>
+        </td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td>
+           <?php echo $jsn[$i]['EMAIL'];  ?>
+        </td>
+      </tr>
+      <tr>
+        <td>Mobile </td>
+        <td>
+          <?php echo $jsn[$i]['MOBILE'];  ?>
+        </td>
+      </tr>
+      <tr>
+        <td>DOB</td>
+        <td>
+           <?php echo $jsn[$i]['DOB'];  ?>
+        </td>
+      </tr>
+      <tr>
+        <td>Gender</td>
+        <td>
+           <?php echo $jsn[$i]['GENDER'];  ?>
+        </td>
+      </tr>
+      <tr>
+        <td>Address</td>
+        <td>
+          <?php echo $jsn[$i]['ADDRESS'];  ?>
+        </td>
+      </tr>
+      <tr>
+        <td>User ID</td>
+        <td>
+          <?php echo  $user_id=$jsn[$i]['USER_ID'];  ?>
+        </td>
+      </tr>
+      <tr>
+        <td colspan = "2" align="center">
+          
+        </td>
+      </tr>
+        </table> 
+
+  <br>
+  <br>
+  <br>
+ 
+
+
+
        </div>
 
 <!-- end of Profile view -->
@@ -391,14 +475,19 @@ if ($_SESSION['user_id'] <> $public_user_id) {
 
 											for($j =sizeof($JsnCom)-1;$j>=0;$j--) {
 
-												?>
-												<a href="profile.php" style="color:blue;"> <?php echo $JsnCom[$j]['USER_NAME_COM'] ;?> </a>
+													?>
+												 <form action="public_profile.php" method="post" >
+
+										 <input hidden="com_user_id" name="com_users_id" value="<?php echo $JsnCom[$j]['COM_USER_ID'] ;?>">
+
+										 <input type="submit"  name="" value="<?php echo $JsnCom[$j]['USER_NAME_COM'] ;?>">
 												<?php 
 
 												//echo "<p> {$JsnCom[$j]['USER_NAME_COM']}</p>"; 
 												echo "<p> {$JsnCom[$j]['COMMENT_CONTENT']}</p>";
 												
 												echo "<p> {$JsnCom[$j]['TIME_DATE']}</p>";
+												echo"<br>";
 												echo"<br>";
 											} 
 										//	$JsonCommData = null;

@@ -1,6 +1,6 @@
 <br/><br/><br/><br/>
 
-<?php
+<?php /*
 $target_dir = "uploads/";
 $target_file = $target_dir . $_FILES["fileToUpload"]["name"];
 echo $_FILES["fileToUpload"]["name"]."<br>";
@@ -26,6 +26,8 @@ else{
         echo "Sorry, there was an error uploading your file<br>";
     }
 }
+
+*/
 ?>
 
 
@@ -51,7 +53,7 @@ else{
 	$delivDate = date('d-M-Y', strtotime($_POST['dob']));
 
 
-	$conn= odbc_connect('lwosdb','lwos','qaium29');
+	$conn= odbc_connect('lwosdb','lwos','1234');
 
 	if (!$conn)
 	{
@@ -59,10 +61,10 @@ else{
 	}
 
 
-			$plsql= "insert into userinfo (user_id,user_role,full_name,user_name,dob,gender,mobile,email,address,country,city,pass,pro_pic)
-		             values(user_id.nextval,'user','".$_POST['name']."','".$_POST['uname']."','".$delivDate."','".$_POST['gender']."','".$_POST['phone']."','".$_POST['email']."','".$_POST['address']."','".$_POST['country']."','".$_POST['state']."','".$_POST['pass']."','".$target_file."') ";
+			$plsql= "insert into userinfo (user_id,user_role,full_name,user_name,dob,gender,mobile,email,address,country,city,pass)
+		             values(user_id.nextval,'user','".$_POST['name']."','".$_POST['uname']."','".$delivDate."','".$_POST['gender']."','".$_POST['phone']."','".$_POST['email']."','".$_POST['address']."','".$_POST['country']."','".$_POST['state']."','".$_POST['pass']."' ";
 
-  
+  																												//,'".$target_file."')
     $regresult=odbc_exec($conn, $plsql);
 
 

@@ -1,4 +1,4 @@
-<?php 
+ <?php 
 session_start();
 		require("oracle_to_json.php");
 		 $v=$_SESSION['email'];
@@ -217,7 +217,7 @@ session_start();
 						        
 			</div> <!-- end of column two -->
 
-			 <div id="content_column_three">
+			
 						    	
 						        
 					 <div class="column_three_section">
@@ -290,7 +290,7 @@ session_start();
 												?>
 
 									<!--  showing privius posts   -->		
-									
+				<div id="content_column_three">					
 
 						<div class="column_three_section">
 
@@ -414,12 +414,11 @@ session_start();
 						        
 						         <div class="column_three_section">
 						            <h1>About This Blog</h1>
-						            <p>Hallo All <a href="#">read more</a></p>
+						            <p>Hallo All read more</a></p>
 						         </div>  
 
-	</div> 
 
-
+                     </div>
 
 	<!-- end of content -->
 

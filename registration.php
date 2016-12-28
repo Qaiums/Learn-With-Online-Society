@@ -17,7 +17,7 @@
             <li><a href="" >Profile</a></li>
             <li><a href="" >Follower</a></li>            
             <li><a href="" >Following</a></li>  
-            <li><a href="" >About Us</a></li> 
+             <li><a href="aboutus.php" >About Us</a></li> 
             <li><a href="" >Contact Us</a></li>
             <li><a href="login.php" >Login</a></li>  
             <li><a href="registration.php" >Register</a></li>                       
@@ -61,7 +61,7 @@
 
                 
 
-            <form name="myForm" action="regintodatabase.php" onsubmit="return validateForm()" enctype="multipart/form-data" method="post">
+            <form name="myForm" action="regintodatabase.php" onsubmit="return validateForm()" method="post">
                       
                     <h1>Your Info To Submit</h1>
                     <table>
@@ -72,17 +72,37 @@
                     </tr>
                    <tr>
                     <td><p>User Name  :</p></td>
-                    <td><input type="text" name="uname" placeholder="UserName" value =""/>
+                    <td><input type="text" name="uname" onfocusout="username(this.value)" placeholder="UserName" value =""/><div id="demo"></div>
 
                     </td>
                     </tr>
- <!--                    <tr>
-<td>Username</td>
-<td><input id='username1' name='username' onblur="validate('username', this.value)" type='text'></td>
-<td>
-<div id='username'></div>
-</td>
-</tr>-->
+
+                              <script type="text/javascript">
+                            
+                                function username(str)
+                                {
+                                    //alert("test");
+                                    var xhttp;
+                                    if(str.length==0)
+                                    {
+                                        document.getElementById('demo').innerHTML=" ";
+                                        return ;
+                                    }
+                                    xhttp= new XMLHttpRequest();
+                                    xhttp.onreadystatechange=function()
+                                    {   
+                                        if (xhttp.readyState== 4 && xhttp.status==200)
+                                        {
+                                            document.getElementById("demo").innerHTML=this.responseText;
+                                        }
+                                    };
+                                    xhttp.open("GET","username_check.php?uname="+str,true);
+                                    xhttp.send();
+                                    
+                                }
+
+
+                              </script>
 
 
                     <tr>
@@ -113,37 +133,12 @@
                     <tr>
                     <td><p>Email ID :</p></td>
                     <td>
-                    <input type="email" name="email" id placeholder="Email" onfocusout="checkmail(this.value)"/> <div id="txtHint"></div>
+                    <input type="email" name="email" placeholder="Email" onblur="return checkmail(this.value)"/> <div id="txtHint"></div>
                     </td>
                     </tr>
 
 
-                              <script type="text/javascript">
-                            
-                                function checkmail(str)
-                                {
-                                    //alert("test");
-                                    var xhttp;
-                                    if(str.length==0)
-                                    {
-                                        document.getElementById('txtHint').innerHTML=" ";
-                                        return ;
-                                    }
-                                    xhttp= new XMLHttpRequest();
-                                    xhttp.onreadystatechange=function()
-                                    {   
-                                        if (xhttp.readyState== 4 && xhttp.status==200)
-                                        {
-                                            document.getElementById("txtHint").innerHTML=this.responseText;
-                                        }
-                                    };
-                                    xhttp.open("GET","emailcheck.php?email="+str,true);
-                                    xhttp.send();
-                                    
-                                }
-
-
-                              </script>
+                             
                     <tr>
                     <td><p>Address :</p></td>
                     <td>
@@ -198,8 +193,38 @@
 
                    <tr>
                     <td><p>Password :</p></td>
-                    <td><input type="password" placeholder="Password" name="pass"/></td>
+        <td><input type="password" placeholder="Password" onfocusout="password(this.value)" name="pass"/></td> 
+          <div id="demo1"></div>
                     </tr>
+
+                   
+                            <script type="text/javascript">
+                            
+                                function password(str)
+                                {
+                                    //alert("test");
+                                    var xhttp;
+                                    if(str.length==0)
+                                    {
+                                        document.getElementById('demo1').innerHTML=" ";
+                                        return ;
+                                    }
+                                    xhttp= new XMLHttpRequest();
+                                    xhttp.onreadystatechange=function()
+                                    {   
+                                        if (xhttp.readyState== 4 && xhttp.status==200)
+                                        {
+                                            document.getElementById("demo1").innerHTML=this.responseText;
+                                        }
+                                    };
+                                    xhttp.open("GET","passwordcheck.php?pass="+str,true);
+                                    xhttp.send();
+                                    
+                                }
+
+                                </script>
+
+
 
                     <tr>
                     <td><p>Confirm Password :</p></td>
@@ -207,7 +232,7 @@
 
                     </td>
                     </tr> 
-
+<!--
                     <tr>
                     <td><p>Profile Picture :</p>
                     <td>          
@@ -215,7 +240,7 @@
                            
                     </td>
              
-                    </td>
+                    </td>  -->
 
                     <td>
 

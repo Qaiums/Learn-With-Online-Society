@@ -1,48 +1,4 @@
-<?php
-/*
-
-//session_start();
-require("oracle_to_json.php");
-//$v=$_SESSION['email'];
-//$v1=$_SESSION['pass'];
-
-
-$jsonData= getJSONFromDB();
-$jsn=json_decode($jsonData,true);
-
-echo $jsn;
-
-for($i=0;$i<sizeof($jsn);$i++)
-		echo $jsn[$i]['name']."<br>";
-*/
-
-			
-
-				//echo $jsn[$i]['FULL_NAME'];
-
-				 /* 
-}
-
-$conn= odbc_connect('lwosdb','lwos','qaium29');
-
-			if (!$conn)
-			{
-				die ('Error connection !!!');
-			}
-		 $v=$_SESSION['email'];
-		 $v1=$_SESSION['pass'];
-
-		$loginsql = "SELECT * FROM userinfo WHERE EMAIL = '".$v."' AND PASS = '".$v1."'";
-		$loginresult=odbc_exec($conn, $loginsql);
-		// $name = "";
-		//$username="";
-		if($row = odbc_fetch_array($loginresult))
-		 {
-        */
-			?>
-
-
-		<?php
+	<?php
 				session_start();
 			require("oracle_to_json.php");
 			$v=$_SESSION['email'];
@@ -77,10 +33,10 @@ $conn= odbc_connect('lwosdb','lwos','qaium29');
         <ul>
             <li><a href="home.php">Home</a></li>
             <li><a href="profile.php" >Profile</a></li>
-            <li><a href="" >Follower</a></li>            
-            <li><a href="" >Following</a></li>  
-            <li><a href="" >About Us</a></li> 
-            <li><a href="" >Contact Us</a></li>
+            <li><a href="follower.php" >Follower</a></li>            
+            <li><a href="following.php" >Following</a></li>  
+            <li><a href="aboutus.php" >About Us</a></li> 
+            
             <li><a href="logout.php" >Logout</a></li>  
    <!--<li><a href="registration.php" >Register</a></li> -->                     
         </ul> 
@@ -111,82 +67,76 @@ $conn= odbc_connect('lwosdb','lwos','qaium29');
   		 <div class="column_two_section">
   		    <br>
 
+<table border="1" width = "100%" style="color: white;">
+      <tr>
+        <td height="50" colspan = "2" align="center">
+          <b>PERSON PROFILE</b>
+        </td>
+      </tr>
 
-			<h1><center><?php echo $jsn[$i]['USER_NAME'];?>'s Profile</center></h1>
-			<p>
-				<tr>
-	                    <td><p> Profile Picture : &nbsp &nbsp
-	                    <?php //echo $jsn[$i]['PRO_PIC'];  ?>
-	                    <img width="100px" height="100px" src="<?php echo $jsn[$i]['PRO_PIC'];  ?>">
-	                     </p> </td>
-	           </tr>
-	           <br>
-				<tr>
-	                    <td><p>  Name :  &nbsp &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp
-	                    <?php echo $jsn[$i]['FULL_NAME'];  ?>
-	                     </p> </td>
-	           </tr>
-	           <br>
-	           <tr>
-	                    <td><p>  User Name : &nbsp  &nbsp&nbsp &nbsp
+      <tr>
+        <td>Photo</td>
+        <td>
+          <img width="100px" height="100px" src="<?php echo $jsn[$i]['PRO_PIC'];  ?>">
+        </td>
+      </tr>
+      <tr>
+        <td>Name</td>
+        <td>
+           <?php echo $jsn[$i]['FULL_NAME'];  ?>
+        </td>
+      </tr>
+      <tr>
+        <td>UserName</td>
+        <td>
+           <?php echo $jsn[$i]['USER_NAME'];  ?>
+        </td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td>
+           <?php echo $jsn[$i]['EMAIL'];  ?>
+        </td>
+      </tr>
+      <tr>
+        <td>Mobile </td>
+        <td>
+          <?php echo $jsn[$i]['MOBILE'];  ?>
+        </td>
+      </tr>
+      <tr>
+        <td>DOB</td>
+        <td>
+           <?php echo $jsn[$i]['DOB'];  ?>
+        </td>
+      </tr>
+      <tr>
+        <td>Gender</td>
+        <td>
+           <?php echo $jsn[$i]['GENDER'];  ?>
+        </td>
+      </tr>
+      <tr>
+        <td>Address</td>
+        <td>
+          <?php echo $jsn[$i]['ADDRESS'];  ?>
+        </td>
+      </tr>
+      <tr>
+        <td>User ID</td>
+        <td>
+          <?php echo  $user_id=$jsn[$i]['USER_ID'];  ?>
+        </td>
+      </tr>
+      <tr>
+        <td colspan = "2" align="center">
+          
+        </td>
+      </tr>
+        </table> 
 
-	                    <?php echo $jsn[$i]['USER_NAME'];  ?>
-	                     </p> </td>
-	           </tr>
-	           <br>
-	            <tr>
-	                    <td><p>  Email Address :&nbsp &nbsp
-	                    <?php echo $jsn[$i]['EMAIL'];  ?>
-	                     </p> </td>
-	           </tr>
-	           <br>
-	           <tr>
-	                    <td><p>  Mobile Number :&nbsp 
-	                    <?php echo $jsn[$i]['MOBILE'];  ?>
-	                     </p> </td>
-	           </tr>
-	           <br>
-	           <tr>
-	                    <td><p>  Date of Birth : &nbsp &nbsp
-	                    <?php echo $jsn[$i]['DOB'];  ?>
-	                     </p> </td>
-	           </tr>
-	           <br>
-	           <tr>
-	                    <td><p>Gender : &nbsp &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp 
-	                    <?php echo $jsn[$i]['GENDER'];  ?>
-	                     </p> </td>
-	           </tr>
-	           <br>
-	           <tr>
-	                    <td><p>Address : &nbsp &nbsp&nbsp &nbsp&nbsp &nbsp
-	                    <?php echo $jsn[$i]['ADDRESS'];  ?>
-	                     </p> </td>
-	           </tr>
-	           <br>
-	           <tr>
-	                    <td><p>Country : &nbsp &nbsp&nbsp &nbsp&nbsp &nbsp
-	                    <?php echo $jsn[$i]['COUNTRY'];  ?>
-	                     </p> </td>
-	           </tr>
-	           <br>
-	           <tr>
-	                    <td><p>State : &nbsp &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp
-	                    <?php echo $jsn[$i]['CITY'];  ?>
-	                     </p> </td>
-	           </tr>
-	           <br>
-	           <tr>
-	                    <td><p>User Number : &nbsp 
-	                    <?php echo $jsn[$i]['USER_ID'];  
-
-	                    $user_id=$jsn[$i]['USER_ID'];  ?>
-	                     </p> </td>
-	           </tr>
-	           <br>
-           </p>
-
-           <br><br>               
+  <br>
+  <br>              
        </div>
 
 <!-- end of Profile view -->

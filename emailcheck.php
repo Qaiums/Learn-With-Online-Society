@@ -3,29 +3,45 @@
 <?php
 $conn= odbc_connect('lwosdb','lwos','1234');
 
+$email=$_GET['email'];
+
 	if (!$conn)
 	{
 		die ('Error connection !!!');
 	}
     
 
-   $sql = "SELECT count(*) AS C FROM USERINFO WHERE  email = '".$_GET['email']."'";
+   $sql = "SELECT EMAIL FROM USERINFO WHERE  email = '".$_GET['email']."'";
 	$result=odbc_exec($conn, $sql);
 	$row =odbc_fetch_array($result);
-	if ($row['C'] > 0)
+	if ($row['EMAIL'] != "")
 		
 	{
-		echo "<p>".$row['C']."</p>";
-		echo "<p>email address is available. please use another email.<p>";
-		return false; 
+		
+		echo "<p>email address is not available. please use another email.<p>";
+		//return false; 
 
 	}
 
 	else 
 		{
-			echo "<p>Nothing</p>";
+     if (!preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/", $email)) {
+			echo "<p>UniqInvalidalid</p>";
+
+			} else {
+			echo "<span>Valid</span>";
+			}
+
+			
 		}
 		
 	  odbc_close($conn);
 
 ?>
+
+
+
+
+
+
+

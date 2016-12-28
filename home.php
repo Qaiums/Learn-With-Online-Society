@@ -73,8 +73,8 @@
         <ul>
             <li><a href="home.php">Home</a></li>
             <li><a href="profile.php" >Profile</a></li>
-            <li><a href="" >Follower</a></li>            
-            <li><a href="" >Following</a></li>  
+            <li><a href="follower.php" >Follower</a></li>            
+            <li><a href="following.php" >Following</a></li>  
             <li><a href="" >About Us</a></li> 
             <li><a href="" >Contact Us</a></li>
             <li><a href="logout.php" >Logout</a></li>  
@@ -292,7 +292,7 @@
 										 	  <input type="hidden" name="user_name_post" value="<?php echo $row['USER_NAME'];?>">
 
 							<pre><input name="photoup" class="fileupload" type="file" value="photo"> <select class="button" name="categories" >
-					        <option value='' >Category</option><option value='Oracle' >Oracle</option><option value='PHP' >PHP</option><option value='Java' >Java</option><option value='C#' >C#</option><option value='C++' >C++</option><option value='Other' >Other</option></select> <input class="button" type="submit" value="Post"></pre>	
+					        <option value='' >Category</option><option value='Oracle' >Oracle</option><option value='PHP' >PHP</option><option value='Java' >Java</option><option value='C#' >C#</option><option value='C++' >C++</option><option value='Other' selected="selected" >Other</option></select>     <input class="button" type="submit" value="Post"></pre>	
 					                       
 					                        									
 					                        

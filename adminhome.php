@@ -47,12 +47,12 @@
         <ul>
             <li><a href="adminhome.php">Home</a></li>
             <li><a href="profile.php" >Profile</a></li>
-            <li><a href="" >Follower</a></li>            
-            <li><a href="" >Following</a></li>  
+            <li><a href="follower.php" >Follower</a></li>            
+            <li><a href="following.php" >Following</a></li>  
             <li><a href="" >About Us</a></li> 
-            <li><a href="" >Contact Us</a></li>
+          
             <li><a href="logout.php" >Logout</a></li>  
-            <li><a href="#" >Creat Modarator</a></li>  
+             
                                 
         </ul> 
     </div>
@@ -110,7 +110,7 @@
 									  <textarea name="ppost">write your post...</textarea> 
 
 										<pre><input name="photoup" class="fileupload" type="file" value="photo"> <select class="button" name="categories" value="" >
-				                        <option value='' >Category</option><option value='Oracle' >Oracle</option><option value='PHP' >PHP</option><option value='Java' >Java</option><option value='C#' >C#</option><option value='C++' >C++</option><option value='Other' >Other</option></select> <input class="button" type="submit" value="Post"></pre>	
+				                        <option value='' >Category</option><option value='Oracle' >Oracle</option><option value='PHP' >PHP</option><option value='Java' >Java</option><option value='C#' >C#</option><option value='C++' >C++</option><option value='Other' selected="selected" >Other</option></select> <input class="button" type="submit" value="Post"></pre>	
 				                        
 				                       
 							</form>
@@ -224,7 +224,7 @@
 										 <input type="submit"  name="" value="<?php echo $JsnCom[$j]['USER_NAME_COM'] ;?>"><?php echo "<p> {$JsnCom[$j]['COMMENT_CONTENT']}</p>";
 										     echo "<p> {$JsnCom[$j]['TIME_DATE']}</p>";?>
 
-
+<!--
 			  <button type="button" name="comdelete" class="button" onclick="comment_delete(this.value)" value="<?php echo $JsnCom[$j]['COMMENT_ID']   ?>" >Delete</button> 
 
 												<script type="text/javascript">
@@ -264,7 +264,7 @@
 												</script>
 
 
-
+-->
 
 
 
@@ -324,7 +324,7 @@
 										 	  <input type="hidden" name="user_name_post" value="<?php echo $row['USER_NAME'];?>">
 
 							<pre><input name="photoup" class="fileupload" type="file" value="photo"> <select class="button" name="categories" >
-					        <option value='' >Category</option><option value='Oracle' >Oracle</option><option value='PHP' >PHP</option><option value='Java' >Java</option><option value='C#' >C#</option><option value='C++' >C++</option><option value='Other' >Other</option></select> <input class="button" type="submit" value="Post"></pre>	
+					        <option value='' >Category</option><option value='Oracle' >Oracle</option><option value='PHP' >PHP</option><option value='Java' >Java</option><option value='C#' >C#</option><option value='C++' >C++</option><option value='Other' selected="selected" >Other</option></select> <input class="button" type="submit" value="Post"></pre>	
 					                       
 					                        									
 					                        
@@ -430,14 +430,16 @@
 											for($j =sizeof($JsnCom)-1;$j>=0;$j--) {
 
 												?>
-									<div id="commentThree" > <form action="public_profile.php" method="post" >
+
+
+									 <form id="commentThree" action="public_profile.php" method="post" >
 
 												 <input hidden="com_user_id" name="com_users_id" value="<?php echo $JsnCom[$j]['COM_USER_ID'] ;?>">
 
-												 <input type="submit"  name="" value="<?php echo $JsnCom[$j]['USER_NAME_COM'] ;?>"> <?php echo "<p> {$JsnCom[$j]['COMMENT_CONTENT']}</p>";
+											 <input type="submit"  name="" value="<?php echo $JsnCom[$j]['USER_NAME_COM'] ;?>"> <?php echo "<p> {$JsnCom[$j]['COMMENT_CONTENT']}</p>";
 												
 														  echo "<p> {$JsnCom[$j]['TIME_DATE']}</p>";
-														  echo"<br>"; ?>
+														   ?>
 
 
 					 <button type="button" name="comdelete" class="button" onclick="comment_delete(this.value)" value="<?php echo $JsnCom[$j]['COMMENT_ID']   ?>" >Delete</button> 
@@ -456,12 +458,6 @@
 
 												</script>
 
-
-
-
-
-
-
 			<button type="button" name="comedit" class="button" onclick="comment_edit(this.value)" value="<?php echo $JsnCom[$j]['COMMENT_ID']   ?>" >Edit</button> 
 
 												<script type="text/javascript">
@@ -478,10 +474,7 @@
 
 												</script>
 
-
-
-
-												 </form> </div>	
+												 </form>
 
 												<?php
 												

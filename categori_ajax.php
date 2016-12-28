@@ -4,7 +4,7 @@ session_start();
 	require("oracle_to_json.php");	
 
 	$category=$_GET['category'];							
-		$jsonDataCata= getJSONFromDB("SELECT * FROM POST_TAB WHERE CATEGORIES='".$category."'");
+		$jsonDataCata= getJSONFromDB("SELECT * FROM POST_TAB WHERE CATEGORIES='".$category."'and POST_TYPE='public'");
 											//$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE EMAIL = 'qaium69@yahoo.com' AND PASS = '123'");
 											//echo $jsonData;
 			$jsnCata=json_decode($jsonDataCata,true);

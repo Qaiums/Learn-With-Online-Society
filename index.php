@@ -17,7 +17,7 @@
     <div id="menu_section">
         <ul>
             <li><a href="home.php">Home</a></li> 
-            <li><a href="" >About Us</a></li> 
+            <li><a href="aboutus.php" >About Us</a></li> 
             <li><a href="" >Contact Us</a></li>
             <li><a href="login.php" >Login</a></li>  
             <li><a href="registration.php" >Register</a></li>                       
@@ -141,43 +141,7 @@
 
 
 
-              <button type="button" name="comdelete" class="button" onclick="comment_delete(this.value)" value="<?php echo $JsnCom[$j]['COMMENT_ID']   ?>" >Delete</button> 
-
-                                                <script type="text/javascript">
-                                                                        function comment_delete(comdelete) {
-                                                                       var xhttp = new XMLHttpRequest();
-                                                                       xhttp.onreadystatechange = function() {
-                                                                       if (this.readyState == 4 && this.status == 200) {
-                                                                        document.getElementById("comment").innerHTML = this.responseText;
-                                                                       }
-                                                                      };
-                                                                      xhttp.open("GET", "comment_delete_post.php?comdelete="+comdelete, true);
-                                                                      xhttp.send();
-                                                                      }
-
-                                                </script>
-
-
-
-
-
-
-
-            <button type="button" name="comedit" class="button" onclick="comment_edit(this.value)" value="<?php echo $JsnCom[$j]['COMMENT_ID']   ?>" >Edit</button> 
-
-                                                <script type="text/javascript">
-                                                                        function comment_edit(comedit) {
-                                                                       var xhttp = new XMLHttpRequest();
-                                                                       xhttp.onreadystatechange = function() {
-                                                                       if (this.readyState == 4 && this.status == 200) {
-                                                                        document.getElementById("comment").innerHTML = this.responseText;
-                                                                       }
-                                                                      };
-                                                                      xhttp.open("GET", "comment_edit_post.php?comedit="+comedit, true);
-                                                                      xhttp.send();
-                                                                      }
-
-                                                </script>
+             
 
 
 
@@ -265,7 +229,7 @@
 
                         <div class="column_three_section">
 
-                                                 <form action="public_profile.php" method="post" >
+                                                 <form action="login.php" method="post" >
 
                                                  <input hidden="com_user_id" name="com_users_id" value="<?php echo $jsn[$i]['USER_ID'] ;?>">
 
@@ -313,7 +277,7 @@
                                             for($j =sizeof($JsnCom)-1;$j>=0;$j--) {
 
                                                 ?>
-                            <div id="commentThree" >  <form action="public_profile.php" method="post" >
+                            <div id="commentThree" >  <form action="login.php" method="post" >
 
                                                  <input hidden="com_user_id" name="com_users_id" value="<?php echo $JsnCom[$j]['COM_USER_ID'] ;?>">
 
@@ -323,44 +287,7 @@
                                                            ?>
 
 
-              <button type="button" name="comdelete" class="button" onclick="comment_delete(this.value)" value="<?php echo $JsnCom[$j]['COMMENT_ID']   ?>" >Delete</button> 
-
-                                                <script type="text/javascript">
-                                                                        function comment_delete(comdelete) {
-                                                                       var xhttp = new XMLHttpRequest();
-                                                                       xhttp.onreadystatechange = function() {
-                                                                       if (this.readyState == 4 && this.status == 200) {
-                                                                        document.getElementById("commentThree").innerHTML = this.responseText;
-                                                                       }
-                                                                      };
-                                                                      xhttp.open("GET", "comment_delete.php?comdelete="+comdelete, true);
-                                                                      xhttp.send();
-                                                                      }
-
-                                                </script>
-
-
-
-
-
-
-
-            <button type="button" name="comedit" class="button" onclick="comment_edit(this.value)" value="<?php echo $JsnCom[$j]['COMMENT_ID']   ?>" >Edit</button> 
-
-                                                <script type="text/javascript">
-                                                                        function comment_edit(comedit) {
-                                                                       var xhttp = new XMLHttpRequest();
-                                                                       xhttp.onreadystatechange = function() {
-                                                                       if (this.readyState == 4 && this.status == 200) {
-                                                                        document.getElementById("commentThree").innerHTML = this.responseText;
-                                                                       }
-                                                                      };
-                                                                      xhttp.open("GET", "comment_edit.php?comedit="+comedit, true);
-                                                                      xhttp.send();
-                                                                      }
-
-                                                </script>
-
+           
 
 
                                                  </form> </div>
@@ -410,12 +337,6 @@
 
 <!-- Java script-->
 
-<script type="text/javascript">
-	function login()
-	{
-		document.getElementById("posts").innerHTML=
-	}
-</script>
 
 
 </body>
