@@ -5,11 +5,10 @@ session_start();
 
 	$category=$_GET['category'];							
 		$jsonDataCata= getJSONFromDB("SELECT * FROM POST_TAB WHERE CATEGORIES='".$category."' and POST_TYPE='public'");
-											//$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE EMAIL = 'qaium69@yahoo.com' AND PASS = '123'");
-											//echo $jsonData;
+											/
 			$jsnCata=json_decode($jsonDataCata,true);
 
-											//echo sizeof($jsn);
+											
 
 
 			?>
@@ -50,14 +49,13 @@ session_start();
 //  commment , commentor, comment date database theek fech kore ante hobe. ebong dkehatee hobe . 
 
 	$JsonCommData= getJSONFromDB("SELECT * FROM COMMENT_TAB COM INNER JOIN POST_TAB I ON COM.POST_ID=I.POST_ID WHERE I.POST_ID = ".$pid);
-											//$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE EMAIL = 'qaium69@yahoo.com' AND PASS = '123'");
-											//echo $jsonData;
-			//echo $JsonCommData;
+										
+			
 											$JsnCom=json_decode($JsonCommData,true);
 
-										//echo $JsnCom ;
+									
 
-											for($j =sizeof($JsnCom)-1;$j>=0;$j--) {
+							for($j =sizeof($JsnCom)-1;$j>=0;$j--) {
 
 										?> <form action="public_profile.php" method="post" >
 
@@ -73,12 +71,9 @@ session_start();
 											
 											} 
 
-								?>
-									</p></div>
-								<?php			   
-						}
-
-
-
+										?>
+											</p></div>
+										<?php			   
+								}
           
-  ?>
+ 					 ?>

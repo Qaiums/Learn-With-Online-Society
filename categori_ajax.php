@@ -5,12 +5,10 @@ session_start();
 
 	$category=$_GET['category'];							
 		$jsonDataCata= getJSONFromDB("SELECT * FROM POST_TAB WHERE CATEGORIES='".$category."'and POST_TYPE='public'");
-											//$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE EMAIL = 'qaium69@yahoo.com' AND PASS = '123'");
-											//echo $jsonData;
+											
 			$jsnCata=json_decode($jsonDataCata,true);
 
-											//echo sizeof($jsn);
-
+											
 
 			?>
 			<div class="post_writing">
@@ -38,7 +36,7 @@ session_start();
 
 						 		<div class="column_two_section"><p>
 						 	
-                 <p class="p"> <?php echo $jsnCata[$i]['POST_HEADLINE']."<br>"; ?>  </p>
+                 					<p class="p"> <?php echo $jsnCata[$i]['POST_HEADLINE']."<br>"; ?>  </p>
              
 					 
 	<button type="button" name="edit" class="button" onclick="post_edit(this.value)" value="<?php echo $pid ?>" >Edit</button> 
@@ -59,7 +57,7 @@ session_start();
 <!--Delete button -->												
 
 												
-												<button type="button" name="deletePost" class="button" onclick="delete_post(this.value)" value="<?php echo $pid ?>" >Delete</button>
+  <button type="button" name="deletePost" class="button" onclick="delete_post(this.value)" value="<?php echo $pid ?>" >Delete</button>
 												<script type="text/javascript">
 																    	function delete_post(deletePost) {
 																	  var xhttp = new XMLHttpRequest();
@@ -74,8 +72,8 @@ session_start();
 
 												</script>
 
-											<p>
-										       <?php	
+											    <p>
+										        <?php	
 												echo "Posted at: ";
 												echo $jsnCata[$i]['DATE_TIME']."<br>";
 												echo $jsnCata[$i]['POST']."<br>"; ?> </p>
@@ -93,32 +91,29 @@ session_start();
 //  commment , commentor, comment date database theek fech kore ante hobe. ebong dkehatee hobe . 
 
 	$JsonCommData= getJSONFromDB("SELECT * FROM COMMENT_TAB COM INNER JOIN POST_TAB I ON COM.POST_ID=I.POST_ID WHERE I.POST_ID = ".$pid);
-											//$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE EMAIL = 'qaium69@yahoo.com' AND PASS = '123'");
-											//echo $jsonData;
-			//echo $JsonCommData;
-											$JsnCom=json_decode($JsonCommData,true);
+					
+												$JsnCom=json_decode($JsonCommData,true);
 
-										//echo $JsnCom ;
 
-											for($j =sizeof($JsnCom)-1;$j>=0;$j--) {
+												for($j =sizeof($JsnCom)-1;$j>=0;$j--) {
 
-										?> <form action="public_profile.php" method="post" >
+												?> <form action="public_profile.php" method="post" >
 
-										 <input hidden="com_user_id" name="com_users_id" value="<?php echo $JsnCom[$j]['COM_USER_ID'] ;?>">
+												 <input hidden="com_user_id" name="com_users_id" value="<?php echo $JsnCom[$j]['COM_USER_ID'] ;?>">
 
-										 <input type="submit"  name="" value="<?php echo $JsnCom[$j]['USER_NAME_COM'] ;?>">
-										 <?php 	echo "<p> {$JsnCom[$j]['COMMENT_CONTENT']}</p>";	
-												echo "<p> {$JsnCom[$j]['TIME_DATE']}</p>";
-												echo"<br>";?>
+												 <input type="submit"  name="" value="<?php echo $JsnCom[$j]['USER_NAME_COM'] ;?>">
+												 <?php 	echo "<p> {$JsnCom[$j]['COMMENT_CONTENT']}</p>";	
+														echo "<p> {$JsnCom[$j]['TIME_DATE']}</p>";
+														echo"<br>";?>
 
-										 </form>
-										 <?php 
-											
-											} 
+												 </form>
+												 <?php 
+													
+													} 
 
-								?>
-									</p></div>
-								<?php			   
+										?>
+											</p></div>
+										<?php			   
 						}
 
 
