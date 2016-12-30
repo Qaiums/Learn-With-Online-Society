@@ -47,16 +47,37 @@
 <div id="content">
 
 	<div id="content_column_one">
-    	<div class="column_one_section">
-        	<p>Categories<br><br><br>
-        	<input type="radio" name="oracle" value=" "> Oracle <br><br>
-        	<input type="radio" name="php" value=" "> PHP <br><br>
-        	<input type="radio" name="java" value=" "> Java <br><br>
-        	<input type="radio" name="c#" value=" "> C# <br><br>
-        	<input type="radio" name="Cplus" value=" "> C++<br><br>
-        	<input type="radio" name="other" value=" "> Other </p> 
-                
-         </div>
+    	<div id="content_column_one">
+      <div class="column_one_section">
+          <div style="font-size:20px;font-weight: bold;color:white;">Categories</div><br><br>
+         <p>
+          <input id="oracle" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "Oracle" ?>"> Oracle <br><br>
+          <input id="php" type="radio" onchange="loadDoc(this.value)" name="category" value="PHP"> PHP <br><br>
+          <input id="java" type="radio" onchange="loadDoc(this.value)" name="category" value="Java"> Java <br><br>
+          <input id="Csharp" type="radio" onchange="loadDoc(this.value)" name="category" value="Csharp"> C# <br><br>  
+          <input id="Csharp" type="radio" onchange="loadDoc(this.value)" name="category" value="Cplus"> C++<br><br>
+          <input id="other" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "Other" ?> "> Other </p> 
+           
+             
+        </div>
+
+      
+                  <script>
+             function loadDoc(category) {
+            
+             var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+              if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("content_column_two").innerHTML = this.responseText;
+              }
+            };
+             xhttp.open("GET", "categori_ajax.php?category="+category, true);
+             xhttp.send();
+             }
+              </script>
+        <div class="cleaner_with_divider">&nbsp;</div>
+ 
+    </div>
     <div class="cleaner_with_divider">&nbsp;</div>
  
     </div>
@@ -155,7 +176,7 @@
 
 											//echo sizeof($jsn);
 
-													for($k=sizeof($jsn1)-1;$k>0;$k--) {
+													for($k=sizeof($jsn1)-1;$k>=0;$k--) {
 
 											    $pid=$jsn1[$k]['POST_ID'];
 
@@ -175,40 +196,8 @@
 												echo "<p> {$jsn1[$k]['DATE_TIME']} 
 												</p>"; ?>
 
-<!--Edit button -->
 
-												<button type="button" name="edit" class="button" onclick="edit(this.value)" value="<?php echo $pid ?>" >Edit</button> 
-												<script type="text/javascript">
-																    	function edit(edit) {
-																	  var xhttp = new XMLHttpRequest();
-																	  xhttp.onreadystatechange = function() {
-					 												   if (this.readyState == 4 && this.status == 200) {
-					  												    document.getElementById("content_column_two").innerHTML = this.responseText;
-					  												  }
-					 												 };
-																	  xhttp.open("GET", "post_edit_ajax.php?edit="+edit, true);
-																	  xhttp.send();
-																	}
 
-												</script>
-
-<!--Delete button -->												
-
-												
-												<button type="button" name="deleteP" class="button" onclick="delete_post(this.value)" value="<?php echo $pid ?>" >Delete</button>
-												<script type="text/javascript">
-																    	function delete_post(deleteP) {
-																	  var xhttp = new XMLHttpRequest();
-																	  xhttp.onreadystatechange = function() {
-					 												   if (this.readyState == 4 && this.status == 200) {
-					  												    document.getElementById("content_column_two").innerHTML = this.responseText;
-					  												  }
-					 												 };
-																	  xhttp.open("GET", "delete_post.php?deleteP="+deleteP, true);
-																	  xhttp.send();
-																	}
-
-												</script>
 
 
 
@@ -242,19 +231,26 @@
 											for($j =sizeof($JsnCom)-1;$j>=0;$j--) {
 
 												?>
-												<a href="profile.php" style="color:blue;"> <?php echo $JsnCom[$j]['USER_NAME_COM'] ;?> </a>
-												<?php 
+                         <form action="public_profile.php" method="post" >
 
-												//echo "<p> {$JsnCom[$j]['USER_NAME_COM']}</p>"; 
-												echo "<p> {$JsnCom[$j]['COMMENT_CONTENT']}</p>";
-												
-												echo "<p> {$JsnCom[$j]['TIME_DATE']}</p>";
-												echo"<br>";
-											} 
-										//	$JsonCommData = null;
-									//		$JsnCom = null;
+                     <input hidden="com_user_id" name="com_users_id" value="<?php echo $JsnCom[$j]['COM_USER_ID'] ;?>">
 
-												 ?>
+                     <input type="submit"  name="" value="<?php echo $JsnCom[$j]['USER_NAME_COM'] ;?>">
+                        <?php 
+
+                        //echo "<p> {$JsnCom[$j]['USER_NAME_COM']}</p>"; 
+                        echo "<p> {$JsnCom[$j]['COMMENT_CONTENT']}</p>";
+                        
+                        echo "<p> {$JsnCom[$j]['TIME_DATE']}</p>";
+                        echo"<br>";
+                        echo"<br>";
+                      } 
+                    //  $JsonCommData = null;
+                  //    $JsnCom = null;
+
+                         ?>
+
+                      </form>
 
 												</div>
 		

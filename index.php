@@ -30,13 +30,13 @@
 	<div id="content_column_one">
         <div class="column_one_section">
             <div style="font-size:20px;font-weight: bold;color:white;">Categories</div><br><br>
-         <p>
+        <p>
             <input id="oracle" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "Oracle" ?>"> Oracle <br><br>
-            <input id="php" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "PHP" ?> "> PHP <br><br>
-            <input id="java" type="radio" onchange="loadDoc(this.value)" name="category" value=" <?php echo "Java" ?> "> Java <br><br>
-            <input id="c#" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "C#" ?> "> C# <br><br>
-            <input id="c++" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "c++" ?> "> C++<br><br>
-            <input id="other" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "Other" ?> "> Other </p> 
+            <input id="php" type="radio" onchange="loadDoc(this.value)" name="category" value="PHP"> PHP <br><br>
+            <input id="java" type="radio" onchange="loadDoc(this.value)" name="category" value="Java"> Java <br><br>
+            <input id="Csharp" type="radio" onchange="loadDoc(this.value)" name="category" value="Csharp"> C# <br><br>  
+            <input id="Csharp" type="radio" onchange="loadDoc(this.value)" name="category" value="Cplus"> C++<br><br>
+            <input id="other" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "Other" ?> "> Other </p>
            
              
         </div>
@@ -76,7 +76,7 @@
 
                                             //echo sizeof($jsn);
 
-                                                    for($i=sizeof($jsn)-1;$i>0;$i--) {
+                                                    for($i=sizeof($jsn)-1;$i>=0;$i--) {
 
                                                 $pid=$jsn[$i]['POST_ID'];   // Taking POST_ID on variable $pid 
 
@@ -193,8 +193,8 @@
 
                                               <input type="hidden" name="user_name_post" value="<?php echo $row['USER_NAME'];?>">
 
-                            <pre><input name="photoup" class="fileupload" type="file" value="photo"> <select class="button" name="categories" >
-                            <option value='' >Category</option><option value='Oracle' >Oracle</option><option value='PHP' >PHP</option><option value='Java' >Java</option><option value='C#' >C#</option><option value='C++' >C++</option><option value='Other' >Other</option></select> <input class="button" type="submit" value="Post"></pre>    
+                            <pre><input name="photoup" class="fileupload" type="file" value="photo"> <select class="button" name="categories" value="" >
+                                        <option value='' >Category</option><option value='Oracle' >Oracle</option><option value='PHP' >PHP</option><option value='java' >Java</option><option value='Csharp' >C#</option><option value='Cplus' >C++</option><option value='Other' selected="selected" >Other</option></select> <input class="button" type="submit" value="Post"></pre>   
                                            
                                                                                 
                                             
@@ -213,7 +213,7 @@
 
                                             //echo sizeof($jsn);
 
-                                                    for($i=sizeof($jsn)-1;$i>0;$i--) {
+                                                    for($i=sizeof($jsn)-1;$i>=0;$i--) {
 
                                                 $pid=$jsn[$i]['POST_ID'];
 

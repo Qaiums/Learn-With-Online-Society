@@ -30,8 +30,8 @@ $conn= odbc_connect('lwosdb','lwos','qaium29');
 										
 									  <textarea name="ppost">write your post...</textarea> 
 
-										<pre><input name="photoup" class="fileupload" type="file" value="photo"> <select class="button" name="categories" >
-				                        <option value='' >Category</option><option value='Oracle' >Oracle</option><option value='PHP' >PHP</option><option value='Java' >Java</option><option value='C#' >C#</option><option value='C++' >C++</option><option value='Other' >Other</option></select> <input class="button" type="submit" value="Post"></pre>	
+										<pre><input name="photoup" class="fileupload" type="file" value="photo"> <select class="button" name="categories" value="" >
+				                        <option value='' >Category</option><option value='Oracle' >Oracle</option><option value='PHP' >PHP</option><option value='java' >Java</option><option value='Csharp' >C#</option><option value='Cplus' >C++</option><option value='Other' selected="selected" >Other</option></select> <input class="button" type="submit" value="Post"></pre>	
 				                        
 				                       
 							</form>
@@ -48,7 +48,7 @@ $conn= odbc_connect('lwosdb','lwos','qaium29');
 
 											//echo sizeof($jsn);
 
-													for($i=sizeof($jsn)-1;$i>0;$i--) {
+													for($i=sizeof($jsn)-1;$i>=0;$i--) {
 
 											    $pid=$jsn[$i]['POST_ID'];
 

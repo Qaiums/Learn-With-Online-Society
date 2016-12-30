@@ -36,13 +36,13 @@
 	<div id="content_column_one">
         <div class="column_one_section">
             <div style="font-size:20px;font-weight: bold;color:white;">Categories</div><br><br>
-         <p>
-            <input id="oracle" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "Oracle" ?>"> Oracle <br><br>
-            <input id="php" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "PHP" ?> "> PHP <br><br>
-            <input id="java" type="radio" onchange="loadDoc(this.value)" name="category" value=" <?php echo "Java" ?> "> Java <br><br>
-            <input id="c#" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "C#" ?> "> C# <br><br>
-            <input id="c++" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "c++" ?> "> C++<br><br>
-            <input id="other" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "Other" ?> "> Other </p> 
+        <p>
+          <input id="oracle" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "Oracle" ?>"> Oracle <br><br>
+          <input id="php" type="radio" onchange="loadDoc(this.value)" name="category" value="PHP"> PHP <br><br>
+          <input id="java" type="radio" onchange="loadDoc(this.value)" name="category" value="Java"> Java <br><br>
+          <input id="Csharp" type="radio" onchange="loadDoc(this.value)" name="category" value="Csharp"> C# <br><br>  
+          <input id="Csharp" type="radio" onchange="loadDoc(this.value)" name="category" value="Cplus"> C++<br><br>
+          <input id="other" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "Other" ?> "> Other </p>
            
              
         </div>
@@ -83,14 +83,28 @@
                        echo $_SESSION['user_id'] ;
                          for ($i=0; $i<sizeof($jsn);$i++) {
 
-                         
+                        
 
-                          echo " <br>";
-
-                          echo "<p> $i </p>";
-                          echo " <p> / </p>";
+                          
                         $pid=$jsn[$i]['USER_NAME'];
-                         echo "<p>$pid </p>";
+                        
+                         ?>
+
+
+                        <form action="public_profile.php" method="post" >
+
+                        <input hidden="com_user_id" name="com_users_id" value="<?php echo $jsn[$i]['USER_ID']; ;?>">
+
+                        <input type="submit"  name="" value="<?php echo "$i";  echo "/ ";  echo $pid ;  ?>">
+
+   
+                     
+                     </form> 
+
+
+  <?php
+
+
 
 
                         }

@@ -52,9 +52,13 @@
 <body>
 <div id="header_panel">
 	<div id="header_section">
-    	<div id="title_section">Learn With Online Society</div><?php 
+    	<div id="title_section">Learn With Online Society</div>
+
+    	     <?php 
 			 $stid = odbc_exec($conn, "select count(*) c from NOTIFICATION where FOLLOWER_ID='".$_SESSION ['user_id']."' and IS_NEW_FLAG=1 ");
 			 $res= odbc_fetch_array($stid);
+
+			 if ($res['C'][0] >0) {
 
 			 ?>
 
@@ -64,6 +68,8 @@
             	<input  name="notification" value="<?php echo $_SESSION ['user_id'] ; ?>" hidden="notification">
             	<input class="button"  type="submit" name="submit" value="<?php echo "You have ", $res['C'][0] ," Notification" ;?>">
             </form>
+
+            <?php } ?>
             
       <div id="tagline">Succesfully Login. Welcome <?php echo $row['USER_NAME']; ?>  </div>
     </div>
@@ -95,11 +101,11 @@
         	<div style="font-size:20px;font-weight: bold;color:white;">Categories</div><br><br>
          <p>
          	<input id="oracle" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "Oracle" ?>"> Oracle <br><br>
-        	<input id="php" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "PHP" ?> "> PHP <br><br>
-        	<input id="java" type="radio" onchange="loadDoc(this.value)" name="category" value=" <?php echo "Java" ?> "> Java <br><br>
-        	<input id="c#" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "C#" ?> "> C# <br><br>
-        	<input id="c++" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "c++" ?> "> C++<br><br>
-        	<input id="other" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "Other" ?> "> Other </p> 
+        	<input id="php" type="radio" onchange="loadDoc(this.value)" name="category" value="PHP"> PHP <br><br>
+        	<input id="java" type="radio" onchange="loadDoc(this.value)" name="category" value="Java"> Java <br><br>
+        	<input id="Csharp" type="radio" onchange="loadDoc(this.value)" name="category" value="Csharp"> C# <br><br>  
+        	<input id="Csharp" type="radio" onchange="loadDoc(this.value)" name="category" value="Cplus"> C++<br><br>
+        	<input id="other" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "Other" ?> "> Other </p>
            
              
         </div>
@@ -139,7 +145,7 @@
 
 												//echo sizeof($jsn);
 
-										for($i=sizeof($jsn)-1;$i>0;$i--) {
+										for($i=sizeof($jsn)-1;$i>=0;$i--) {
 
 											    $pid=$jsn[$i]['POST_ID'];   // Taking POST_ID on variable $pid 
 
@@ -204,47 +210,6 @@
 
 
 
-		      <button type="button" name="comdelete" class="button" onclick="comment_delete(this.value)" value="<?php echo $JsnCom[$j]['COMMENT_ID']   ?>" >Delete</button> 
-
-												<script type="text/javascript">
-																    	function comment_delete(comdelete) {
-																	   var xhttp = new XMLHttpRequest();
-																	   xhttp.onreadystatechange = function() {
-					 												   if (this.readyState == 4 && this.status == 200) {
-					  												    document.getElementById("comment").innerHTML = this.responseText;
-					  												   }
-					 												  };
-																	  xhttp.open("GET", "comment_delete_post.php?comdelete="+comdelete, true);
-																	  xhttp.send();
-																	  }
-
-												</script>
-
-
-
-
-
-
-
-			<button type="button" name="comedit" class="button" onclick="comment_edit(this.value)" value="<?php echo $JsnCom[$j]['COMMENT_ID']   ?>" >Edit</button> 
-
-												<script type="text/javascript">
-																    	function comment_edit(comedit) {
-																	   var xhttp = new XMLHttpRequest();
-																	   xhttp.onreadystatechange = function() {
-					 												   if (this.readyState == 4 && this.status == 200) {
-					  												    document.getElementById("comment").innerHTML = this.responseText;
-					  												   }
-					 												  };
-																	  xhttp.open("GET", "comment_edit_post.php?comedit="+comedit, true);
-																	  xhttp.send();
-																	  }
-
-												</script>
-
-
-
-
 
 										 <?php 
 										
@@ -290,8 +255,8 @@
 
 										 	  <input type="hidden" name="user_name_post" value="<?php echo $row['USER_NAME'];?>">
 
-							<pre><input name="photoup" class="fileupload" type="file" value="photo"> <select class="button" name="categories" >
-					        <option value='' >Category</option><option value='Oracle' >Oracle</option><option value='PHP' >PHP</option><option value='Java' >Java</option><option value='C#' >C#</option><option value='C++' >C++</option><option value='Other' selected="selected" >Other</option></select>     <input class="button" type="submit" value="Post"></pre>	
+							<pre><input name="photoup" class="fileupload" type="file" value="photo"> <select class="button" name="categories" value="" >
+				                        <option value='' >Category</option><option value='Oracle' >Oracle</option><option value='PHP' >PHP</option><option value='java' >Java</option><option value='Csharp' >C#</option><option value='Cplus' >C++</option><option value='Other' selected="selected" >Other</option></select> <input class="button" type="submit" value="Post"></pre>	
 					                       
 					                        									
 					                        
@@ -310,7 +275,7 @@
 
 											//echo sizeof($jsn);
 
-													for($i=sizeof($jsn)-1;$i>0;$i--) {
+													for($i=sizeof($jsn)-1;$i>=0;$i--) {
 
 											    $pid=$jsn[$i]['POST_ID'];
 
@@ -421,7 +386,7 @@
 														   ?>
 
 
-		      <button type="button" name="comdelete" class="button" onclick="comment_delete(this.value)" value="<?php echo $JsnCom[$j]['COMMENT_ID']   ?>" >Delete</button> 
+	<!--	      <button type="button" name="comdelete" class="button" onclick="comment_delete(this.value)" value="<?php echo $JsnCom[$j]['COMMENT_ID']   ?>" >Delete</button> 
 
 												<script type="text/javascript">
 																    	function comment_delete(comdelete) {
@@ -457,7 +422,7 @@
 																	  xhttp.send();
 																	  }
 
-												</script>
+												</script>  -->
 
 
 

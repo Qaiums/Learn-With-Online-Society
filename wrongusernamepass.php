@@ -29,23 +29,36 @@
 <!-- colum 1-->
 <div id="content">
 
-    <div id="content_column_one">
+   <div id="content_column_one">
         <div class="column_one_section">
-            <p>Categories<br><br><br>
-            <input type="radio" name="oracle" value=" "> Oracle <br><br>
-            <input type="radio" name="php" value=" "> PHP <br><br>
-            <input type="radio" name="java" value=" "> Java <br><br>
-            <input type="radio" name="c#" value=" "> C# <br><br>
-            <input type="radio" name="Cplus" value=" "> C++<br><br>
-            <input type="radio" name="other" value=" "> Other </p> 
-                
+            <div style="font-size:20px;font-weight: bold;color:white;">Categories</div><br><br>
+         <p>
+            <input id="oracle" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "Oracle" ?>"> Oracle <br><br>
+            <input id="php" type="radio" onchange="loadDoc(this.value)" name="category" value="PHP"> PHP <br><br>
+            <input id="java" type="radio" onchange="loadDoc(this.value)" name="category" value="Java"> Java <br><br>
+            <input id="Csharp" type="radio" onchange="loadDoc(this.value)" name="category" value="Csharp"> C# <br><br>  
+            <input id="Csharp" type="radio" onchange="loadDoc(this.value)" name="category" value="Cplus"> C++<br><br>
+            <input id="other" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "Other" ?> "> Other </p> 
+           
              
         </div>
-        
+
+      
+                            <script>
+                       function loadDoc(category) {
+                        
+                       var xhttp = new XMLHttpRequest();
+                      xhttp.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                          document.getElementById("content_column_two").innerHTML = this.responseText;
+                        }
+                      };
+                       xhttp.open("GET", "categori_ajax.php?category="+category, true);
+                       xhttp.send();
+                       }
+                            </script>
         <div class="cleaner_with_divider">&nbsp;</div>
-        
-        
-     
+ 
     </div>
 
     <!-- end of column one -->

@@ -37,24 +37,13 @@
 <body>
 <div id="header_panel">
 	<div id="header_section">
+
+	     <div class="notification">  	 
+
+
+
+
     	<div id="title_section">Learn With Online Society</div>
-    	 <?php 
-			 $stid = odbc_exec($conn, "select count(*) c from NOTIFICATION where FOLLOWER_ID='".$_SESSION ['user_id']."' and IS_NEW_FLAG=1 ");
-			 $res= odbc_fetch_array($stid);
-
-			 if ($res['C'][0] >0) {
-
-			 ?>
-
-
-
-            <form action="admin_notification.php" method="post">
-            	<input  name="notification" value="<?php echo $_SESSION ['user_id'] ; ?>" hidden="notification">
-            	<input class="button"  type="submit" name="submit" value="<?php echo "You have ", $res['C'][0] ," Notification" ;?>">
-            </form>
-
-            <?php } ?>
-
       <div id="tagline">Succesfully Login. Welcome <?php echo $row['USER_NAME']; ?>  </div>
     </div>
 </div>
@@ -272,186 +261,43 @@
 				<div id="content_column_three">
 						    	
 						        
-						  <div class="post_writing">
-						    	 
-						           <form action="userpost.php" method="post" name="postform">
-										<input class="post_headline" type="text" value="headline..." name="headline">										
-										 	  <textarea name="ppost">write your post...</textarea> 
-										 	         <input type="hidden" name="user_name_post" value="<?php echo $row['USER_NAME'];?>">
+						<h3 class="p">	     <?php
+						              
+	$jsonNoti= getJSONFromDB("SELECT * FROM NOTIFICATION n INNER JOIN userinfo u ON n.FOLLOWING_ID=u.USER_ID  WHERE FOLLOWER_ID='".$noti_user_id."' and IS_NEW_FLAG = 1");
+						//echo $jsonNoti ;
+						//echo $noti_user_id ;
 
-							<pre><input name="photoup" class="fileupload" type="file" value="photo"> <select class="button" name="categories" value="" >
-				                        <option value='' >Category</option><option value='Oracle' >Oracle</option><option value='PHP' >PHP</option><option value='java' >Java</option><option value='Csharp' >C#</option><option value='Cplus' >C++</option><option value='Other' selected="selected" >Other</option></select> <input class="button" type="submit" value="Post"></pre>
-					                       					                        														                       
-										</form>
-						            
-						    </div>
+						    				
+							$jsnNoti=json_decode($jsonNoti,true);
 
-						    <?php 
-
-						    				$jsonData= getJSONFromDB("SELECT * FROM post_tab WHERE POST_TYPE='userpost'");
-
-											$jsn=json_decode($jsonData,true);
-
-										;
-
-												for($i=sizeof($jsn)-1;$i>=0;$i--) {
-
-											                 $pid=$jsn[$i]['POST_ID'];
-
-											   
-
-												?>
-
+								echo "HEAD LINES OF NEW POST";
+											echo "<br>";
+											echo "--------------------------";
 									
-									
+									for($i=0;$i<sizeof($jsnNoti);$i++) {
 
-						<div class="column_three_section">
+											?> </h3><p class="p"> <?php
+											
+											
+											echo  $i+1 ;
+											echo " / " ;
+											echo  $jsnNoti[$i]['NOTIFICATION_MES']; ?> </p> <p style="color: blue;"> <?php
+											echo " by ";
+											echo  $jsnNoti[$i]['USER_NAME']; 											
+											echo "<br>";
+											
 
-												 <form action="public_profile.php" method="post" >
+										} 
 
-												 <input hidden="com_user_id" name="com_users_id" value="<?php echo $jsn[$i]['USER_ID'] ;?>">
+									?>
+						            </p> </div>
+						            <?php
+    $update="UPDATE NOTIFICATION SET IS_NEW_FLAG=0 WHERE FOLLOWER_ID='".$_SESSION ['user_id']."' and  IS_NEW_FLAG=1";
 
-												 <input type="submit"  name="" value="<?php echo $jsn[$i]['USER_NAME_POST'] ;?>"> 
-												 <p class="p"><?php echo $jsn[$i]['POST_HEADLINE'] ;?> </p>
-
-												 </form>
-												 
-												<button type="button" name="edit" class="button" onclick="userpost_edit(this.value)" value="<?php echo $pid ?>" >Edit</button> 
-												<script type="text/javascript">
-																    	function userpost_edit(edit) {
-																	    var xhttp = new XMLHttpRequest();
-																	   xhttp.onreadystatechange = function() {
-					 												   if (this.readyState == 4 && this.status == 200) {
-					  												    document.getElementById("content_column_three").innerHTML = this.responseText;
-					  												    }
-					 												   };
-																	    xhttp.open("GET", "userpost_edit.php?edit="+edit, true);
-																	    xhttp.send();
-																	}
-
-												</script>
-<!--Edit Button for colom three -->
-
-												<button type="button" name="deleteUp" class="button" onclick="delete_userpost(this.value)" value="<?php echo $pid ?>" >Delete</button>
-												<script type="text/javascript">
-																    	function delete_userpost(deleteUp) {
-																	  var xhttp = new XMLHttpRequest();
-																	  xhttp.onreadystatechange = function() {
-					 												   if (this.readyState == 4 && this.status == 200) {
-					  												    document.getElementById("content_column_three").innerHTML = this.responseText;
-					  												  }
-					 												 };
-														        xhttp.open("GET","delete_userpost.php?deleteUp="+deleteUp, true);
-																  xhttp.send();
-																	}
-
-												</script>
-												<?php 
-
-												echo "<p>Posted at:&nbsp</P>";
-												echo "<p> {$jsn[$i]['DATE_TIME']} </p>"; 
-												echo "<br>";
-												echo "<p> {$jsn[$i]['POST']}</p>";
-												
-												?>
-												 
-
-												 
-	<!--Delete Button for colom three -->											
-
-												
-												<form name="commentform" action="comment.php"  method="post" >
-												<input type="text" name="comment" value="Comment">
-												<input type="hidden" name="postid" value="<?php echo $pid ?> ">
-												<input type="hidden" name="user_name_post" value="<?php echo $row['USER_NAME'];?> ">
-												<input type="submit" name="submit_comment" value="post">
+   odbc_exec($conn, $update);
 
 
-				                                 <!-- TIME DATE TAKE BY TRIGGER FROM SYSDATE-->
-												 
-
-												 </form>
-												 <?php
-
-
-									     $JsonCommData= getJSONFromDB("SELECT * FROM COMMENT_TAB COM INNER JOIN POST_TAB I ON COM.POST_ID=I.POST_ID WHERE I.POST_ID = ".$pid);
-										
-			//echo $JsonCommData;
-											    $JsnCom=json_decode($JsonCommData,true);
-
-										
-
-										 for($j =sizeof($JsnCom)-1;$j>=0;$j--) {
-  
-												?>
-
-
-										<form id="commentThree" action="public_profile.php" method="post" >
-
-														 <input hidden="com_user_id" name="com_users_id" value="<?php echo $JsnCom[$j]['COM_USER_ID'] ;?>">
-
-														 <input type="submit"  name="" value="<?php echo $JsnCom[$j]['USER_NAME_COM'] ;?>"> <?php echo "<p> {$JsnCom[$j]['COMMENT_CONTENT']}</p>";
-															
-																	  echo "<p> {$JsnCom[$j]['TIME_DATE']}</p>";
-																	   ?>
-
-<!--
-			<button type="button" name="comdelete" class="button" onclick="comment_delete(this.value)" value="<?php echo $JsnCom[$j]['COMMENT_ID']   ?>" >Delete</button> 
-
-												<script type="text/javascript">
-																    	function comment_delete(comdelete) {
-																	   var xhttp = new XMLHttpRequest();
-																	   xhttp.onreadystatechange = function() {
-					 												   if (this.readyState == 4 && this.status == 200) {
-					  												    document.getElementById("commentThree").innerHTML = this.responseText;
-					  												   }
-					 												  };
-																	  xhttp.open("GET", "comment_delete.php?comdelete="+comdelete, true);
-																	  xhttp.send();
-																	  }
-
-												</script>
-
-		<button type="button" name="comedit" class="button" onclick="comment_edit(this.value)" value="<?php echo $JsnCom[$j]['COMMENT_ID']   ?>" >Edit</button> 
-
-												<script type="text/javascript">
-																    	function comment_edit(comedit) {
-																	   var xhttp = new XMLHttpRequest();
-																	   xhttp.onreadystatechange = function() {
-					 												   if (this.readyState == 4 && this.status == 200) {
-					  												    document.getElementById("commentThree").innerHTML = this.responseText;
-					  												   }
-					 												  };
-																	  xhttp.open("GET", "comment_edit.php?comedit="+comedit, true);
-																	  xhttp.send();
-																	  }
-
-												</script>  -->
-
-									    </form>
-
-												<?php
-												
-											} 
-														?>
-
-							</div>
-														 <?php
-											}
-												 ?> 
-
-						    
-						    <div class="column_three_section">
-						  
-
-						    </div>
-						               
-						         <div class="cleaner_with_divider">&nbsp;</div>
-						        
-						           <div class="column_three_section">
-						              <h1>About This Blog</h1>
-						              <p>Hallo All <a href="#">read more</a></p>
-						         </div>  
+?>
 						          
 						   </div>
 

@@ -5,7 +5,7 @@
 		    $v=$_SESSION['email'];
 			$v1=$_SESSION['pass'];
 			$v2=$_SESSION['user_id'];
-		    $com_users_id= $_POST['com_users_id'];
+		    $com_users_id= $_POST['follow_users_id'];
 		
 			$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE USER_ID = '".$com_users_id."'");
 			//$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE EMAIL = 'qaium69@yahoo.com' AND PASS = '123'");

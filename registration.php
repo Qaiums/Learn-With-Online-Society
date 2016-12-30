@@ -2,16 +2,11 @@
 <meta/>
 <title>Learn with online society</title>
  <link href="style.css" rel="stylesheet" type="text/css" />
-
- <script
-  src="https://code.jquery.com/jquery-3.1.1.js"
-  integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
-  crossorigin="anonymous"></script>
 </head>
 <body>
 <div id="header_panel">
-	<div id="header_section">
-    	<div id="title_section">Learn With Online Society</div>
+    <div id="header_section">
+        <div id="title_section">Learn With Online Society</div>
       <div id="tagline">about my website</div>
     </div>
 </div>
@@ -32,8 +27,8 @@
 <!-- colum 1-->
 <div id="content">
 
-	<div id="content_column_one">
-    	<div class="column_one_section">
+    <div id="content_column_one">
+        <div class="column_one_section">
             <p>Categories<br><br><br>
             <input type="radio" name="oracle" value=" "> Oracle <br><br>
             <input type="radio" name="php" value=" "> PHP <br><br>
@@ -60,13 +55,13 @@
     
 <div id="content_column_two">
     
-    	<div class="column_two_section">
-			<center>
+        <div class="column_two_section">
+            <center>
                 <script type="text/javascript" src="javascript.js"></script>  <!-- javascript source link   -->
 
                 
 
-            <form name="myForm" action="regintodatabase.php" onsubmit="validateForm()" method="post">
+            <form name="myForm" action="regintodatabase.php" onsubmit="return validateForm()" method="post">
                       
                     <h1>Your Info To Submit</h1>
                     <table>
@@ -77,8 +72,9 @@
                     </tr>
                    <tr>
                     <td><p>User Name  :</p></td>
-                    <td><input type="text" name="uname"  placeholder="UserName" value =""/><div id="demo"></div>
-p
+                    <td><input type="text" name="uname"  placeholder="UserName" onfocusout="username(this.value)" value =""/><div id="demo"></div>
+                    <!--onfocusout="username(this.value)" -->
+
                     </td>
                     </tr>
 
@@ -105,8 +101,6 @@ p
                                     xhttp.send();
                                     
                                 }
-
-
                               </script>
 
 
@@ -138,7 +132,7 @@ p
                     <tr>
                     <td><p>Email ID :</p></td>
                     <td>
-                    <input type="email" name="email" placeholder="Email" onblur="checkmail(this.value)"/> <div id="txtHint"></div>
+                    <input type="email" name="email" placeholder="Email" onblur="return checkmail(this.value)"/> <div id="txtHint"></div>
                     </td>
                     </tr>
 
@@ -198,7 +192,7 @@ p
 
                    <tr>
                     <td><p>Password :</p></td>
-        <td><input type="password" placeholder="Password" name="pass"/></td> 
+        <td><input type="password" placeholder="Password" onfocusout="password(this.value)" name="pass"/></td> 
           <div id="demo1"></div>
                     </tr>
 
@@ -226,7 +220,6 @@ p
                                     xhttp.send();
                                     
                                 }
-
                                 </script>
 
 
@@ -287,8 +280,8 @@ p
 
         <div id="bottom_panel">
          <center>
-        	<div class="bottom_panel_section">
-           	    <a href="#">Home</a> | <a href="#">Profile</a> | <a href="#"> Follower</a> | <a href="#">Following </a>| <a href="#">About Us</a> | <a href="#">Contact Us</a><br /><br />
+            <div class="bottom_panel_section">
+                <a href="#">Home</a> | <a href="#">Profile</a> | <a href="#"> Follower</a> | <a href="#">Following </a>| <a href="#">About Us</a> | <a href="#">Contact Us</a><br /><br />
                 <p> Copyright © 2016 </p> <a href="#"><strong>Muhammad Abdul Qaium</strong></a></div>
                 </center>
     
@@ -300,4 +293,3 @@ p
 
 
 </body>
-
