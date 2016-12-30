@@ -1,10 +1,10 @@
 		
-
+<link href="style.css" rel="stylesheet" type="text/css" />
 
 		<?php 
 		
-		session_start();
-		require("oracle_to_json.php");
+		 session_start();
+		 require("oracle_to_json.php");
 		 $v=$_SESSION['email'];
 		 $v1=$_SESSION['pass'];
 		 $PDeluser_id= $_SESSION ['user_id'] ;
@@ -17,7 +17,7 @@
 			
 
 
-		$conn= odbc_connect('lwosdb','lwos','1234');
+		$conn= odbc_connect('lwosdb','lwos','qaium29');
 
 			if (!$conn)
 			{
@@ -29,8 +29,8 @@
 
 			//$count= "SELECT COUNT(*) FROM POST_TAB"
 		$loginsql = "SELECT * FROM userinfo WHERE EMAIL = '".$v."' AND PASS = '".$v1."'";
-		 $loginresult=odbc_exec($conn, $loginsql);
-		 $check = "";
+		$loginresult=odbc_exec($conn, $loginsql);
+		$check = "";
 		if($row = odbc_fetch_array($loginresult))
 			($check = $row['EMAIL']);
 		if($check != "")
@@ -47,7 +47,7 @@
 <head>
 <meta/>
 <title>Learn with online society</title>
- <link href="style.css" rel="stylesheet" type="text/css" />
+<link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div id="header_panel">

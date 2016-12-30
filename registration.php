@@ -2,6 +2,11 @@
 <meta/>
 <title>Learn with online society</title>
  <link href="style.css" rel="stylesheet" type="text/css" />
+
+ <script
+  src="https://code.jquery.com/jquery-3.1.1.js"
+  integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+  crossorigin="anonymous"></script>
 </head>
 <body>
 <div id="header_panel">
@@ -61,7 +66,7 @@
 
                 
 
-            <form name="myForm" action="regintodatabase.php" onsubmit="return validateForm()" method="post">
+            <form name="myForm" action="regintodatabase.php" onsubmit="validateForm()" method="post">
                       
                     <h1>Your Info To Submit</h1>
                     <table>
@@ -72,8 +77,8 @@
                     </tr>
                    <tr>
                     <td><p>User Name  :</p></td>
-                    <td><input type="text" name="uname" onfocusout="username(this.value)" placeholder="UserName" value =""/><div id="demo"></div>
-
+                    <td><input type="text" name="uname"  placeholder="UserName" value =""/><div id="demo"></div>
+p
                     </td>
                     </tr>
 
@@ -133,7 +138,7 @@
                     <tr>
                     <td><p>Email ID :</p></td>
                     <td>
-                    <input type="email" name="email" placeholder="Email" onblur="return checkmail(this.value)"/> <div id="txtHint"></div>
+                    <input type="email" name="email" placeholder="Email" onblur="checkmail(this.value)"/> <div id="txtHint"></div>
                     </td>
                     </tr>
 
@@ -193,7 +198,7 @@
 
                    <tr>
                     <td><p>Password :</p></td>
-        <td><input type="password" placeholder="Password" onfocusout="password(this.value)" name="pass"/></td> 
+        <td><input type="password" placeholder="Password" name="pass"/></td> 
           <div id="demo1"></div>
                     </tr>
 

@@ -3,8 +3,10 @@ session_start();
 
 	require("oracle_to_json.php");	
 
-	$category=$_GET['category'];							
+	$category=$_GET['category'];
+
 		$jsonDataCata= getJSONFromDB("SELECT * FROM POST_TAB WHERE CATEGORIES='".$category."'and POST_TYPE='public'");
+		var_dump($jsonDataCata);	
 											
 			$jsnCata=json_decode($jsonDataCata,true);
 
@@ -19,7 +21,7 @@ session_start();
 									  <textarea name="ppost">write your post...</textarea> 
 
 										<pre><input name="photoup" class="fileupload" type="file" value="photo"> <select class="button" name="categories" >
-				                        <option value="Other" selected="selected" >Category</option><option value='Oracle' >Oracle</option><option value='PHP' >PHP</option><option value='Java' >Java</option><option value='C#' >C#</option><option value='C++' >C++</option><option value='Other' >Other</option></select> <input class="button" type="submit" value="Post"></pre>	
+				                        <option value="Other" selected="selected" >Category</option><option value='Oracle' >Oracle</option><option value='PHP' >PHP</option><option value='java' >Java</option><option value='C#' >C#</option><option value='C++' >C++</option><option value='Other' >Other</option></select> <input class="button" type="submit" value="Post"></pre>	
 				                        
 				                       
 							</form>

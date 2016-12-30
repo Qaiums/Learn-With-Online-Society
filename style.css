@@ -15,12 +15,12 @@
 
 #header_section #title_section{
 	font-size: 40px;
-	padding: 30px 0 0 20px;
+	
 	color: #f5ea01;
 }
 
 #header_section #tagline {
-	padding: 0 0 0 150px;
+	padding: 0 0 0 50px;
 	font-size: 20px;
 	color: #6b5927;
 }
@@ -148,6 +148,7 @@
 	padding:0 5px 0 5px;
 	margin: 0 0 5px 0 ;	
 	border: 1px solid #312f2b;
+	font-style: color: 	#F0FFFF;
 	background: #181714 url(images/1.jpg) ;	
 }
 

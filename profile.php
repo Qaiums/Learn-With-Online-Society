@@ -1,4 +1,5 @@
-	<?php
+	
+  <?php
 				session_start();
 			require("oracle_to_json.php");
 			$v=$_SESSION['email'];
@@ -78,6 +79,8 @@
         <td>Photo</td>
         <td>
           <img width="100px" height="100px" src="<?php echo $jsn[$i]['PRO_PIC'];  ?>">
+          <!--<p>Uploadprofile : </p> <input type="file" name="fileToUpload" id="fileToUpload">-->
+
         </td>
       </tr>
       <tr>

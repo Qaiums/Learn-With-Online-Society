@@ -5,7 +5,7 @@ session_start();
 
 	$category=$_GET['category'];							
 		$jsonDataCata= getJSONFromDB("SELECT * FROM POST_TAB WHERE CATEGORIES='".$category."' and POST_TYPE='public'");
-											/
+										
 			$jsnCata=json_decode($jsonDataCata,true);
 
 											

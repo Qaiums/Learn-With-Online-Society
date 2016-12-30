@@ -1,7 +1,7 @@
    <?php
 session_start();
 
-	$conn= odbc_connect('lwosdb','lwos','1234');
+	$conn= odbc_connect('lwosdb','lwos','qaium29');
 
 	if (!$conn)
 	{

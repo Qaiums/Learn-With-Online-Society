@@ -74,16 +74,20 @@
       <?php  
   
 
-    $jsonData= getJSONFromDB("select * from userinfo u inner join  follow f on u.user_id = f.FOLLOWER_USER_ID where f.following_user_id='".$_SESSION['user_id']."'");
-             //echo $jsonData ;         
+    $jsonData= getJSONFromDB("select * from userinfo u inner join  follow f on u.user_id = f.FOLLOWER_USER_ID where f.following_user_id=".$_SESSION['user_id']." ");
+
+            
               $jsn=json_decode($jsonData,true);
 
                       echo "<p>Your Follower user list: </p>";
                        echo $_SESSION['user_id'] ;
-                        for($i=sizeof($jsn)-1;$i>0;$i--) {
+                         for ($i=0; $i<sizeof($jsn);$i++) {
 
-                         echo " <br>";
-                          echo " <p> $i </p>";
+                         
+
+                          echo " <br>";
+
+                          echo "<p> $i </p>";
                           echo " <p> / </p>";
                         $pid=$jsn[$i]['USER_NAME'];
                          echo "<p>$pid </p>";

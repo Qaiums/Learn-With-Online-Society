@@ -1,11 +1,11 @@
 
-    function username()
-    {  
-       if (uname == "" && uname.length < 4) {
-        alert("user name must be filled out");
-        return false;
-    } 
-    }
+    // function username()
+    // {  
+    //    if (uname == "" && uname.length < 4) {
+    //     alert("user name must be filled out");
+    //     return false;
+    // } 
+    // }
 
 	
 	function validateForm() {
@@ -22,19 +22,20 @@
      var confirmPass=document.forms["myForm"]["confirmPass"].value;
 
 
-    
-
-
     if (name == "") {
         alert("Name must be filled out");
         return false;
     }
-   
-     if (uname == "" && uname.length < 4) {
-        alert("user name must be filled out");
+
+     if (uname == "") {
+        alert("Username must be filled out");
         return false;
     }
 
+     if (uname != "" && uname.length < 4) {
+        alert('Username should contain atleast three word');
+        return false;
+    }
       
      if (gender == "") {
         alert("gender must be filled out");
@@ -58,12 +59,16 @@
         return false;
     }
     if (state == "") {
-        alert("state must be filled out");
+        alert("state must be filled out");r
         return false;
     }*/
     if (pass == "") {
         alert("pass must be filled out");
-        return false;
+
+    }
+    if(pass != "")
+    {
+        alert('pass is not empty');
     }
     if (confirmPass == "") {
         alert("confirmPass must be filled out");
@@ -73,9 +78,9 @@
     	alert("password is not match ");
         return false;
     }
-    if(checkmail(email)){
-        alert("Change Your Email.");
-        return true ;
+    if(email != ' '){
+        checkmail(email);
+        //alert(email);
     }
 
 }
@@ -102,10 +107,65 @@ function checkmail(str)
             else return false;
         }
     };
-    xhttp.open("GET","emailcheck.php?email="+str,true);
-    xhttp.send();
+    // xhttp.open("GET","emailcheck.php?email="+str,true);
+    // xhttp.send();
+
+    $.ajax({
+        url: 'emailcheck.php?email='+str,
+        type: 'GET',
+
+        success:function(data){
+            if (data != 'Valid') {
+                alert('This email is already taken. Please insert another one !');
+                data.preventDefault();
+            }else{
+                console.log('ok');
+            }
+        }
+    })
+
+    // if()
+    //   { 
+    //     alert("validation failed false");
+    //     returnToPreviousPage();
+    //     return false;
+    //   }
+
+    //   alert("validations passed");
+    //   return true;                              
+
+    // event.preventDefault();
     
 }
+
+
+function validateEmail(email) {
+  var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
+}
+
+function validate() {
+  $("#result").text("");
+  var email = $("#email").val();
+  if (validateEmail(email)) {
+    $("#result").text(email + " is valid :)");
+    $("#result").css("color", "green");
+  } else {
+    $("#result").text(email + " is not valid :(");
+    $("#result").css("color", "red");
+  }
+  return false;
+}
+
+function callAjax(method, value, target)
+  {
+    if(encodeURIComponent) {
+      //var req = new AjaxRequest();
+      var params = "method=" + method + "&value=" + encodeURIComponent(value) + "&target=" + target;
+      req.setMethod("POST");
+      req.loadXMLDoc('/emailcheck.php', params);
+    }
+  }
 
 
 

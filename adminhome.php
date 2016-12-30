@@ -1,3 +1,4 @@
+		<link href="style.css" rel="stylesheet" type="text/css" />
 		<?php 
 		
 		session_start();
@@ -6,7 +7,7 @@
 		 $v1=$_SESSION['pass'];
 
 
-		$conn= odbc_connect('lwosdb','lwos','1234');
+		$conn= odbc_connect('lwosdb','lwos','qaium29');
 
 		if (!$conn)
 		{
@@ -66,10 +67,11 @@
         	<div style="font-size:20px;font-weight: bold;color:white;">Categories</div><br><br>
          <p>
          	<input id="oracle" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "Oracle" ?>"> Oracle <br><br>
-        	<input id="php" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "PHP" ?> "> PHP <br><br>
-        	<input id="java" type="radio" onchange="loadDoc(this.value)" name="category" value=" <?php echo "Java" ?> "> Java <br><br>
-        	<input id="c#" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "C#" ?> "> C# <br><br>
-        	<input id="c++" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "c++" ?> "> C++<br><br>
+        	<input id="php" type="radio" onchange="loadDoc(this.value)" name="category" value="PHP"> PHP <br><br>
+        	<input id="java" type="radio" onchange="loadDoc(this.value)" name="category" value="Java"> Java <br><br>
+        	<input id="C#" type="radio" onchange="loadDoc(this.value)" name="category" value='C#'> C# <br><br>
+        	
+        	<input id="C++" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "C++" ?> "> C++<br><br>
         	<input id="other" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "Other" ?> "> Other </p> 
            
              
@@ -108,7 +110,7 @@
 									  <textarea name="ppost">write your post...</textarea> 
 
 										<pre><input name="photoup" class="fileupload" type="file" value="photo"> <select class="button" name="categories" value="" >
-				                        <option value='' >Category</option><option value='Oracle' >Oracle</option><option value='PHP' >PHP</option><option value='Java' >Java</option><option value='C#' >C#</option><option value='C++' >C++</option><option value='Other' selected="selected" >Other</option></select> <input class="button" type="submit" value="Post"></pre>	
+				                        <option value='' >Category</option><option value='Oracle' >Oracle</option><option value='PHP' >PHP</option><option value='java' >Java</option><option value='C#' >C#</option><option value='C++' >C++</option><option value='Other' selected="selected" >Other</option></select> <input class="button" type="submit" value="Post"></pre>	
 				                        
 				                       
 							</form>
@@ -394,7 +396,7 @@
 
 												</script>
 
-			<button type="button" name="comedit" class="button" onclick="comment_edit(this.value)" value="<?php echo $JsnCom[$j]['COMMENT_ID']   ?>" >Edit</button> 
+		<button type="button" name="comedit" class="button" onclick="comment_edit(this.value)" value="<?php echo $JsnCom[$j]['COMMENT_ID']   ?>" >Edit</button> 
 
 												<script type="text/javascript">
 																    	function comment_edit(comedit) {
