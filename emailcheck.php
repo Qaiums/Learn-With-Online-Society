@@ -19,7 +19,7 @@ $email=$_GET['email'];
 		
 	{
 		
-		echo "email address is not available. please use another email.";
+		echo "<p>email address is not available. please use another email.</p>";
 		return false;
 
 	}
@@ -27,7 +27,7 @@ $email=$_GET['email'];
 	else 
 		{
      if (!preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/", $email)) {
-			echo "UniqInvalidalid";
+			echo "<p>UniqInvalidalid</p>";
 			return false;
 
 			} else {

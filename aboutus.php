@@ -9,7 +9,7 @@
 <div id="header_panel">
 	<div id="header_section">
     	<div id="title_section">Learn With Online Society</div>
-      <div id="tagline">about my website</div>
+      
     </div>
 </div>
 <div id="menu_panel">
@@ -27,7 +27,7 @@
 
 	<div id="content_column_one">
         <div class="column_one_section">
-            <div style="font-size:20px;font-weight: bold;color:white;">Categories</div><br><br>
+            <div class="p">Categories</div><br><br>
          <p>
             <input id="oracle" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "Oracle" ?>"> Oracle <br><br>
             <input id="php" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "PHP" ?> "> PHP <br><br>
@@ -62,8 +62,8 @@
    	<div id="content_column_two">
     
     	<div class="column_two_section">
-      <h3 style="color: white;" >OBJECTIVES </h3>
-    <h4 style="color: white;" > Hallo all, This is a website from where you can learn meany things about different topics. You can post and do comment also.</h4>
+      <h3>OBJECTIVES </h3>
+    <p> Hallo all, This is a website from where you can learn meany things about different topics. You can post and do comment also.</p>
     <br>
     <br>
 
@@ -77,7 +77,7 @@
     <div id="content_column_three">
 
         <div class="column_three_section">
-            <h2 style="color: #f5ea01;" >About This Blog</h2>
+            <h2>About This Blog</h2>
             <p>Hallo All </p>
       </div>  
           

@@ -63,7 +63,7 @@
 
             <form name="myForm" action="regintodatabase.php" onsubmit="return validateForm()" method="post">
                       
-                    <h1>Your Info To Submit</h1>
+                    <h2>Your Info To Submit</h2>
                     <table>
                     <tr>
                     <td><p>Name :</p></td>
@@ -174,6 +174,13 @@
                         <option value='Khulna'>Khulna</option>
                         <option value='Borishal'>Borishal</option>
                         <option value='Rongpur'>Rongpur</option>
+                        <option value='Other'>Tokio</option>
+                        <option value='Other'>Dilli</option>
+                        <option value='Other'>Washington</option>
+                        <option value='Other'>Milan</option>
+                        <option value='Other'>Sydney</option>
+                        <option value='Other'>London</option>
+                        <option value='Other'>Riad</option>
                         <option value='Other'>Other</option>
                     </select>
 
@@ -268,7 +275,7 @@
         <div id="content_column_three">
 
              <div class="column_three_section">
-            <h2 style="color: #f5ea01;" >About This Blog</h2>
+            <h2>About This Blog</h2>
             <p>Hallo All </p>
             </div>  
           

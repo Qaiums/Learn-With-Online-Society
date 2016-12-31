@@ -5,6 +5,7 @@
 		require("oracle_to_json.php");
 		 $v=$_SESSION['email'];
 		 $v1=$_SESSION['pass'];
+		 $noti_user_id= $_SESSION ['user_id'] ;
 
 
 		$conn= odbc_connect('lwosdb','lwos','qaium29');

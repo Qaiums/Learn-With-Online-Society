@@ -65,13 +65,33 @@
             <li><a href="profile.php" >Profile</a></li>
             <li><a href="follower.php" >Follower</a></li>            
             <li><a href="following.php" >Following</a></li>  
-            <li><a href="" >About Us</a></li> 
-          
+            <li><a href="" >About Us</a></li>          
             <li><a href="logout.php" >Logout</a></li>  
-             
+            <li> 
+
+  			<input type="Search" name="search_name" onkeydown="return search_ajax(this.value)" value="" placeholder="Search..">
+
+			     <script>
+				   function search_ajax(search_name) {
+					
+				   	var xhttp = new XMLHttpRequest();
+				  	xhttp.onreadystatechange = function() {
+					    if (this.readyState == 4 && this.status == 200) {
+					      document.getElementById("hell").innerHTML = this.responseText;
+					    }
+				  	};
+				   xhttp.open("GET", "search.php?search_name="+search_name, true);
+				   xhttp.send();
+				   }
+				  </script>
+
+				  <div class="column_three_section" id='hell'>
+			</li>
                                 
         </ul> 
+           
     </div>
+
 </div>
 
 
@@ -81,7 +101,7 @@
 
 	<div id="content_column_one">
     	<div class="column_one_section">
-        	<div style="font-size:20px;font-weight: bold;color:white;">Categories</div><br><br>
+        	<div class="ps">Categories</div><br><br>
          <p>
          	<input id="oracle" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "Oracle" ?>"> Oracle <br><br>
         	<input id="php" type="radio" onchange="loadDoc(this.value)" name="category" value="PHP"> PHP <br><br>
@@ -121,9 +141,9 @@
 						 <div class="post_writing">
 						    <form action="post.php" method="post" name="postform">
 
-									<input class="post_headline" type="text" value="headline..." name="headline">
+									<input class="post_headline" type="text" placeholder="headline..." name="headline">
 										
-									  <textarea name="ppost">write your post...</textarea> 
+									  <textarea name="ppost"  placeholder="Write your post..."></textarea> 
 
 										
 
@@ -218,7 +238,7 @@
 												 <!-- ******************Comment option******************* -->
 
 											 <form name="commentform" action="comment.php"  method="post" >
-												    <input type="text" name="comment" value="Comment">
+												    <input type="text" name="comment" placeholder="Write your comment...">
 												    <input type="hidden" name="postid" value="<?php echo $pid ?> ">
 												    <input type="hidden" name="user_name_post" value="<?php echo $row['USER_NAME'];?>">
 												 	<input type="submit" name="submit_comment" value="post">
@@ -283,11 +303,11 @@
 				<div id="content_column_three">
 						    	
 						        
-						  <div class="post_writing">
+						  <div id="psot" class="post_writing">
 						    	 
 						           <form action="userpost.php" method="post" name="postform">
-										<input class="post_headline" type="text" value="headline..." name="headline">										
-										 	  <textarea name="ppost">write your post...</textarea> 
+										<input class="post_headline" type="text" placeholder="headline..." name="headline">										
+										 	  <textarea name="ppost" placeholder="Write your post..." ></textarea> 
 										 	         <input type="hidden" name="user_name_post" value="<?php echo $row['USER_NAME'];?>">
 
 						<pre>	<select class="select_button" name="categories" value="" >
@@ -322,7 +342,7 @@
 									
 									
 
-						<div class="column_three_section">
+						<div class="column_three_section" id='hell'>
 
 												 <form action="public_profile.php" method="post" >
 
@@ -379,7 +399,7 @@
 
 												
 												<form name="commentform" action="comment.php"  method="post" >
-												<input type="text" name="comment" value="Comment">
+												<input type="text" name="comment" placeholder="Write your comment...">
 												<input type="hidden" name="postid" value="<?php echo $pid ?> ">
 												<input type="hidden" name="user_name_post" value="<?php echo $row['USER_NAME'];?> ">
 												<input type="submit" name="submit_comment" value="post">
@@ -459,18 +479,9 @@
 												 ?> 
 
 						    
-						    <div class="column_three_section">
-						  
-
-						    </div>
 						               
 						         <div class="cleaner_with_divider">&nbsp;</div>
-						        
-						           <div class="column_three_section">
-						              <h1>About This Blog</h1>
-						              <p>Hallo All <a href="#">read more</a></p>
-						         </div>  
-						          
+
 						   </div>
 
 

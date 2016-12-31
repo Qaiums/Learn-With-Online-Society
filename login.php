@@ -9,7 +9,7 @@
 <div id="header_panel">
 	<div id="header_section">
     	<div id="title_section">Learn With Online Society</div>
-      <div id="tagline">about my website</div>
+      
     </div>
 </div>
 <div id="menu_panel">
@@ -28,7 +28,7 @@
 
 	<div id="content_column_one">
         <div class="column_one_section">
-            <div style="font-size:20px;font-weight: bold;color:white;">Categories</div><br><br>
+            <div>Categories</div><br><br>
          <p>
           <input id="oracle" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "Oracle" ?>"> Oracle <br><br>
           <input id="php" type="radio" onchange="loadDoc(this.value)" name="category" value="PHP"> PHP <br><br>
@@ -69,12 +69,12 @@
   <form  name="myForm1" action="logincheck.php" onsubmit="return validateLoinForm()" method="post">
  
 <pre>
-    <h1>Login</h1>
+    <h2>Login</h2>
   <p>Email : <input value="" type="email" name="email" /><br>
 Password : <input type="password" name="pass" /></p> 
       </pre><input type="submit" value="Login" /><br><br>
 
-      <?php session_start(); echo $_SESSION['reg_flag']; ?>
+      
 <br>
 <br>
 <br>
@@ -110,7 +110,7 @@ Password : <input type="password" name="pass" /></p>
     <div id="content_column_three">
 
         <div class="column_three_section">
-            <h2 style="color: #f5ea01;" >About This Blog</h2>
+            <h2>About This Blog</h2>
             <p>Hallo All </p>
       </div>  
           

@@ -180,7 +180,7 @@
        </div>
 
 <!-- end of Profile view -->
-
+                           <h2 class="p" >POSTS WHAT I DO (TIMELINE)</h2> 
 
 						    <?php 
 
@@ -198,7 +198,9 @@
 
 											   // echo $pid ;
 
-												?>
+												?>  
+                                       
+
 												 <div class="column_two_section">
 
 												 

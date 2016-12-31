@@ -80,7 +80,7 @@
               $jsn=json_decode($jsonData,true);
 
                       echo "<p>Your Follower user list: </p>";
-                       echo $_SESSION['user_id'] ;
+                      // echo $_SESSION['user_id'] ;
                          for ($i=0; $i<sizeof($jsn);$i++) {
 
                         
@@ -95,10 +95,10 @@
 
                         <input hidden="com_user_id" name="com_users_id" value="<?php echo $jsn[$i]['USER_ID']; ;?>">
 
-                        <input type="submit"  name="" value="<?php echo "$i";  echo "/ ";  echo $pid ;  ?>">
+                        <input type="submit" class="select_button"  name="" value="<?php echo "$i";  echo "/ ";  echo $pid ;  ?>">
 
    
-                     
+                     <br>
                      </form> 
 
 
@@ -123,7 +123,7 @@
     <div id="content_column_three">
 
         <div class="column_three_section">
-            <h2 style="color: #f5ea01;" >About This Blog</h2>
+            <h2  >About This Blog</h2>
             <p>Hallo All </p>
       </div>  
           
