@@ -72,8 +72,7 @@
                     </tr>
                    <tr>
                     <td><p>User Name  :</p></td>
-                    <td><input type="text" name="uname"  placeholder="UserName" onfocusout="username(this.value)" value =""/><div id="demo"></div>
-                    <!--onfocusout="username(this.value)" -->
+                    <td><input type="text" name="uname" onfocusout="username(this.value)" placeholder="UserName" value =""/><div id="demo"></div>
 
                     </td>
                     </tr>

@@ -318,6 +318,7 @@ textarea {
 	float: right;
     background-color: #4CAF50;
     padding: 3px 11px 4px 11px ;
+    margin: 0 10px 0 0 ;
     border: none;
     color: white;
     text-align: center;
@@ -326,6 +327,24 @@ textarea {
     font-size: 16px;
     cursor: pointer;
 }
+
+.select_button
+{
+	float: left;
+    background-color: #4CAF50;
+    padding: 3px 11px 4px 11px ;
+    margin: 0 0 0 10px;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+
 .fileupload {
     background-color: #4CAF50;
     width: 215px; 

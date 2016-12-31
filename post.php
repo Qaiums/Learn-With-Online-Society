@@ -27,7 +27,7 @@ echo $userid ;
 	//	$_POST['categories']='Other';
 
 	$query= "insert into POST_TAB (post_id,post,post_type,CATEGORIES,post_headline,user_id)
-	values(post_id.nextval,'".$_POST['ppost']."','public','".$_POST['categories']."','".$_POST['headline']."','".$userid."')";
+	values(POST_ID_S.nextval,'".$_POST['ppost']."','public','".$_POST['categories']."','".$_POST['headline']."','".$userid."')";
     $result=odbc_exec($conn,$query);
 
     echo $query;

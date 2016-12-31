@@ -1,5 +1,4 @@
 
-  
     function username()
     {  
        if (uname == "" && uname.length < 4) {
@@ -23,22 +22,24 @@
      var confirmPass=document.forms["myForm"]["confirmPass"].value;
 
 
-    var flag= "<?php session_start(); echo $_SESSION['reg_flag']; ?>";
+    
 
 
     if (name == "") {
         alert("Name must be filled out");
-        alert(flag);
         return false;
     }
    
-     if (uname == "" && flag != 1) {
-        alert("user name must be filled out with 4 charecter.");
+  /*   if (uname == "" && uname.length < 4) {
+        alert("user name must be filled out");
+        return false;
+    }*/
+    if (uname == "" || uname.length < 4) {
+        alert("user name must be filled out");
         return false;
     }
-
       
-     if (gender == "") {
+    if (gender == "") {
         alert("gender must be filled out");
         return false;
     }
@@ -75,11 +76,12 @@
         alert("password is not match ");
         return false;
     }
+
     if(checkmail(email)){
         alert("Change Your Email.");
-        return true ;
+        return false ;
     }
-
+    
 }
 
 
@@ -127,3 +129,6 @@ var pass=document.forms["myForm1"]["pass"].value;
         return false;
     }
 }
+
+
+    

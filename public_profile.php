@@ -1,15 +1,13 @@
 <?php
 			session_start();
-
 			require("oracle_to_json.php");
 		    $v=$_SESSION['email'];
 			$v1=$_SESSION['pass'];
 			$v2=$_SESSION['user_id'];
 		    $com_users_id= $_POST['com_users_id'];
-		
+			
 			$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE USER_ID = '".$com_users_id."'");
-			//$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE EMAIL = 'qaium69@yahoo.com' AND PASS = '123'");
-			//echo $jsonData;
+			
 			$jsn=json_decode($jsonData,true);
 
 			for($i=0;$i<sizeof($jsn);$i++) {

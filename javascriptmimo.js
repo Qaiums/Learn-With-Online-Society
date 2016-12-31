@@ -9,7 +9,7 @@
 
 	
 	function validateForm() {
-		
+		alaer("Fuck U 2");
      var name = document.forms["myForm"]["name"].value;
      var uname=document.forms["myForm"]["uname"].value;
    	 var gender=document.forms["myForm"]["gender"].value;

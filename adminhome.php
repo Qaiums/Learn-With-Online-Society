@@ -125,8 +125,19 @@
 										
 									  <textarea name="ppost">write your post...</textarea> 
 
-										<pre><input name="photoup" class="fileupload" type="file" value="photo"> <select class="button" name="categories" value="" >
-				                        <option value='' >Category</option><option value='Oracle' >Oracle</option><option value='PHP' >PHP</option><option value='java' >Java</option><option value='Csharp' >C#</option><option value='Cplus' >C++</option><option value='Other' selected="selected" >Other</option></select> <input class="button" type="submit" value="Post"></pre>
+										
+
+									<pre>	<select class="select_button" name="categories" value="" >
+				                        <option value='' >Category</option>
+				                        <option value='Oracle' >Oracle</option>
+				                        <option value='PHP' >PHP</option>
+				                        <option value='java' >Java</option>
+				                        <option value='Csharp' >C#</option>
+				                        <option value='Cplus' >C++</option>
+				                        <option value='Other' selected="selected" >Other</option>
+				                        </select> <input class="button" type="submit" value="Post"></form> </pre>
+					                       					                        														                       
+										
 				                        
 				                       
 							</form>
@@ -187,7 +198,7 @@
 																	  var xhttp = new XMLHttpRequest();
 																	  xhttp.onreadystatechange = function() {
 					 												   if (this.readyState == 4 && this.status == 200) {
-					  												    document.getElementById("content_column_two").innerHTML = this.responseText;
+					  												    document.getElementById("column_two_section").innerHTML = location.reload(true);
 					  												  }
 					 												 };
 																	  xhttp.open("GET", "delete_post.php?deletePost="+deletePost, true);
@@ -279,11 +290,17 @@
 										 	  <textarea name="ppost">write your post...</textarea> 
 										 	         <input type="hidden" name="user_name_post" value="<?php echo $row['USER_NAME'];?>">
 
-							<pre><input name="photoup" class="fileupload" type="file" value="photo"> <select class="button" name="categories" value="" >
-				                        <option value='' >Category</option><option value='Oracle' >Oracle</option><option value='PHP' >PHP</option><option value='java' >Java</option><option value='Csharp' >C#</option><option value='Cplus' >C++</option><option value='Other' selected="selected" >Other</option></select> <input class="button" type="submit" value="Post"></pre>
+						<pre>	<select class="select_button" name="categories" value="" >
+				                        <option value='' >Category</option>
+				                        <option value='Oracle' >Oracle</option>
+				                        <option value='PHP' >PHP</option>
+				                        <option value='java' >Java</option>
+				                        <option value='Csharp' >C#</option>
+				                        <option value='Cplus' >C++</option>
+				                        <option value='Other' selected="selected" >Other</option>
+				                        </select> <input class="button" type="submit" value="Post"></form> </pre>
 					                       					                        														                       
-										</form>
-						            
+									
 						    </div>
 
 						    <?php 
@@ -334,11 +351,12 @@
 
 												<button type="button" name="deleteUp" class="button" onclick="delete_userpost(this.value)" value="<?php echo $pid ?>" >Delete</button>
 												<script type="text/javascript">
+
 																    	function delete_userpost(deleteUp) {
 																	  var xhttp = new XMLHttpRequest();
 																	  xhttp.onreadystatechange = function() {
 					 												   if (this.readyState == 4 && this.status == 200) {
-					  												    document.getElementById("content_column_three").innerHTML = this.responseText;
+					  												    document.getElementById("column_three_section").innerHTML = location.reload(true);
 					  												  }
 					 												 };
 														        xhttp.open("GET","delete_userpost.php?deleteUp="+deleteUp, true);

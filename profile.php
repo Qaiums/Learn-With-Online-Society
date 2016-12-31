@@ -100,7 +100,23 @@
         <td>Photo</td>
         <td>
           <img width="100px" height="100px" src="<?php echo $jsn[$i]['PRO_PIC'];  ?>">
-          <!--<p>Uploadprofile : </p> <input type="file" name="fileToUpload" id="fileToUpload">-->
+          <script type="text/javascript">
+            function validate()
+            {
+              flag=true ;
+              if(document.pp.fileToUpload.value.length==0) {
+                alert("Please Select A Photo.");
+                flag=false ;
+              }
+              return flag ;
+            }
+            
+
+          </script>
+          <form action="profile_picture_upload.php" method="post" enctype="multipart/form-data" name="pp" >
+           <input type="file" name="fileToUpload" id="fileToUpload">
+           <input type="submit" onclick="return validate();" value="upload" name="pupload">
+           </form>
 
         </td>
       </tr>

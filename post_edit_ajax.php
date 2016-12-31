@@ -25,8 +25,15 @@ $post_id=$_GET['edit'];
 										
 									  <textarea name="ppost"><?php echo $jsnEdit[$j]['POST'] ;?></textarea> 
 
-										<pre><input name="photoup" class="fileupload" type="file" value="photo"> <select class="button" name="categories" value="" >
-				                        <option value='' >Category</option><option value='Oracle' >Oracle</option><option value='PHP' >PHP</option><option value='java' >Java</option><option value='Csharp' >C#</option><option value='Cplus' >C++</option><option value='Other' selected="selected" >Other</option></select> <input class="button" type="submit" value="Post"></pre>	
+										<pre>	<select class="select_button" name="categories" value="" >
+				                        <option value='' >Category</option>
+				                        <option value='Oracle' >Oracle</option>
+				                        <option value='PHP' >PHP</option>
+				                        <option value='java' >Java</option>
+				                        <option value='Csharp' >C#</option>
+				                        <option value='Cplus' >C++</option>
+				                        <option value='Other' selected="selected" >Other</option>
+				                        </select> <input class="button" type="submit" value="Post"></form> </pre>	
 				                        
 				                       
 							</form>

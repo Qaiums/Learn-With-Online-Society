@@ -128,7 +128,7 @@
 
                                                 ?>
                                          
-                                <div id="comment">   <form action="public_profile.php" method="post" >
+                                <div id="comment">   <form action="login.php" method="post" >
 
                                          <input hidden="com_user_id" name="com_users_id" value="<?php echo $JsnCom[$j]['COM_USER_ID'] ;?>">
 
@@ -193,8 +193,15 @@
 
                                               <input type="hidden" name="user_name_post" value="<?php echo $row['USER_NAME'];?>">
 
-                            <pre><input name="photoup" class="fileupload" type="file" value="photo"> <select class="button" name="categories" value="" >
-                                        <option value='' >Category</option><option value='Oracle' >Oracle</option><option value='PHP' >PHP</option><option value='java' >Java</option><option value='Csharp' >C#</option><option value='Cplus' >C++</option><option value='Other' selected="selected" >Other</option></select> <input class="button" type="submit" value="Post"></pre>   
+                            <pre>   <select class="select_button" name="categories" value="" >
+                                        <option value='' >Category</option>
+                                        <option value='Oracle' >Oracle</option>
+                                        <option value='PHP' >PHP</option>
+                                        <option value='java' >Java</option>
+                                        <option value='Csharp' >C#</option>
+                                        <option value='Cplus' >C++</option>
+                                        <option value='Other' selected="selected" >Other</option>
+                                        </select> <input class="button" type="submit" value="Post"></form> </pre> 
                                            
                                                                                 
                                             

@@ -24,7 +24,7 @@ echo $userid ;
 
 
 	$query= "insert into POST_TAB (post_id,post,post_type,CATEGORIES,post_headline,user_id,USER_NAME_POST)
-	values(post_id.nextval,'".$_POST['ppost']."','userpost','".$_POST['categories']."','".$_POST['headline']."','".$userid."','".$user_name_post."')";
+	values(POST_ID_S.nextval,'".$_POST['ppost']."','userpost','".$_POST['categories']."','".$_POST['headline']."','".$userid."','".$user_name_post."')";
 
 	echo $query;
     $result=odbc_exec($conn,$query);
