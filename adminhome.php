@@ -65,7 +65,7 @@
             <li><a href="profile.php" >Profile</a></li>
             <li><a href="follower.php" >Follower</a></li>            
             <li><a href="following.php" >Following</a></li>  
-            <li><a href="" >About Us</a></li>          
+            <li><a href="aboutus.php" >About Us</a></li>          
             <li><a href="logout.php" >Logout</a></li>  
             <li> 
 
@@ -101,7 +101,7 @@
 
 	<div id="content_column_one">
     	<div class="column_one_section">
-        	<div class="ps">Categories</div><br><br>
+        	<div class="p">Categories</div><br><br>
          <p>
          	<input id="oracle" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "Oracle" ?>"> Oracle <br><br>
         	<input id="php" type="radio" onchange="loadDoc(this.value)" name="category" value="PHP"> PHP <br><br>

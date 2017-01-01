@@ -26,7 +26,7 @@
 <div id="header_panel">
 	<div id="header_section">
     	<div id="title_section">Learn With Online Society</div>
-      <div id="tagline">about my website</div>
+      <div id="tagline">WELCOME</div>
     </div>
 </div>
 <div id="menu_panel">
@@ -47,9 +47,9 @@
 <div id="content">
 
 	<div id="content_column_one">
-    	<div id="content_column_one">
+    	
       <div class="column_one_section">
-          <div style="font-size:20px;font-weight: bold;color:white;">Categories</div><br><br>
+          <div class="p">Categories</div><br><br>
          <p>
           <input id="oracle" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "Oracle" ?>"> Oracle <br><br>
           <input id="php" type="radio" onchange="loadDoc(this.value)" name="category" value="PHP"> PHP <br><br>
@@ -77,7 +77,7 @@
               </script>
         <div class="cleaner_with_divider">&nbsp;</div>
  
-    </div>
+    
     <div class="cleaner_with_divider">&nbsp;</div>
  
     </div>
@@ -180,75 +180,84 @@
        </div>
 
 <!-- end of Profile view -->
-                           <h2 class="p" >POSTS WHAT I DO (TIMELINE)</h2> 
+                          
+		    </div> 
 
-						    <?php 
+    <!-- end of column two -->
 
-						    				//require("oracle_to_json.php");
-						    				$jsonData= getJSONFromDB("SELECT * FROM post_tab WHERE USER_ID='".$user_id."'");
-											//$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE EMAIL = 'qaium69@yahoo.com' AND PASS = '123'");
-											//echo $jsonData;
-											$jsn1=json_decode($jsonData,true);
+    		<div id="content_column_three">
+    	<h2 class="p" >POSTS WHAT I DO (TIMELINE)</h2> 
 
-											//echo sizeof($jsn);
+                <?php 
 
-													for($k=sizeof($jsn1)-1;$k>=0;$k--) {
+                        //require("oracle_to_json.php");
+                        $jsonData= getJSONFromDB("SELECT * FROM post_tab WHERE USER_ID='".$user_id."'");
+                      //$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE EMAIL = 'qaium69@yahoo.com' AND PASS = '123'");
+                      //echo $jsonData;
+                      $jsn1=json_decode($jsonData,true);
 
-											    $pid=$jsn1[$k]['POST_ID'];
+                      //echo sizeof($jsn);
 
-											   // echo $pid ;
+                          for($k=sizeof($jsn1)-1;$k>=0;$k--) {
 
-												?>  
+                          $pid=$jsn1[$k]['POST_ID'];
+
+                         // echo $pid ;
+
+                        ?>  
                                        
 
-												 <div class="column_two_section">
+        
+    		<div class="column_three_section">
+           		           
+                        
 
-												 
-												 <p class="p"> <?php echo $jsn1[$k]['POST_HEADLINE']; ?>  </p>
-												 <?php
-												
-												
-												//echo "<p> {$jsn[$i]['POST_HEADLINE']}  </p>"; 
-												echo"<br>";
-												echo "<p>Posted at: &nbsp</P>";
-												echo "<p> {$jsn1[$k]['DATE_TIME']} 
-												</p>"; ?>
-
-
-
-
-
+                         
+                         <p class="p"> <?php echo $jsn1[$k]['POST_HEADLINE']; ?>  </p>
+                         <?php
+                        
+                        
+                        //echo "<p> {$jsn[$i]['POST_HEADLINE']}  </p>"; 
+                        echo"<br>";
+                        echo "<p>Posted at: &nbsp</P>";
+                        echo "<p> {$jsn1[$k]['DATE_TIME']} 
+                        </p>"; ?>
 
 
-												<?php 
-												echo"<br>";
-												//echo"<p>=================================================</p>";
-												echo "<p> {$jsn1[$k]['POST']}</p>";
-												 ?> 
-												 <form name="commentform" action="comment.php"  method="post" >
-												 	<input type="text" name="comment" value="Comment">
-												 	<input type="hidden" name="postid" value="<?php echo $pid ?> ">
 
-												 	<input type="hidden" name="user_name_post" value="<?php echo $row['USER_NAME'];?>">
-												 	<input type="submit" name="submit_comment" value="post">
-				                                 <!-- TIME DATE TAKE BY TRIGGER FROM SYSDATE-->
-												 </form>
 
-												 <?php
+
+
+
+                        <?php 
+                        echo"<br>";
+                        //echo"<p>=================================================</p>";
+                        echo "<p> {$jsn1[$k]['POST']}</p>";
+                         ?> 
+                         <form name="commentform" action="comment.php"  method="post" >
+                          <input type="text" name="comment" value="Comment">
+                          <input type="hidden" name="postid" value="<?php echo $pid ?> ">
+
+                          <input type="hidden" name="user_name_post" value="<?php echo $row['USER_NAME'];?>">
+                          <input type="submit" name="submit_comment" value="post">
+                                         <!-- TIME DATE TAKE BY TRIGGER FROM SYSDATE-->
+                         </form>
+
+                         <?php
 
 //  commment , commentor, comment date database theek fech kore ante hobe. ebong dkehatee hobe . 
 
-	$JsonCommData= getJSONFromDB("SELECT * FROM COMMENT_TAB COM INNER JOIN POST_TAB I ON COM.POST_ID=I.POST_ID WHERE I.POST_ID = ".$pid);
-											//$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE EMAIL = 'qaium69@yahoo.com' AND PASS = '123'");
-											//echo $jsonData;
-			//echo $JsonCommData;
-											$JsnCom=json_decode($JsonCommData,true);
+  $JsonCommData= getJSONFromDB("SELECT * FROM COMMENT_TAB COM INNER JOIN POST_TAB I ON COM.POST_ID=I.POST_ID WHERE I.POST_ID = ".$pid);
+                      //$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE EMAIL = 'qaium69@yahoo.com' AND PASS = '123'");
+                      //echo $jsonData;
+      //echo $JsonCommData;
+                      $JsnCom=json_decode($JsonCommData,true);
 
-										//echo $JsnCom ;
+                    //echo $JsnCom ;
 
-											for($j =sizeof($JsnCom)-1;$j>=0;$j--) {
+                      for($j =sizeof($JsnCom)-1;$j>=0;$j--) {
 
-												?>
+                        ?>
                          <form action="public_profile.php" method="post" >
 
                      <input hidden="com_user_id" name="com_users_id" value="<?php echo $JsnCom[$j]['COM_USER_ID'] ;?>">
@@ -270,23 +279,14 @@
 
                       </form>
 
-												</div>
-		
+                        </div>
+    
 
-							     <?php
-									 }
-			      
-								 ?>
-						        
-		    </div> 
-
-    <!-- end of column two -->
-
-    		<div id="content_column_three">
-    	
-        
-    		<div class="column_three_section">
-           		<h1>Popular Posts</h1>
+                   <?php
+                   }
+            
+                 ?>
+                    
             
        		 </div>
                

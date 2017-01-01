@@ -3,7 +3,7 @@ session_start();
 
 	require("oracle_to_json.php");	
 
- echo  $category=$_GET['category'];
+  $category=$_GET['category'];
 
 		$jsonDataCata= getJSONFromDB("SELECT * FROM POST_TAB WHERE CATEGORIES='".$category."'and POST_TYPE='public'");
 		//var_dump($jsonDataCata);	

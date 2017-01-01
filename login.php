@@ -70,8 +70,8 @@
  
 <pre>
     <h2>Login</h2>
-  <p>Email : <input value="" type="email" name="email" /><br>
-Password : <input type="password" name="pass" /></p> 
+  <p>Email : <input style="width: 300px;" value="" type="email" name="email" /><br>
+Password : <input style="width: 300px;" type="password" name="pass" /></p> 
       </pre><input type="submit" value="Login" /><br><br>
 
       

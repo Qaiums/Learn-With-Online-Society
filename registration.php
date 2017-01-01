@@ -147,7 +147,7 @@
                      <tr>
                     <td><p>Country :</p></td>
                     <td>
-                    <select name="country" >
+                    <select class="select_button" name="country" >
                         <option value='' >Select Country</option>
                         <option value='Bangladesh' >Bangladesh</option>
                         <option value='Japan' >Japan</option>
@@ -165,7 +165,7 @@
                     <tr>
                     <td><p>State :</p></td>
                     <td>
-                    <select name= "state">
+                    <select class="select_button" name= "state">
                         <option value=''>Select State</option>
                         <option value='Dhaka'>Dhaka</option>
                         <option value='Chitagong'>Chitagong</option>
@@ -246,14 +246,10 @@
              
                     </td>  -->
 
-                    <td>
-
-                    </td>
-                    </tr>
                     </table>
 
         
-
+                    <br>
 
                     <input type="submit" value="Submit"/>
                     </form>
