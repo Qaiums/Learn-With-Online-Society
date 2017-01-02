@@ -10,19 +10,19 @@ session_start();
 
 
 
- $conn= odbc_connect('lwosdb','lwos','qaium29');
+ 		$conn= odbc_connect('lwosdb','lwos','qaium29');
 
-	if (!$conn)
-	{
-		die ('Error connection !!!');
-	}
+				if (!$conn)
+			{
+				die ('Error connection !!!');
+			}
 
- $followquery="insert into FOLLOW  (FOLLOW_ID,FOLLOWING_USER_ID,FOLLOWER_USER_ID,IS_ACTIVE)
-  values  (FOLLOW_ID.nextval,'".$public_user_id."','".$user_id."',1 )";
+		$followquery="insert into FOLLOW  (FOLLOW_ID,FOLLOWING_USER_ID,FOLLOWER_USER_ID,IS_ACTIVE)
+		values  (FOLLOW_ID.nextval,'".$public_user_id."','".$user_id."',1 )";
 
-  odbc_exec($conn, $followquery);
+		odbc_exec($conn, $followquery);
 
-odbc_close($conn);
+		odbc_close($conn);
 
 
 ?>

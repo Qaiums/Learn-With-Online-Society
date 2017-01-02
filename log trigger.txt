@@ -1,0 +1,179 @@
+
+
+  CREATE TABLE "LWOS"."USERINFO_AUDIT" 
+   (	"USER_ID" NUMBER(*,0) NOT NULL ENABLE, 
+	"USER_ROLE" VARCHAR2(20 BYTE), 
+	"FULL_NAME" VARCHAR2(20 BYTE) NOT NULL ENABLE, 
+	"USER_NAME" VARCHAR2(20 BYTE) NOT NULL ENABLE, 
+	"EMAIL" VARCHAR2(20 BYTE) NOT NULL ENABLE, 
+	"MOBILE" VARCHAR2(20 BYTE) NOT NULL ENABLE, 
+	"DOB" DATE NOT NULL ENABLE, 
+	"GENDER" VARCHAR2(10 BYTE) NOT NULL ENABLE, 
+	"ADDRESS" VARCHAR2(50 BYTE) NOT NULL ENABLE, 
+	"COUNTRY" VARCHAR2(30 BYTE) NOT NULL ENABLE, 
+	"CITY" VARCHAR2(20 BYTE), 
+	"PASS" VARCHAR2(20 BYTE) NOT NULL ENABLE, 
+	"PRO_PIC" VARCHAR2(500 BYTE), 
+	"POST_AMOUNT" NUMBER(*,0), 
+ORIGINAL_ROW_ID    VARCHAR2(200 BYTE),
+  ACTION_TYPE        VARCHAR2(200 BYTE),
+  ACTION_DATE        TIMESTAMP(6),
+  ACTION_BY          NUMBER,
+  IP_ADDRESS         VARCHAR2(200 BYTE),
+  OS_USER            VARCHAR2(200 BYTE),
+  TERMINAL_NAME      VARCHAR2(200 BYTE),
+  HOST_NAME          VARCHAR2(200 BYTE),
+  USER_NAME          VARCHAR2(200 BYTE),
+  ORA_SYSEVENT       VARCHAR2(200 BYTE)
+)
+
+
+
+
+CREATE OR REPLACE TRIGGEr TRG_userinfo_audit
+   AFTER DELETE OR UPDATE
+   ON userinfo
+   FOR EACH ROW
+DECLARE
+   p_IP_ADDRESS      VARCHAR2 (200);
+   p_OS_USER         VARCHAR2 (200);
+   p_TERMINAL_NAME   VARCHAR2 (200);
+   p_HOST_NAME       VARCHAR2 (200);
+   p_USER_NAME       VARCHAR2 (200);
+   p_ORA_SYSEVENT    VARCHAR2 (200);
+BEGIN
+   BEGIN
+      SELECT ora_sysevent,
+             USER,
+             SYS_CONTEXT ('userenv', 'ip_address') ip_add,
+             SYS_CONTEXT ('USERENV', 'OS_USER') os_user,
+             SYS_CONTEXT ('USERENV', 'TERMINAL') ter_name,
+             SYS_CONTEXT ('USERENV', 'HOST') host_name
+        INTO p_ORA_SYSEVENT,
+             p_USER_NAME,
+             p_IP_ADDRESS,
+             p_OS_USER,
+             p_TERMINAL_NAME,
+             p_HOST_NAME
+        FROM DUAL;
+   EXCEPTION
+      WHEN OTHERS
+      THEN
+         NULL;
+   END;
+
+   BEGIN
+      IF UPDATING
+      THEN
+         INSERT INTO userinfo_audit (
+USER_ID,
+USER_ROLE,
+FULL_NAME,
+USER_NAME,
+EMAIL,
+MOBILE,
+DOB,
+GENDER,
+ADDRESS,
+COUNTRY,
+CITY,
+PASS,
+PRO_PIC,
+POST_AMOUNT,
+                                     ORIGINAL_ROW_ID,
+                                     ACTION_TYPE,
+                                     ACTION_DATE,
+                                     ACTION_BY,
+                                     IP_ADDRESS,
+                                     OS_USER,
+                                     TERMINAL_NAME,
+                                     HOST_NAME,
+                                     USER_NAME_aud,
+                                     ORA_SYSEVENT)
+              VALUES (
+:old.USER_ID,
+:old.USER_ROLE,
+:old.FULL_NAME,
+:old.USER_NAME,
+:old.EMAIL,
+:old.MOBILE,
+:old.DOB,
+:old.GENDER,
+:old.ADDRESS,
+:old.COUNTRY,
+:old.CITY,
+:old.PASS,
+:old.PRO_PIC,
+:old.POST_AMOUNT,
+                      :old.ROWID,
+                      'UPDATED',
+                      SYSDATE,
+                      :new.LAST_UPDATED_BY,
+                      p_IP_ADDRESS,
+                      p_OS_USER,
+                      p_TERMINAL_NAME,
+                      p_HOST_NAME,
+                      p_USER_NAME,
+                      p_ORA_SYSEVENT);
+      -- Trigger this when Deleting a Record
+      -- Insert data into Audit Table with Action Deleted
+      ELSIF DELETING
+      THEN
+          INSERT INTO userinfo_audit (
+USER_ID,
+USER_ROLE,
+FULL_NAME,
+USER_NAME,
+EMAIL,
+MOBILE,
+DOB,
+GENDER,
+ADDRESS,
+COUNTRY,
+CITY,
+PASS,
+PRO_PIC,
+POST_AMOUNT,
+                                     ORIGINAL_ROW_ID,
+                                     ACTION_TYPE,
+                                     ACTION_DATE,
+                                     ACTION_BY,
+                                     IP_ADDRESS,
+                                     OS_USER,
+                                     TERMINAL_NAME,
+                                     HOST_NAME,
+                                     USER_NAME_aud,
+                                     ORA_SYSEVENT)
+              VALUES (
+:old.USER_ID,
+:old.USER_ROLE,
+:old.FULL_NAME,
+:old.USER_NAME,
+:old.EMAIL,
+:old.MOBILE,
+:old.DOB,
+:old.GENDER,
+:old.ADDRESS,
+:old.COUNTRY,
+:old.CITY,
+:old.PASS,
+:old.PRO_PIC,
+:old.POST_AMOUNT,
+                      :old.ROWID,
+                      'DELETE',
+                      SYSDATE,
+                      :old.LAST_UPDATED_BY,
+                      p_IP_ADDRESS,
+                      p_OS_USER,
+                      p_TERMINAL_NAME,
+                      p_HOST_NAME,
+                      p_USER_NAME,
+                      p_ORA_SYSEVENT);
+      END IF;
+   EXCEPTION
+      WHEN OTHERS
+      THEN
+         NULL;
+   END;
+END;
+/

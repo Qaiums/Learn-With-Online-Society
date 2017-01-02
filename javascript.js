@@ -1,11 +1,11 @@
 
-    function username()
+   /* function username()
     {  
        if (uname == "" && uname.length < 4) {
-        alert("user name must be filled out");
+        alert("user name must be fill and 3+ ");
         return false;
     } 
-    }
+    } */
 
     
     function validateForm() {
@@ -35,7 +35,7 @@
         return false;
     }*/
     if (uname == "" || uname.length < 4) {
-        alert("user name must be filled out");
+        alert("user name must be Valid ");
         return false;
     }
       
@@ -43,14 +43,23 @@
         alert("gender must be filled out");
         return false;
     }
-    if (phone == "") {
-        alert("phone must be filled out");
+    if (phone == "" || phone.length <= 10 ) {
+        alert("phone must be filled out and 11 .");
         return false;
     }
+
+    if(checkmail(email)){
+        alert("Change Your Email.");
+        return false ;
+    }
+    
     if (email == "") {
         alert("email must be filled out");
         return false;
     }
+
+    
+
     if (address == "") {
         alert("address must be filled out");
         return false;
@@ -77,10 +86,7 @@
         return false;
     }
 
-    if(checkmail(email)){
-        alert("Change Your Email.");
-        return false ;
-    }
+    
     
 }
 

@@ -155,8 +155,7 @@
 												//echo "<p> {$jsn[$i]['POST_HEADLINE']}  </p>"; 
 												echo"<br>";
 												echo "<p>Posted at: &nbsp</P>";
-												echo "<p> {$jsn[$i]['DATE_TIME']} 
-												</p>"; ?>
+												echo "<p> {$jsn[$i]['DATE_TIME']} </p>"; ?>
 
 <!--Edit button -->
 

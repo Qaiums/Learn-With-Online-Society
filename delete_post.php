@@ -11,6 +11,7 @@ $conn= odbc_connect('lwosdb','lwos','qaium29');
 				die ('Error connection !!!');
 			}
 
+   
 
 			$delete= "DELETE from POST_TAB where POST_ID='".$post_id."'";
 

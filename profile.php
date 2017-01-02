@@ -92,7 +92,11 @@
 <table border="1" width = "100%" style="color: white;">
       <tr>
         <td height="50" colspan = "2" align="center">
-          <b>PERSON PROFILE</b>
+          <b>PERSON PROFILE</b> 
+            <form action="edit_profile.php" method="post">
+              <input hidden="edit_pro" type="" name="edit_pro" value="<?php echo $user_id=$jsn[$i]['USER_ID']; ?> ">
+              <input type="submit" value="Edit Profile" name="submit">
+            </form>
         </td>
       </tr>
 

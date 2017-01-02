@@ -16,7 +16,8 @@ $conn= odbc_connect('lwosdb','lwos','qaium29');
 			$delete= "DELETE from POST_TAB where POST_ID='".$post_id."'";
 
     $result=odbc_exec($conn,$delete);
-    //echo "header(' Refresh:0; url:adminhome.php')";
+
+
 
 
 	 odbc_close($conn);

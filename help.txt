@@ -130,7 +130,14 @@ UPDATE post_tab
 SET post = NULL;
 tar por
 ALTER TABLE post_tab
-  MODIFY post LONG;
+MODIFY post LONG;
+
+
+
+ALTER TABLE LOG_TAB
+ADD CONSTRAINT FK_LGO_TAB_C
+foreign key (LOG_COMMENT_ID)
+references COMMENT_TAB(COMMENT_ID);
 
 
 
@@ -155,78 +162,169 @@ dbms_output.put_line(sqlerrm) ;
   end ;
   end ;
 
+import export dmp
+================================
+export :
+
+exp lwos/qaium29 file=f:/db_backup/lwosdb_export_backup_27122016.dmp owner=lwos ;
+
+import: 
+
+exp lwos/qaium29 file=f:/db_backup/lwosdb_export_backup_27122016.dmp owner=lwos ;
 
 
 
 
-
-
-
-
-
-Combo Date
+Audit trigger
 =====================
 
-  <!--
-    <select  name="day">
-                        <?php
-                        if ($day == "")
-                        {
-                            echo "<option value=''>Select Day</option>";
-                            for ($i = 1; $i<=31; $i++)
-                            {
-                                echo "<option value='".$i."'>".$i."</option>";
-                                
-                            }
-                        }
-                        else
-                        {
-                            echo "<option value='".$day."'>".$day."</option>";
-                        }
-                        ?>
-                        </select>
-                        <select name="month">
-                        <?php
-                        if ($month == "")
-                        {
-                            echo "<option value=''>Select Month</option>";
-                            
-                                echo "<option value=''>Jan</option>";
-                                 echo "<option value=''>Feb</option>";
-                                  echo "<option value=''>Mar</option>";
-                                   echo "<option value=''>Apr</option>";
-                                    echo "<option value=''>May</option>";
-                                     echo "<option value=''>Jun</option>";
-                                      echo "<option value=''>July</option>";
-                                       echo "<option value=''>Agu</option>";
-                                        echo "<option value=''>Sep</option>";
-                                         echo "<option value=''>Oct</option>";
-                                          echo "<option value=''>Nov</option>";
-                                           echo "<option value=''>Dec</option>";
-                            
-                        }
-                        else
-                        {
-                            echo "<option value='".$month."'>".$month."</option>";
-                        }
-                        ?>
-                        </select>
-                        <select  name="year">
-                        <?php
-                        if ($year == "")
-                        {
-                            echo "<option value=''>Select Year</option>";
-                            for ($i = 1900; $i<=2016; $i++)
-                            {
-                                echo "<option value='".$i."'>".$i."</option>";
-                            }
-                        }
-                        else
-                        {
-                            echo "<option value='".$year."'>".$year."</option>";
-                        }
-                        ?>
-                        </select>
 
-                        -->
-=====================================
+create or replace TRIGGEr TRG_userinfo_audit
+   AFTER DELETE OR UPDATE
+   ON userinfo
+   FOR EACH ROW
+DECLARE
+   p_IP_ADDRESS      VARCHAR2 (200);
+   p_OS_USER         VARCHAR2 (200);
+   p_TERMINAL_NAME   VARCHAR2 (200);
+   p_HOST_NAME       VARCHAR2 (200);
+   p_USER_NAME       VARCHAR2 (200);
+   p_ORA_SYSEVENT    VARCHAR2 (200);
+BEGIN
+   BEGIN
+      SELECT ora_sysevent,
+             USER,
+             SYS_CONTEXT ('userenv', 'ip_address') ip_add,
+             SYS_CONTEXT ('USERENV', 'OS_USER') os_user,
+             SYS_CONTEXT ('USERENV', 'TERMINAL') ter_name,
+             SYS_CONTEXT ('USERENV', 'HOST') host_name
+        INTO p_ORA_SYSEVENT,
+             p_USER_NAME,
+             p_IP_ADDRESS,
+             p_OS_USER,
+             p_TERMINAL_NAME,
+             p_HOST_NAME
+        FROM DUAL;
+   EXCEPTION
+      WHEN OTHERS
+      THEN
+         NULL;
+   END;
+
+   BEGIN
+      IF UPDATING
+      THEN
+         INSERT INTO userinfo_audit (
+USER_ID,
+USER_ROLE,
+FULL_NAME,
+USER_NAME,
+EMAIL,
+MOBILE,
+DOB,
+GENDER,
+ADDRESS,
+COUNTRY,
+CITY,
+PASS,
+PRO_PIC,
+POST_AMOUNT,
+       ORIGINAL_ROW_ID,
+       ACTION_TYPE,
+       ACTION_DATE,
+       ACTION_BY,
+       IP_ADDRESS,
+       OS_USER,
+       TERMINAL_NAME,
+       HOST_NAME,
+       USER_NAME_aud,
+       ORA_SYSEVENT)
+              VALUES (
+:old.USER_ID,
+:old.USER_ROLE,
+:old.FULL_NAME,
+:old.USER_NAME,
+:old.EMAIL,
+:old.MOBILE,
+:old.DOB,
+:old.GENDER,
+:old.ADDRESS,
+:old.COUNTRY,
+:old.CITY,
+:old.PASS,
+:old.PRO_PIC,
+:old.POST_AMOUNT,
+      :old.ROWID,
+      'UPDATED',
+      SYSDATE,
+      :new.USER_ID,
+      p_IP_ADDRESS,
+      p_OS_USER,
+      p_TERMINAL_NAME,
+      p_HOST_NAME,
+      p_USER_NAME,
+      p_ORA_SYSEVENT);
+      -- Trigger this when Deleting a Record
+      -- Insert data into Audit Table with Action Deleted
+      ELSIF DELETING
+      THEN
+          INSERT INTO userinfo_audit (
+USER_ID,
+USER_ROLE,
+FULL_NAME,
+USER_NAME,
+EMAIL,
+MOBILE,
+DOB,
+GENDER,
+ADDRESS,
+COUNTRY,
+CITY,
+PASS,
+PRO_PIC,
+POST_AMOUNT,
+     ORIGINAL_ROW_ID,
+     ACTION_TYPE,
+     ACTION_DATE,
+     ACTION_BY,
+     IP_ADDRESS,
+     OS_USER,
+     TERMINAL_NAME,
+     HOST_NAME,
+     USER_NAME_aud,
+     ORA_SYSEVENT)
+ VALUES (
+:old.USER_ID,
+:old.USER_ROLE,
+:old.FULL_NAME,
+:old.USER_NAME,
+:old.EMAIL,
+:old.MOBILE,
+:old.DOB,
+:old.GENDER,
+:old.ADDRESS,
+:old.COUNTRY,
+:old.CITY,
+:old.PASS,
+:old.PRO_PIC,
+:old.POST_AMOUNT,
+      :old.ROWID,
+      'DELETE',
+      SYSDATE,
+      :old.USER_ID,
+      p_IP_ADDRESS,
+      p_OS_USER,
+      p_TERMINAL_NAME,
+      p_HOST_NAME,
+      p_USER_NAME,
+      p_ORA_SYSEVENT);
+      
+      END IF;
+   EXCEPTION
+      WHEN OTHERS
+      THEN
+         NULL;
+   END;
+END;
+
+===========

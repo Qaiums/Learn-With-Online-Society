@@ -11,7 +11,7 @@ $photo=$_POST['photoup'];
 
 $userid=$_SESSION['user_id'];
 
-echo $userid ;
+//echo $userid ;
 
 
 
@@ -25,6 +25,10 @@ echo $userid ;
 
 	//if ($_POST['categories']=="")
 	//	$_POST['categories']='Other';
+
+	
+
+	
 
 	$query= "insert into POST_TAB (post_id,post,post_type,CATEGORIES,post_headline,user_id)
 	values(POST_ID_S.nextval,'".$_POST['ppost']."','public','".$_POST['categories']."','".$_POST['headline']."','".$userid."')";

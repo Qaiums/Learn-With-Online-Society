@@ -9,7 +9,7 @@ $flag=true ;
 
 if (strlen($username) < 4) {
 	//$_SESSION['reg_flag']=0 ;
-echo "<p>Must be 3+ letters</p>";
+echo "Must be 3+ letters";
  return $falg=false ;
 
 
@@ -17,7 +17,7 @@ echo "<p>Must be 3+ letters</p>";
 } else {
 
 $_SESSION['reg_flag']=1;
-echo "<p>Valid</p>";
+echo "Valid";
 return $flag=true ;
 }
 

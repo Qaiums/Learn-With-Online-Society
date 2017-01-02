@@ -1,5 +1,8 @@
 <?php
 $conn= odbc_connect('lwosdb','lwos','qaium29');
+session_start();
+
+$_SESSION['email_flag']=0 ; 
 
 $email=$_GET['email'];
 // var_dump($email);
@@ -19,19 +22,22 @@ $email=$_GET['email'];
 		
 	{
 		
-		echo "<p>email address is not available. please use another email.</p>";
-		return false;
+		echo "email address is not available.";
+			return false;
+
 
 	}
 
 	else 
 		{
      if (!preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/", $email)) {
-			echo "<p>UniqInvalidalid</p>";
+			echo "Unique But Invalidalid";
 			return false;
 
 			} else {
 			echo "Valid";
+			//$_SESSION['email_flag']=1 ; 
+
 			return true;
 			}
 

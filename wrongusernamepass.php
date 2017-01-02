@@ -31,7 +31,7 @@
 
    <div id="content_column_one">
         <div class="column_one_section">
-            <div style="font-size:20px;font-weight: bold;color:white;">Categories</div><br><br>
+            <div class="p">Categories</div><br><br>
          <p>
             <input id="oracle" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "Oracle" ?>"> Oracle <br><br>
             <input id="php" type="radio" onchange="loadDoc(this.value)" name="category" value="PHP"> PHP <br><br>
@@ -73,13 +73,17 @@
 
   <form  name="myForm1" action="logincheck.php" onsubmit="return validateLoinForm()" method="post">
  
-<pre>
-    <h1>Login</h1>
-    <p style="color: red;" >Wrong Email or Password !!! </p>
 
-  <p>Email : <input value="" type="email" name="email" /><br>
-Password : <input type="password" name="pass" /></p> 
+
+<pre>
+    <h2>Login</h2>
+     <p style="color: red;" >Wrong Email or Password !!! </p>
+  <p>Email : <input style="width: 300px;" value="" type="email" name="email" /><br>
+Password : <input style="width: 300px;" type="password" name="pass" /></p> 
       </pre><input type="submit" value="Login" /><br><br>
+
+
+
 <br>
 <br>
 <br>
