@@ -13,12 +13,16 @@ $post_id=$_POST['post_id'];
 			{
 				die ('Error connection !!!');
 			}
+
+
+$stmt = odbc_prepare($conn,'CALL POST_UPDATE(?,?,?,?)');
+$success=odbc_execute($stmt,array($post_id, $post, $headline, $categori ));
    
-   $update="update  POST_TAB set POST='".$_POST['ppost']."',POST_HEADLINE='".$_POST['headline']."',CATEGORIES='".$_POST['categories']."' where post_id='".$_POST['post_id']."'";
+  // $update="update  POST_TAB set POST='".$_POST['ppost']."',POST_HEADLINE='".$_POST['headline']."',CATEGORIES='".$_POST['categories']."' where post_id='".$_POST['post_id']."'";
 
-   echo $update ;
+  // echo $update ;
 
-   $result=odbc_exec($conn,$update);
+  //$result=odbc_exec($conn,$update);
 
    	odbc_close($conn);
 

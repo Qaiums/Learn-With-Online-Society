@@ -10,29 +10,22 @@ session_start();
 
 
     $comment=$_POST['comment'];
-	//$comdate = $_POST['comdate'];
 	$user_id=$_SESSION['user_id'];
 	$post_id=$_POST['postid'];
 	$user_name_com=$_POST['user_name_post'];
-
-	//echo $post_id ;
-
-	//echo $post_id ;
-//
-// ok . thick ase.. pore dakbanii..
-	//ok
-	// ok acca ja ekta sigaret kheyee ay.amio kheye asi. :P :P
+	$PUBLIC='public';
 
 
-	$comquery="insert into COMMENT_TAB (COMMENT_ID,COMMENT_CONTENT,COMMENT_POST_TYPE,COM_USER_ID,POST_ID,USER_NAME_COM)
-	values (comment_id.nextval,'".$comment."','public','".$user_id."','".$post_id."','".$user_name_com."')";
+    
+    $stmt = odbc_prepare($conn,'CALL COMMENT_PRO(?,?,?,?,?)');
+	$success=odbc_execute($stmt,array($comment, $PUBLIC, $user_id, $post_id, $user_name_com ));
 
-	echo $comquery ;
+	//$comquery="insert into COMMENT_TAB (COMMENT_ID,COMMENT_CONTENT,COMMENT_POST_TYPE,COM_USER_ID,POST_ID,USER_NAME_COM)
+		//values (comment_id.nextval,'".$comment."','public','".$user_id."','".$post_id."','".$user_name_com."')";
 
-    $comresult=odbc_exec($conn,$comquery);
+	//echo $comquery ;
 
-
-
+   // $comresult=odbc_exec($conn,$comquery);
 
 // DATABAS CLOSE AND  BACK TO PAGE LOCATION
 	odbc_close($conn);

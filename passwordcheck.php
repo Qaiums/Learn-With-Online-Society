@@ -3,7 +3,7 @@ session_start();
 $value=$_GET['pass'];
 
 
-$_SESSION['pass_flag']=0 ; 
+//$_SESSION['pass_flag']=0 ; 
 
 
 if(!empty($value))
@@ -23,15 +23,15 @@ if(!empty($value))
            return false ;
         } else {
 
-           $_SESSION['pass_flag']=1 ; 
+          // $_SESSION['pass_flag']=1 ; 
            echo  "<p>Please Check You've Entered Or Confirmed Your Password!</p>";
            return true ;
         }
     }
 
-    else
-    {
-       $_SESSION['pass_flag']=1 ; 
-    }
+    ///else
+    //{
+     //  $_SESSION['pass_flag']=1 ; 
+   // }
 
 ?>

@@ -27,9 +27,9 @@
 #header_section #tagline {
 	padding: 0 0 20px 100px;
 	font-size: 20px;
-	color: #000000;
+	color: blue;
 	font-weight: bold;
-	color: #4CAF50;
+	
 }
 
 #menu_panel{
@@ -173,6 +173,10 @@
 	margin-bottom: 10px;
 }
 
+.post_headline {
+  background-color: #4CAF50;
+}
+
 #content_column_two .post_info {
 	margin: 0 0 10px 0;
 	color: #fff;
@@ -258,7 +262,7 @@ p {
 	display: inline;
 	margin: 0px;
 	padding: 0 0 5px 0;
-	font-weight: bold;
+	
 	
 }
 h4 {
@@ -268,7 +272,7 @@ h4 {
 	color: white;
 }
 .p{
-	color: #4CAF50;
+	color: black;
 	text-transform: uppercase ; 
 	font-weight: bold; 
 
@@ -467,7 +471,7 @@ textarea {
 }
 
 input[type=Search] {
-    width: 310px;
+    width: 200px;
     height: 35px;
     box-sizing: border-box;
     border-bottom: 3px solid blue;
@@ -478,13 +482,13 @@ input[type=Search] {
     background-image: 
     background-repeat: no-repeat;
     padding: 12px 12px 17px 10px;
-    margin: 0 0 8px 160px;
+    margin: 0 0 8px 20px;
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
 }
 
 input[type=Search]:focus {
-    width: 400px;
+    width: 250px;
     border: 3px solid blue;
 }
 input[type='radio']:after {

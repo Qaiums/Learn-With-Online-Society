@@ -187,22 +187,14 @@
                     </td>
                     </tr>
 
-<!-- 
-                    <tr>
-<td>Password</td>
-<td><input id='password1' name='password' onblur="validate('password', this.value)" type='password'></td>
-<td>
-<div id='password'></div>
-</td>
-</tr>-->
 
                    <tr>
                     <td><p>Password :</p></td>
-        <td><input type="password" placeholder="Password" onfocusout="password(this.value)" name="pass"/></td> 
+        <td><input type="password" placeholder="Password"  name="pass"/></td> 
           <div id="demo1"></div>
                     </tr>
 
-                   
+              <!--     onfocusout="password(this.value)"
                             <script type="text/javascript">
                             
                                 function password(str)
@@ -226,7 +218,7 @@
                                     xhttp.send();
                                     
                                 }
-                                </script>
+                                </script>  -->
 
 
 

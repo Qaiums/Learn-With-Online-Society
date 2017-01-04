@@ -106,7 +106,7 @@ function checkmail(str)
         if (xhttp.readyState== 4 && xhttp.status==200)
         {
             document.getElementById("txtHint").innerHTML=this.responseText;
-            if(this.responseText != "<p>Valid</p>"){
+            if(this.responseText == "Valid"){
                 return true;
             }
             else return false;

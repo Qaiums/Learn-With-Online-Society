@@ -1,56 +1,28 @@
 <?php
 $conn= odbc_connect('lwosdb','lwos','qaium29');
-session_start();
-
-$_SESSION['email_flag']=0 ; 
-
 $email=$_GET['email'];
 // var_dump($email);
-
 	if (!$conn)
 	{
 		die ('Error connection !!!');
 	}
     
-
-   $sql = "SELECT EMAIL FROM USERINFO WHERE  email = '".$_GET['email']."'";
+   $sql = "SELECT EMAIL FROM USERINFO WHERE  email = '".$email."'";
 	$result=odbc_exec($conn, $sql);
 	$row =odbc_fetch_array($result);
-
-
-	if ($row['EMAIL'] != "")
-		
+	if ($row['EMAIL'] != "")	
 	{
-		
-		echo "email address is not available.";
-			return false;
-
-
+		echo "email address is not available. please use another email.";
 	}
-
 	else 
 		{
-     if (!preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/", $email)) {
-			echo "Unique But Invalidalid";
-			return false;
-
+     		if (!preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/", $email)) {
+				echo "UniqInvalidalid";
 			} else {
-			echo "Valid";
-			//$_SESSION['email_flag']=1 ; 
-
-			return true;
+				echo "Valid";
 			}
-
-			
 		}
 		
 	  odbc_close($conn);
-
 ?>
-
-
-
-
-
-
 

@@ -11,13 +11,15 @@ $conn= odbc_connect('lwosdb','lwos','qaium29');
 				die ('Error connection !!!');
 			}
 
-   
 
-			$delete= "DELETE from POST_TAB where POST_ID='".$post_id."'";
+ $stmt = odbc_prepare($conn,'CALL DELETE_POST(?)');
+ $success=odbc_execute($stmt,array($post_id));
 
-    $result=odbc_exec($conn,$delete);
+//$delete= "DELETE from POST_TAB where POST_ID='".$post_id."'";
 
-		 odbc_close($conn);
+//$result=odbc_exec($conn,$delete);
+
+odbc_close($conn);
 			      
 								 ?>
 

@@ -7,8 +7,7 @@
 
 
 			$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE EMAIL = '".$v."' AND PASS = '".$v1."'");
-			//$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE EMAIL = 'qaium69@yahoo.com' AND PASS = '123'");
-			//echo $jsonData;
+			
 			$jsn=json_decode($jsonData,true);
 			
 
@@ -252,12 +251,10 @@
 //  commment , commentor, comment date database theek fech kore ante hobe. ebong dkehatee hobe . 
 
   $JsonCommData= getJSONFromDB("SELECT * FROM COMMENT_TAB COM INNER JOIN POST_TAB I ON COM.POST_ID=I.POST_ID WHERE I.POST_ID = ".$pid);
-                      //$jsonData= getJSONFromDB("SELECT * FROM userinfo WHERE EMAIL = 'qaium69@yahoo.com' AND PASS = '123'");
-                      //echo $jsonData;
-      //echo $JsonCommData;
+                      
                       $JsnCom=json_decode($JsonCommData,true);
 
-                    //echo $JsnCom ;
+                    
 
                       for($j =sizeof($JsnCom)-1;$j>=0;$j--) {
 
@@ -276,8 +273,7 @@
                         echo"<br>";
                         echo"<br>";
                       } 
-                    //  $JsonCommData = null;
-                  //    $JsnCom = null;
+                    
 
                          ?>
 
@@ -327,5 +323,5 @@
            
            <?php
        }
-     // odbc_close($conn);
+    
            ?>

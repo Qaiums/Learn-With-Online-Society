@@ -16,7 +16,7 @@
 <div id="menu_panel">
     <div id="menu_section">
         <ul>
-            <li><a href="home.php">Home</a></li> 
+            <li><a href="index.php">Home</a></li> 
             <li><a href="aboutus.php" >About Us</a></li> 
             <li><a href="" >Contact Us</a></li>
             <li><a href="login.php" >Login</a></li>  

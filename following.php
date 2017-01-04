@@ -99,7 +99,7 @@
 
                         <input hidden="com_user_id" name="com_users_id" value="<?php echo $jsn[$i]['USER_ID']; ;?>">
 
-                        <input type="submit"  class="select_button" name="" value="<?php echo "$i";  echo "/ ";  echo $pid ;  ?>">
+                        <input type="submit"  class="select_button" name="" value="<?php $j=$i+1; echo "$j";  echo "/ ";  echo $pid ;  ?>">
 
    
                      

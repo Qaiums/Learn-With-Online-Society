@@ -4,6 +4,7 @@ $headline=$_POST['headline'];
 $post=$_POST['ppost'];
 $categori=$_POST['categories'];
 $photo=$_POST['photoup'];
+$public="public";
 //$date_time=$_POST['date'];
 
 
@@ -23,28 +24,22 @@ $userid=$_SESSION['user_id'];
 		die ('Error connection !!!');
 	}
 
-	//if ($_POST['categories']=="")
-	//	$_POST['categories']='Other';
+	
+
+    $stmt = odbc_prepare($conn,'CALL INSERT_POST(?,?,?,?,?)');
+
+	$success=odbc_execute($stmt,array($post, $public, $categori, $headline, $userid));
 
 	
 
-	
 
-	$query= "insert into POST_TAB (post_id,post,post_type,CATEGORIES,post_headline,user_id)
-	values(POST_ID_S.nextval,'".$_POST['ppost']."','public','".$_POST['categories']."','".$_POST['headline']."','".$userid."')";
-    $result=odbc_exec($conn,$query);
-
-    echo $query;
+    //INSERT_POST
 
     //echo $query ;
 
 // COMMENT DATABASE WORK....
 
-	//$comment=$_POST['comment'];
-	//$comdate = $_POST['comdate'];
-	//$user_id=$_SESSION['user_id'];
-	//$post_id=$_SESSION['post_id'];
-
+	
 
 
 

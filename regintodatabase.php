@@ -24,8 +24,7 @@ session_start();
 
    
 
-	if($_SESSION['reg_flag']==1 && $_SESSION['pass_flag']==1 )
-	{
+	
 
    
 	
@@ -40,7 +39,7 @@ session_start();
 	}
 
 
-$plsql= "UPDATE userinfo (user_id,user_role,full_name,user_name,dob,gender,mobile,email,address,country,city,pass)
+$plsql= "INSERT into userinfo (user_id,user_role,full_name,user_name,dob,gender,mobile,email,address,country,city,pass)
 		     values(user_id.nextval,'user','".$_POST['name']."','".$_POST['uname']."','".$delivDate."','".$_POST['gender']."','".$_POST['phone']."','".$_POST['email']."','".$_POST['address']."','".$_POST['country']."','".$_POST['state']."','".$_POST['pass']."')";
 
   																												//,'".$target_file."')
@@ -48,23 +47,10 @@ $plsql= "UPDATE userinfo (user_id,user_role,full_name,user_name,dob,gender,mobil
  ?>  <h2> Successfully Updated </h2> 
 
  <center>
- <input type="button" onclick="location.href='profile.php';" value="GO TO PROFILE "/></center>
+ <input type="button" onclick="location.href='login.php';" value="GO TO LOGIN "/></center>
  <?php 
 
 	odbc_close($conn);
-	}
-
-	else 
-	{
-
-		 ?>  <h2>Your registration is not completed. Please Register Properly. Please go back and make parfect your registration. </h2> <?php 
 	
-	}
-
-	 
-	
-
-
-
 ?>
 

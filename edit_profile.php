@@ -19,13 +19,13 @@ require("oracle_to_json.php");
 <head>
 <meta/>
 <title>Learn with online society</title>
- <link href="style.css" rel="stylesheet" type="text/css" />
+<link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div id="header_panel">
     <div id="header_section">
         <div id="title_section">Learn With Online Society</div>
-      <div id="tagline">about my website</div>
+        <div id="tagline">about my website</div>
     </div>
 </div>
 <div id="menu_panel">
@@ -35,7 +35,7 @@ require("oracle_to_json.php");
             <li><a href="" >Profile</a></li>
             <li><a href="" >Follower</a></li>            
             <li><a href="" >Following</a></li>  
-             <li><a href="aboutus.php" >About Us</a></li> 
+            <li><a href="aboutus.php" >About Us</a></li> 
             <li><a href="" >Contact Us</a></li>
             <li><a href="login.php" >Login</a></li>  
             <li><a href="registration.php" >Register</a></li>                       
@@ -54,30 +54,20 @@ require("oracle_to_json.php");
             <input type="radio" name="c#" value=" "> C# <br><br>
             <input type="radio" name="Cplus" value=" "> C++<br><br>
             <input type="radio" name="other" value=" "> Other </p> 
-                
-             
+                         
         </div>
         
         <div class="cleaner_with_divider">&nbsp;</div>
-        
-        
-     
+         
     </div>
 
-
     <!-- end of column one    -->
-
-
- 
-
     
 <div id="content_column_two">
     
         <div class="column_two_section">
             <center>
-                <script type="text/javascript" src="javascript.js"></script>  <!-- javascript source link   -->
-
-                
+            <script type="text/javascript" src="javascript.js"></script>  <!-- javascript source link   -->
 
             <form name="myForm" action="update_profile.php" onsubmit="return validateForm()" method="post">
                       
@@ -90,16 +80,16 @@ require("oracle_to_json.php");
                         <input  type="" hidden="user_id" name="user_id" value ="<?php echo $edit_id ; ?>"/>
                     </td>
                     </tr>
-                   <tr>
+                    <tr>
                     <td><p>User Name  :</p></td>
                     <td><input type="text" name="uname" onfocusout="username(this.value)" placeholder="UserName" value =" <?php echo $jsn[$i]['USER_NAME'];  ?>"/><div id="demo"></div>
 
                     </td>
                     </tr>
 
-                              <script type="text/javascript">
-                            
-                                function username(str)
+                      <script type="text/javascript">
+                    
+                        function username(str)
                                 {
                                     //alert("test");
                                     var xhttp;
@@ -120,7 +110,7 @@ require("oracle_to_json.php");
                                     xhttp.send();
                                     
                                 }
-                              </script>
+                      </script>
 
 
                     <tr>
@@ -129,8 +119,8 @@ require("oracle_to_json.php");
                    
                     <input type="date" name="dob" placeholder="Date of Birth" value=" <?php echo $jsn[$i]['DOB'];  ?>">
                     
-                        </td>
-                        </tr> 
+                    </td>
+                    </tr> 
                         
                     <tr>
                     <td><p>Gender:</p></td>
@@ -143,20 +133,14 @@ require("oracle_to_json.php");
                     <td>
                     <input type="text" name="phone"  placeholder="Phone Number" value =" <?php echo $jsn[$i]['MOBILE'];  ?>"/>
 
-                   
-
                     </td>
                     </tr>
-
                     <tr>
                     <td><p>Email ID :</p></td>
                     <td>
                     <input type="email" name="email" value="  <?php echo $jsn[$i]['EMAIL'];  ?>" placeholder="Email" onblur="return checkmail(this.value)"/> <div id="txtHint"></div>
                     </td>
-                    </tr>
-
-
-                             
+                    </tr>      
                     <tr>
                     <td><p>Address :</p></td>
                     <td>
@@ -167,11 +151,13 @@ require("oracle_to_json.php");
                      
 
 
-                   <tr>
+                    <tr>
                     <td>
                     <p class="p">Please Input your Password</p>
                     <p>Password : </p></td>
-        <td><input type="password" placeholder="Password" onfocusout="password(this.value)" name="pass"/></td> 
+                    <td><input type="password" placeholder="Password" onfocusout="password(this.value)" name="pass"/>
+                    </td> 
+
           <div id="demo1"></div>
                     </tr>
 
@@ -199,7 +185,7 @@ require("oracle_to_json.php");
                                     xhttp.send();
                                     
                                 }
-                                </script>
+                            </script>
 
 
 
@@ -209,27 +195,13 @@ require("oracle_to_json.php");
 
                     </td>
                     </tr> 
-<!--
-                    <tr>
-                    <td><p>Profile Picture :</p>
-                    <td>          
-                    <input type="file" name="fileToUpload" id="fileToUpload">
-                           
-                    </td>
-             
-                    </td>  -->
 
                     </table>
-
-        
                     <br>
 
                     <input type="submit" value="Update"/>
                     </form>
                     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-
-
 
 
 </center>
@@ -243,18 +215,18 @@ require("oracle_to_json.php");
 
         <div id="content_column_three">
 
-             <div class="column_three_section">
+            <div class="column_three_section">
             <h2>About This Blog</h2>
             <p>Hallo All </p>
             </div>  
           
-         </div> <!-- end of column three -->  
+        </div> <!-- end of column three -->  
     
             
 </div> <!-- end of content -->
 
         <div id="bottom_panel">
-         <center>
+          <center>
             <div class="bottom_panel_section">
                 <a href="#">Home</a> | <a href="#">Profile</a> | <a href="#"> Follower</a> | <a href="#">Following </a>| <a href="#">About Us</a> | <a href="#">Contact Us</a><br /><br />
                 <p> Copyright © 2016 </p> <a href="#"><strong>Muhammad Abdul Qaium</strong></a></div>

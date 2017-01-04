@@ -62,7 +62,9 @@
             <li><a href="follower.php" >Follower</a></li>            
             <li><a href="following.php" >Following</a></li>  
             <li><a href="aboutus.php" >About Us</a></li>          
-            <li><a href="logout.php" >Logout</a></li>  
+            <li><a href="logout.php" >Logout</a></li> 
+            <li><a href="ddl_report.php" >Latest Post</a></li>  
+            <li><a href="deleted_post.php" >Deleted Post</a></li>    
             <li> 
 
   <input type="Search" name="search_name" onkeydown="return search_ajax(this.value)" value="" placeholder="Search..">
@@ -165,9 +167,9 @@
 
 						    <?php 
 						    				
-						    				$jsonData= getJSONFromDB("SELECT * FROM post_tab WHERE POST_TYPE='public'");
+						    		$jsonData= getJSONFromDB("SELECT * FROM PUBLIC_POST ORDER BY POST_ID DESC");
 											
-											$jsn=json_decode($jsonData,true);
+									$jsn=json_decode($jsonData,true);
 											
 													for($i=sizeof($jsn)-1;$i>=0;$i--) {
 											$pid=$jsn[$i]['POST_ID'];   // Taking POST_ID on variable $pid 
@@ -241,7 +243,7 @@
 												    <input type="text" name="comment" placeholder="Write your comment...">
 												    <input type="hidden" name="postid" value="<?php echo $pid ?> ">
 												    <input type="hidden" name="user_name_post" value="<?php echo $row['USER_NAME'];?>">
-												 	<input type="submit" name="submit_comment" value="post">
+												 	<input  type="submit" name="submit_comment" value="post">
 
 				                                 <!-- TIME DATE TAKE BY TRIGGER FROM SYSDATE-->
 											 </form>
@@ -316,7 +318,7 @@
 						    </div>
 
 						    <?php 
-						    $jsonData= getJSONFromDB("SELECT * FROM post_tab WHERE POST_TYPE='userpost'");
+						    $jsonData= getJSONFromDB("SELECT * FROM USER_POST ORDER BY POST_ID DESC");
 											$jsn=json_decode($jsonData,true);
 										
 												for($i=sizeof($jsn)-1;$i>=0;$i--) {
@@ -331,7 +333,7 @@
 
 										<form action="public_profile.php" method="post" >
 
-										<input hidden="com_user_id" name="com_users_id" value="<?php echo $jsn[$i]['USER_ID'] ;?>">
+									<input hidden="com_user_id" name="com_users_id" value="<?php echo $jsn[$i]['USER_ID'] ;?>">
 
 										<input type="submit"  name="" value="<?php echo $jsn[$i]['USER_NAME_POST'] ;?>"> 
 										<p class="p"><?php echo $jsn[$i]['POST_HEADLINE'] ;?> </p>
@@ -340,6 +342,7 @@
 										 
 										<button type="button" name="edit" class="button" onclick="userpost_edit(this.value)" value="<?php echo $pid ?>" >Edit</button> 
 										<script type="text/javascript">
+
 														    	function userpost_edit(edit) {
 															    var xhttp = new XMLHttpRequest();
 															   xhttp.onreadystatechange = function() {

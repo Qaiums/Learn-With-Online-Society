@@ -1,14 +1,11 @@
 <?php 
 
 session_start();
-			require("oracle_to_json.php");
-		    $v=$_SESSION['email'];
-			$v1=$_SESSION['pass'];
-			$user_id=$_SESSION['user_id'];
-		    $public_user_id= $_GET['follow'];
-
-
-
+		require("oracle_to_json.php");
+	    $v=$_SESSION['email'];
+		$v1=$_SESSION['pass'];
+		$user_id=$_SESSION['user_id'];
+	    $public_user_id= $_GET['follow'];
 
  		$conn= odbc_connect('lwosdb','lwos','qaium29');
 

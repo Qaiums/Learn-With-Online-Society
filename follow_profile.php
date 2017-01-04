@@ -14,21 +14,21 @@
 
 			for($i=0;$i<sizeof($jsn);$i++) {
 
-		  $public_user_id=$jsn[$i]['USER_ID'] ;
-		?>	
+		    $public_user_id=$jsn[$i]['USER_ID'] ;
+?>	
 
 <!DOCTYPE html PUBLIC>
 <html xmlns="">
 <head>
 <meta/>
 <title>Learn with online society</title>
- <link href="style.css" rel="stylesheet" type="text/css" />
+<link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div id="header_panel">
 	<div id="header_section">
     	<div id="title_section">Learn With Online Society</div>
-      <div id="tagline">about my website</div>
+        <div id="tagline">about my website</div>
     </div>
 </div>
 <div id="menu_panel">
@@ -51,7 +51,7 @@
 	<div id="content_column_one">
     	<div class="column_one_section">
         	<div style="font-size:20px;font-weight: bold;color:white;">Categories</div><br><br>
-         <p>
+            <p>
          	<input id="oracle" type="radio" onchange="loadDoc(this.value)" name="category" value="<?php echo "Oracle" ?>"> Oracle <br><br>
         	<input id="php" type="radio" onchange="loadDoc(this.value)" name="category" value="PHP"> PHP <br><br>
         	<input id="java" type="radio" onchange="loadDoc(this.value)" name="category" value="Java"> Java <br><br>
@@ -63,19 +63,20 @@
         </div>
 
       
-					        <script>
+			<script>
 					   function loadDoc(category) {
 						
 					   var xhttp = new XMLHttpRequest();
-					  xhttp.onreadystatechange = function() {
+					   xhttp.onreadystatechange = function() {
 					    if (this.readyState == 4 && this.status == 200) {
 					      document.getElementById("content_column_two").innerHTML = this.responseText;
-					    }
-					  };
+					     }
+					   };
 					   xhttp.open("GET", "categori_ajax.php?category="+category, true);
 					   xhttp.send();
 					   }
-							</script>
+
+			</script>
         <div class="cleaner_with_divider">&nbsp;</div>
  
     </div>
@@ -87,27 +88,20 @@
   		 <div class="column_two_section">
   		    <br>
 
-
 			<h1><center><?php echo $jsn[$i]['USER_NAME'];?>'s Profile</center></h1>
            
-
-
 <!-- Follow  -->
 
-
 			<?php 
+	
 
-		
-
-$jsonFol= getJSONFromDB("SELECT * FROM FOLLOW where FOLLOWING_USER_ID = '".$public_user_id."' AND FOLLOWER_USER_ID = '".$v2."'");
+		$jsonFol= getJSONFromDB("SELECT * FROM FOLLOW where FOLLOWING_USER_ID = '".$public_user_id."' AND FOLLOWER_USER_ID = '".$v2."'");
 
 		$jsnFol=json_decode($jsonFol,true);
 
-if ($_SESSION['user_id'] <> $public_user_id) {
+			if ($_SESSION['user_id'] <> $public_user_id) {
 
-	 ?>
-
-	
+							 ?>
 
                          <!--
 
@@ -125,38 +119,28 @@ if ($_SESSION['user_id'] <> $public_user_id) {
 
 							    </div> -->
 
-                               <div id=follow >
-						  		   <button type="button" id="follow" name="follow" class="button" onclick="followF(this.value)" value="
+            <div id=follow >
+				<button type="button" id="follow" name="follow" class="button" onclick="followF(this.value)" value="
 
-						  			<?php echo $public_user_id;?>" >follow</button> 
+				<?php echo $public_user_id;?>" >follow</button> 
 
-												<script type="text/javascript">
-																    	function followF(follow) {
-																	  var xhttp = new XMLHttpRequest();
-																	  xhttp.onreadystatechange = function() {
-					 												   if (this.readyState == 4 && this.status == 200) {
-					  												    document.getElementById("follow").innerHTML = this.responseText;
-					  												  }
-					 												 };
-																	  xhttp.open("GET", "follow.php?follow="+follow, true);
-																	  xhttp.send();
-																	}
+								<script type="text/javascript">
+												    function followF(follow) {
+													var xhttp = new XMLHttpRequest();
+													xhttp.onreadystatechange = function() {
+	 												   if (this.readyState == 4 && this.status == 200) {
+	  												    document.getElementById("follow").innerHTML = this.responseText;
+	  												  }
+	 												};
+													xhttp.open("GET", "follow.php?follow="+follow, true);
+													xhttp.send();
+													}
 
-														</script>
-											</div>	
-
-
-
-            
-
-
-
-
-
+								</script>
+			</div>	
 
 	<?php 
 
-		
 					  if ($jsnFol)
 							  
 							  { 
@@ -169,24 +153,24 @@ if ($_SESSION['user_id'] <> $public_user_id) {
 						  			</script>
 
 
-						  		   <div id=follow >
-						  		   <button type="button" id="unfollow" name="unfollow" class="button" onclick="unfollowF(this.value)" value="
+						  		    <div id=follow >
+						  		    <button type="button" id="unfollow" name="unfollow" class="button" onclick="unfollowF(this.value)" value="
 
 						  			<?php echo $public_user_id;?>" >unfollow</button> 
 
-												<script type="text/javascript">
-																    	function unfollowF(unfollow) {
-																	  var xhttp = new XMLHttpRequest();
-																	  xhttp.onreadystatechange = function() {
-					 												   if (this.readyState == 4 && this.status == 200) {
-					  												    document.getElementById("unfollow").innerHTML = this.responseText;
-					  												  }
-					 												 };
-																	  xhttp.open("GET", "unfollow.php?unfollow="+unfollow, true);
-																	  xhttp.send();
-																	}
+									<script type="text/javascript">
+													    function unfollowF(unfollow) {
+														  var xhttp = new XMLHttpRequest();
+														  xhttp.onreadystatechange = function() {
+		 												  if (this.readyState == 4 && this.status == 200) {
+		  												  document.getElementById("unfollow").innerHTML = this.responseText;
+		  												   }
+		 												  };
+														  xhttp.open("GET", "unfollow.php?unfollow="+unfollow, true);
+														  xhttp.send();
+														}
 
-														</script>
+									</script>
 											</div>			
 
 											<?php 	
@@ -203,15 +187,7 @@ if ($_SESSION['user_id'] <> $public_user_id) {
 
 			for($f=0;$f<sizeof($jsnFol);$f++) {
 
-					
 
-
-
-
-
-
-
-					
 					
 					if ($_SESSION['user_id'] <> $com_users_id )
 						{

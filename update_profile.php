@@ -7,7 +7,7 @@
 session_start();
 	
 	$name=$_POST['name'];
-	echo $user_id=$_POST['user_id'];
+	 $user_id=$_POST['user_id'];
 	$username=$_POST['uname'];
 	$dob=$_POST['dob'];
 	$gender=$_POST['gender'];
@@ -24,9 +24,7 @@ session_start();
 
    
 
-	if($_SESSION['reg_flag']==1 && $_SESSION['pass_flag']==1 )
-	{
-
+	
    
 	
 	$delivDate = date('d-M-Y', strtotime($_POST['dob']));
@@ -54,7 +52,22 @@ session_start();
 		address='".$_POST['address']."',
 		pass='".$_POST['pass']."'
 
-		WHERE user_id = '".$_POST['user_id']."' ";
+		WHERE user_id = '".$_POST['user_id']."' "; 
+/*
+FULL_NAME=FN,
+USER_NAME=UN,
+EMAIL=EMA,
+MOBILE=MOBA,
+DOB=BD,
+GENDER=GEN,
+ADDRESS=ADDR,
+PASS=PA
+		
+
+
+
+	$stmt = odbc_prepare($conn,'CALL PROFILE_UPDATE(?,?,?,?,?,?,?,?,?)');
+	$success=odbc_execute($stmt,array($user_id, $name, $username, $email, $phone, $dob,$gender ,$address,$pass));*/
 
   																												//,'".$target_file."')
     $regresult=odbc_exec($conn, $plsql);
@@ -62,14 +75,7 @@ session_start();
     header('location:profile.php');
 
 	odbc_close($conn);
-	}
-
-	else 
-	{
-
-		 ?>  <h2>Your Edit is not completed. Please Inpurt data Properly. Please go back and make parfect your Edit. </h2> <?php 
 	
-	}
 
 	 
 	
